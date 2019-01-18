@@ -20,7 +20,7 @@ class App extends Component {
             <Route exact path="/tours/:id" component={TourShowPage} />
             <Route exact path="/about" component={AboutUsPage} />
             <Route exact path="/contact" component={ContactUsPage} />
-            <Route exact path="/dashboard" component={LoginPage} />
+            <Route exact path="/login" component={LoginPage} />
           </div>
         </BrowserRouter>
       </div>
