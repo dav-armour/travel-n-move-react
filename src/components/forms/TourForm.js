@@ -1,160 +1,62 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
-import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class TourForm extends React.Component {
-    state = {
-        open: false,
-        message: ""
+const styles = theme => ({
+    bannerStyle: {
+        backgroundImage: 'url("./london-eye.jpg")',
+        minHeight: "500px",
+        width: "100%",
+        paddingTop: "100px",
+    },
 
-    };
+    formContainer: {
+        maxWidth: "1024px",
+        marginTop: "50px",
+        marginLeft: "80px"
 
-    handleClickOpen = (type) => {
+    },
+    tabContainer: {
+        width: "500px"
 
-        //this.setState({ open: true });
-        switch (type) {
-            case "Flight":
-                return this.setState({ open: true, message: "Request for Flight Quote" })
-            case "Hotel":
-                return this.setState({ open: true, message: "Request for Hotel Quote" })
-            case "Holidays":
-                return this.setState({ open: true, message: "Request for Holidays Quote" })
-            default:
-                return null
-        }
-
-
-    };
-
-    handleClose = () => {
-        this.setState({ open: false });
-    };
-
-    quoteDisplayWindow(quoteType) {
-        alert("you clicked");
+    },
+    tabItems: {
+        padding: "0px",
+        margin: "0px",
+        color: "grey"
     }
+
+
+});
+
+class TabContainer extends React.Component {
+    state = {
+        value: 2,
+    };
+
+    handleChange = (event, value) => {
+        this.setState({ value });
+    };
+
     render() {
+        const { classes } = this.props;
         return (
-            <div>
-
-                <Button
-                    variant="contained"
-                    width="55px"
-                    color="primary"
-                    onClick={() => this.handleClickOpen("Flight")}
+            <Paper className={classes.tabContainer}>
+                <Tabs
+                    value={this.state.value}
+                    indicatorColor="primary"
+                    textColor="primary"
+                    onChange={this.handleChange}
                 >
-                    Flight
-        </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => this.handleClickOpen("Hotel")}
-                >
-                    Hotel
-        </Button>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => this.handleClickOpen("Holidays")}
-                >
-                    Holidays
-        </Button>
-                <Dialog
-                    open={this.state.open}
-                    message={this.state.message}
-                    onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">{this.state.message}</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Please enter your details so we can prepare your quote.
-            </DialogContentText>
-
-                        <TextField
-                            autoFocus
-                            id="date-local"
-                            label="From Date"
-                            type="date"
-                            //label="From Date"
-                            defaultValue="dd/mm/yy"
-                            width="10px"
-                            // className={classes.textField}
-                            InputLabelProps={{
-                                shrink: true,
-                            }}
-                        />
-
-                        <TextField
-                            // autoFocus
-                            required
-                            margin="dense"
-                            id="name"
-                            label="First Name"
-                            type="text"
-                            fullWidth
-                        />
-                        <TextField
-                            //autoFocus
-                            required
-                            margin="dense"
-                            id="name"
-                            label="Last Name"
-                            type="text"
-                            fullWidth
-                        />
-                        <TextField
-                            required
-                            margin="dense"
-                            id="email"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                        />
-                        <TextField
-                            required
-                            margin="dense"
-                            id="phone"
-                            label="Phone Number"
-                            type="phone"
-                            fullWidth
-                        />
-                        <TextField
-                            margin="dense"
-                            id="comment"
-                            label="Additional Comments"
-                            type="text"
-                            fullWidth
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="info">
-                            Cancel
-            </Button>
-                        <Button
-                            variant="contained"
-                            onClick={this.handleClose}
-                            color="primary"
-                        >
-                            Send Request
-            </Button>
-                    </DialogActions>
-                </Dialog>
-            </div>
+                    <Tab className={classes.tabItems} label="Tour Packages" />
+                    <Tab className={classes.tabItems} label="Hotels" />
+                    <Tab className={classes.tabItems} label="Flights" />
+                </Tabs>
+            </Paper>
         );
     }
 }
 
-// TourForm.propTypes = {
-//     classes: PropTypes.object.isRequired,
-// };
-
-// export default withStyles(styles)(TourForm);
+export default withStyles(styles)(TabContainer);

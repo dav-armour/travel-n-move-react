@@ -1,24 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import TourForm from "./forms/TourForm";
 // import photo from "./../../public/london-eye.jpg"
 
 const styles = theme => ({
     bannerStyle: {
         backgroundImage: 'url("./london-eye.jpg")',
-        minHeight: '500px',
-        width: '100%',
-        paddingTop: '100px'
+        minHeight: "500px",
+        width: "100%",
+        paddingTop: "100px",
+    },
+
+    formContainer: {
+        maxWidth: "1024px",
+        marginTop: "50px",
+        marginLeft: "80px"
+
     }
 });
 
 function HeroImage(props) {
     const { classes } = props;
 
-    console.log(classes);
 
     return (
         <div className={classes.bannerStyle}>
+            <div className={classes.formContainer}>
+                <TourForm />
+            </div>
 
         </div>
     );
