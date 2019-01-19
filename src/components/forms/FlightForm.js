@@ -8,6 +8,10 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from "@material-ui/core/TextField";
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+import Input from '@material-ui/core/Input';
 import FormLabel from '@material-ui/core/FormLabel';
 import Grid from '@material-ui/core/Grid';
 
@@ -29,15 +33,25 @@ const styles = theme => ({
 
 class RadioButtonsGroup extends React.Component {
     state = {
-        value: 'female',
+        value: "female",
+        audultsCount: "",
+        labelWidth: 0
     };
 
     handleChange = event => {
         this.setState({ value: event.target.value });
     };
 
+    handleChangeDropdown = event => {
+        this.setState({ audultsCount: event.target.value });
+
+        console.log('new state', this.state);
+    };
+
     render() {
         const { classes } = this.props;
+
+        console.log('state on render', this.state);
 
         return (
             <div className={classes.root}>
@@ -77,7 +91,6 @@ class RadioButtonsGroup extends React.Component {
                         id="date"
                         label="departure-date"
                         type="date"
-                        // defaultValue="2017-05-24"
                         className={classes.textField}
                         InputLabelProps={{
                             shrink: true,
@@ -88,20 +101,66 @@ class RadioButtonsGroup extends React.Component {
                         id="date"
                         label="arrival-date"
                         type="date"
-                        // defaultValue="2017-05-24"
                         className={classes.textField}
                         InputLabelProps={{
                             shrink: true,
                         }}
                     />
 
+                    {/* <Grid> */}
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="audults-count-select">Audults</InputLabel>
+                        <Select
+                            value={this.state.audultsCount}
+                            onChange={this.handleChangeDropdown}
+                            inputProps={{
+                                name: 'audultsCount',
+                                id: 'audults-count-select',
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                            <MenuItem value={7}>7</MenuItem>
+                            <MenuItem value={8}>8</MenuItem>
+                            <MenuItem value={9}>9</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                        </Select>
+                    </FormControl>
+
+
+                    {/* </Grid> */}
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel>Ticket Class</InputLabel>
+                        <Select>
+
+                            <MenuItem value={10}>Economy</MenuItem>
+                            <MenuItem value={20}>Business</MenuItem>
+                            <MenuItem value={30}>Premium</MenuItem>
+
+                        </Select>
+                    </FormControl>
+
 
                 </FormControl>
 
-            </div>
+            </div >
         );
     }
 }
+
+
+
+
 
 RadioButtonsGroup.propTypes = {
     classes: PropTypes.object.isRequired,

@@ -89,7 +89,7 @@ function Album(props) {
                                             the content.
                     </Typography>
                                     </CardContent>
-                                    <CardActions className={classes.cardActions}>
+                                    <CardActions>
                                         <MuiThemeProvider theme={theme}>
                                             <Button
                                                 size="small"
