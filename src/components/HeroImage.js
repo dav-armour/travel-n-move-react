@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import TourForm from "./forms/TourForm";
+import MenuDisplay from "./forms/MenuDisplay";
 // import photo from "./../../public/london-eye.jpg"
 
 const styles = theme => ({
@@ -27,7 +27,7 @@ function HeroImage(props) {
     return (
         <div className={classes.bannerStyle}>
             <div className={classes.formContainer}>
-                <TourForm />
+                <MenuDisplay />
             </div>
 
         </div>

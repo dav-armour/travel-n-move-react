@@ -5,11 +5,11 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
 
 
-class FlightForm extends Component {
+class HotelForm extends Component {
     render() {
         return (
             <Grid>
-                <h1>This is flight form</h1>
+                <h1>This is hotel form</h1>
 
 
                 {/* <label>Single</label> */}
@@ -35,7 +35,7 @@ class FlightForm extends Component {
             //         <Grid container className={classes.demo} justify="space-around" >
             //             <Typography variant="h6" color="inherit" className={classes.grow}>
             //                 Travel N Move
-            //         </Typography>
+            //         </Typography>    
             //             <div>
             //                 <FontAwesomeIcon icon="igloo" />
             //                 <Typography variant="h6" color="inherit" className={classes.grow}>
@@ -50,4 +50,4 @@ class FlightForm extends Component {
 
 }
 
-export default FlightForm;
+export default HotelForm;

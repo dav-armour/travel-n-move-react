@@ -1,62 +1,53 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { withStyles } from '@material-ui/core/styles';
-
-const styles = theme => ({
-    bannerStyle: {
-        backgroundImage: 'url("./london-eye.jpg")',
-        minHeight: "500px",
-        width: "100%",
-        paddingTop: "100px",
-    },
-
-    formContainer: {
-        maxWidth: "1024px",
-        marginTop: "50px",
-        marginLeft: "80px"
-
-    },
-    tabContainer: {
-        width: "500px"
-
-    },
-    tabItems: {
-        padding: "0px",
-        margin: "0px",
-        color: "grey"
-    }
+import React, { Component } from "react";
+import Grid from '@material-ui/core/Grid';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
 
 
-});
-
-class TabContainer extends React.Component {
-    state = {
-        value: 2,
-    };
-
-    handleChange = (event, value) => {
-        this.setState({ value });
-    };
-
+class TourForm extends Component {
     render() {
-        const { classes } = this.props;
         return (
-            <Paper className={classes.tabContainer}>
-                <Tabs
-                    value={this.state.value}
-                    indicatorColor="primary"
-                    textColor="primary"
+            <Grid>
+                <h1>This is Tour form</h1>
+
+
+                {/* <label>Single</label> */}
+                {/* <Radio
+                    checked={this.state.selectedValue === 'a'}
                     onChange={this.handleChange}
-                >
-                    <Tab className={classes.tabItems} label="Tour Packages" />
-                    <Tab className={classes.tabItems} label="Hotels" />
-                    <Tab className={classes.tabItems} label="Flights" />
-                </Tabs>
-            </Paper>
-        );
+                    value="a"
+                    name="radio-button-demo"
+                    aria-label="A"
+                    label="Single"
+                />
+                {/* <lable>Return</lable> */}
+                {/* <Radio
+                    checked={this.state.selectedValue === 'b'}
+                    onChange={this.handleChange}
+                    value="b"
+                    name="radio-button-demo"
+                    aria-label="B"
+                /> */}
+            </Grid>
+            // <Grid container className={classes.root} spacing={16}>
+            //     <Grid item xs={12}>
+            //         <Grid container className={classes.demo} justify="space-around" >
+            //             <Typography variant="h6" color="inherit" className={classes.grow}>
+            //                 Travel N Move
+            //         </Typography>    
+            //             <div>
+            //                 <FontAwesomeIcon icon="igloo" />
+            //                 <Typography variant="h6" color="inherit" className={classes.grow}>
+            //                     0421631447
+            //             </Typography>
+            //             </div>
+            //         </Grid>
+            //     </Grid>
+            // </Grid>
+        )
     }
+
 }
 
-export default withStyles(styles)(TabContainer);
+export default TourForm;
