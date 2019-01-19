@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import Header from "./components/header";
+import TopBanner from "./TopBanner";
 import Cards from "./Cards";
 import HeroImage from "./HeroImage";
 
@@ -7,7 +7,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Header /> */}
+        <TopBanner />
         <HeroImage />
         <Cards />
       </div>
