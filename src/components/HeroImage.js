@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+// import photo from "./../../public/london-eye.jpg"
 
 const styles = theme => ({
     bannerStyle: {
-        backgroundImage: 'url("https://loremflickr.com/1000/300/india")',
-        minHeight: '300px',
+        backgroundImage: 'url("./london-eye.jpg")',
+        minHeight: '500px',
         width: '100%',
         paddingTop: '100px'
     }

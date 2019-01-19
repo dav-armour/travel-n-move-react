@@ -8,7 +8,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faIgloo, faFastForward } from '@fortawesome/free-solid-svg-icons';
+import { faIgloo } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faIgloo);
 

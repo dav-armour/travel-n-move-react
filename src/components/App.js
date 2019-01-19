@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TopBanner from "./TopBanner";
 import Cards from "./Cards";
 import HeroImage from "./HeroImage";
+import MiddleBanner from "./MiddleBanner";
 
 class App extends Component {
   render() {
@@ -9,6 +10,7 @@ class App extends Component {
       <div>
         <TopBanner />
         <HeroImage />
+        <MiddleBanner />
         <Cards />
       </div>
     );
