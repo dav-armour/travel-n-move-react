@@ -1,53 +1,111 @@
-import React, { Component } from "react";
-import Grid from '@material-ui/core/Grid';
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from "@material-ui/core/TextField";
+import FormLabel from '@material-ui/core/FormLabel';
+import Grid from '@material-ui/core/Grid';
 
 
-class FlightForm extends Component {
-    render() {
-        return (
-            <Grid>
-                <h1>This is flight form</h1>
-
-
-                {/* <label>Single</label> */}
-                {/* <Radio
-                    checked={this.state.selectedValue === 'a'}
-                    onChange={this.handleChange}
-                    value="a"
-                    name="radio-button-demo"
-                    aria-label="A"
-                    label="Single"
-                />
-                {/* <lable>Return</lable> */}
-                {/* <Radio
-                    checked={this.state.selectedValue === 'b'}
-                    onChange={this.handleChange}
-                    value="b"
-                    name="radio-button-demo"
-                    aria-label="B"
-                /> */}
-            </Grid>
-            // <Grid container className={classes.root} spacing={16}>
-            //     <Grid item xs={12}>
-            //         <Grid container className={classes.demo} justify="space-around" >
-            //             <Typography variant="h6" color="inherit" className={classes.grow}>
-            //                 Travel N Move
-            //         </Typography>
-            //             <div>
-            //                 <FontAwesomeIcon icon="igloo" />
-            //                 <Typography variant="h6" color="inherit" className={classes.grow}>
-            //                     0421631447
-            //             </Typography>
-            //             </div>
-            //         </Grid>
-            //     </Grid>
-            // </Grid>
-        )
+const styles = theme => ({
+    root: {
+        display: 'flex',
+    },
+    formControl: {
+        margin: theme.spacing.unit * 3,
+    },
+    group: {
+        margin: `${theme.spacing.unit}px 0`,
+    },
+    radioButtonsContainer: {
+        display: "flex",
     }
+});
 
+class RadioButtonsGroup extends React.Component {
+    state = {
+        value: 'female',
+    };
+
+    handleChange = event => {
+        this.setState({ value: event.target.value });
+    };
+
+    render() {
+        const { classes } = this.props;
+
+        return (
+            <div className={classes.root}>
+                <FormControl component="fieldset" className={classes.formControl}>
+                    <RadioGroup
+                        aria-label="Gender"
+                        name="gender1"
+                        className={classes.group}
+                        value={this.state.value}
+                        onChange={this.handleChange}
+                    >
+                        <div className={classes.radioButtonsContainer}>
+                            <FormControlLabel value="one-way" control={<Radio />} label="One Way" />
+                            <FormControlLabel value="round-trip" control={<Radio />} label="Round Trip" />
+                        </div>
+                    </RadioGroup>
+
+                    <TextField
+                        autoFocus
+                        required
+                        margin="dense"
+                        id="from"
+                        label="From"
+                        type="text"
+                        fullWidth
+                    />
+
+                    <TextField
+                        required
+                        margin="dense"
+                        id="to"
+                        label="To"
+                        type="text"
+                        fullWidth
+                    />
+                    <TextField
+                        id="date"
+                        label="departure-date"
+                        type="date"
+                        // defaultValue="2017-05-24"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+
+                    <TextField
+                        id="date"
+                        label="arrival-date"
+                        type="date"
+                        // defaultValue="2017-05-24"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+
+
+                </FormControl>
+
+            </div>
+        );
+    }
 }
 
-export default FlightForm;
+RadioButtonsGroup.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(RadioButtonsGroup);
+
