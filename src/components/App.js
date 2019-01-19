@@ -3,6 +3,7 @@ import TopBanner from "./TopBanner";
 import Cards from "./Cards";
 import HeroImage from "./HeroImage";
 import MiddleBanner from "./MiddleBanner";
+import TourForm from "./forms/TourForm";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div>
         <TopBanner />
         <HeroImage />
+        <TourForm />
         <MiddleBanner />
         <Cards />
       </div>
