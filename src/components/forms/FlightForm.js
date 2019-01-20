@@ -101,7 +101,8 @@ class RadioButtonsGroup extends React.Component {
                         id="date"
                         label="arrival-date"
                         type="date"
-                        className={classes.textField}
+                        className={classes.textField} onClose={this.handleClose}
+                        onOpen={this.handleOpen}
                         InputLabelProps={{
                             shrink: true,
                         }}
