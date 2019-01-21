@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import MenuDisplay from "./forms/MenuDisplay";
+import MenuDisplay from "./../forms/MenuDisplay";
 // import photo from "./../../public/london-eye.jpg"
 
 const styles = theme => ({
