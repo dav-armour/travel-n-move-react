@@ -75,13 +75,13 @@ export default class PersonalInfoDialog extends React.Component {
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="info">
+                        <Button onClick={this.handleClose} color="secondary">
                             Cancel
             </Button>
                         <Button
                             variant="contained"
                             onClick={this.handleClose}
-                            color="primary"
+                            color="secondary"
                         >
                             Send Request
             </Button>

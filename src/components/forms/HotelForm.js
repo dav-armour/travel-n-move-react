@@ -32,7 +32,8 @@ class HotelForm extends React.Component {
         childrenCount: "",
         ticketType: "",
         labelWidth: 0,
-        personalInfo: "false"
+        personalInfo: "false",
+        hotelType: ""
     };
 
     onRequestQuoteClick = event => {
@@ -56,6 +57,9 @@ class HotelForm extends React.Component {
     handleChangeChildren = event => {
         this.setState({ childrenCount: event.target.value });
 
+    };
+    handleChangeHotelType = event => {
+        this.setState({hotelType: event.target.value});
     };
 
     render() {
@@ -202,6 +206,29 @@ class HotelForm extends React.Component {
                             <MenuItem value={8}>8</MenuItem>
                             <MenuItem value={9}>9</MenuItem>
                             <MenuItem value={10}>10</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="hotelType-count-select">Hotel Type</InputLabel>
+                        <Select
+                            value={this.state.hotelType}
+                            onChange={this.handleChangeHotelType}
+                            inputProps={{
+                                name: 'hotelType',
+                                id: 'hotel-count-select',
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+
+                            <MenuItem value={1}>1 Star</MenuItem>
+                            <MenuItem value={2}>2 Stars</MenuItem>
+                            <MenuItem value={3}>3 Stars</MenuItem>
+                            <MenuItem value={4}>4 Stars</MenuItem>
+                            <MenuItem value={5}>5 Stars</MenuItem>
+
                         </Select>
                     </FormControl>
 

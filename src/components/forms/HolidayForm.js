@@ -104,7 +104,7 @@ class RadioButtonsGroup extends React.Component {
                             </MenuItem>
 
                             <MenuItem value={1}>Budget</MenuItem>
-                            <MenuItem value={2}>Luxury</MenuItem>
+                            <MenuItem value={2}>Mid Range</MenuItem>
                             <MenuItem value={3}>Premium</MenuItem>
 
                         </Select>

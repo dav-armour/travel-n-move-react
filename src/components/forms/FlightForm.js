@@ -32,7 +32,9 @@ class RadioButtonsGroup extends React.Component {
     state = {
         value: "female",
         audultsCount: "",
-        labelWidth: 0
+        labelWidth: 0,
+        childrenCount: "",
+        ticketClass: ""
     };
 
     handleChange = event => {
@@ -42,8 +44,18 @@ class RadioButtonsGroup extends React.Component {
     handleChangeDropdown = event => {
         this.setState({ audultsCount: event.target.value });
 
-        console.log('new state', this.state);
+
     };
+
+    handleChangeChildren = event => {
+        this.setState({ childrenCount: event.target.value });
+
+
+    };
+
+    handleChangeTicketClass = event => {
+        this.setState({ ticketClass: event.target.value })
+    }
 
     render() {
         const { classes } = this.props;
@@ -55,7 +67,7 @@ class RadioButtonsGroup extends React.Component {
                 <FormControl component="fieldset" className={classes.formControl}>
                     <RadioGroup
                         aria-label="Gender"
-                        name="gender1"
+                        name="gender"
                         className={classes.group}
                         value={this.state.value}
                         onChange={this.handleChange}
@@ -134,12 +146,45 @@ class RadioButtonsGroup extends React.Component {
                         </Select>
                     </FormControl>
 
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="children-count-select">Children</InputLabel>
+                        <Select
+                            value={this.state.childrenCount}
+                            onChange={this.handleChangeChildren}
+                            inputProps={{
+                                name: 'childrenCount',
+                                id: 'children-count-select',
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                            <MenuItem value={7}>7</MenuItem>
+                            <MenuItem value={8}>8</MenuItem>
+                            <MenuItem value={9}>9</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                        </Select>
+                    </FormControl>
 
                     {/* </Grid> */}
 
                     <FormControl className={classes.formControl}>
                         <InputLabel>Ticket Class</InputLabel>
-                        <Select>
+                        <Select
+                            value={this.state.ticketClass}
+                            onChange={this.handleChangeTicketClass}
+                            inputProps={{
+                                name: 'ticketClass',
+                                id: 'ticket-class-select',
+                            }}
+                        >
 
                             <MenuItem value={10}>Economy</MenuItem>
                             <MenuItem value={20}>Business</MenuItem>
