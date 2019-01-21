@@ -3,8 +3,8 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import FlightForm from "./FlightForm";
+import HolidayForm from "./HolidayForm";
 import HotelForm from "./HotelForm";
-import TourForm from "./TourForm";
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -49,9 +49,6 @@ class TabContainer extends React.Component {
 
     }
 
-
-
-
     getForm() {
 
         const { itemOption } = this.state;
@@ -63,7 +60,7 @@ class TabContainer extends React.Component {
             case "Hotels":
                 return <HotelForm />
             case "Tours":
-                return <TourForm />
+                return <HolidayForm />
             default:
 
                 return null;
@@ -81,7 +78,7 @@ class TabContainer extends React.Component {
                     textColor="primary"
                     onChange={this.handleChange}
                 >
-                    <Tab className={classes.tabItems} onClick={() => this.onMenuItemClick("Tours")} label="Tour Packages" />
+                    <Tab className={classes.tabItems} onClick={() => this.onMenuItemClick("Tours")} label="Holiday Packages" />
                     <Tab className={classes.tabItems} onClick={() => this.onMenuItemClick("Hotels")} label="Hotels" />
                     <Tab className={classes.tabItems} onClick={() => this.onMenuItemClick("Flights")} label="Flights" />
                 </Tabs>

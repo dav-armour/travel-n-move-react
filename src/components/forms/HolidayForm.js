@@ -6,7 +6,9 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
 import PersonalInfoDialog from "./PersonalInfoDialog";
+
 
 
 const styles = theme => ({
@@ -24,20 +26,15 @@ const styles = theme => ({
     }
 });
 
-class HotelForm extends React.Component {
+class HolidayForm extends React.Component {
     state = {
         value: "female",
         roomCount: "",
         adultCount: "",
         childrenCount: "",
         ticketType: "",
-        labelWidth: 0,
-        personalInfo: "false"
+        labelWidth: 0
     };
-
-    onRequestQuoteClick = event => {
-        this.setState({ personalInfo: "true" })
-    }
 
     handleChange = event => {
         this.setState({ value: event.target.value });
@@ -205,12 +202,7 @@ class HotelForm extends React.Component {
                         </Select>
                     </FormControl>
 
-                    {/* <Button variant="contained" color="secondary" onClick={this.onRequestQuoteClick}>
-                        Request Quote
-                    </Button>
-                    {this.getPersonalInfoForm()} */}
                     <PersonalInfoDialog />
-
                     {/* </Grid> */}
 
                 </FormControl>
@@ -224,8 +216,8 @@ class HotelForm extends React.Component {
 
 
 
-HotelForm.propTypes = {
+HolidayForm.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HotelForm);
+export default withStyles(styles)(HolidayForm);
