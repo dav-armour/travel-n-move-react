@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import TourCard from "./TourCard";
 import { withStyles } from "@material-ui/core/styles";
@@ -36,21 +35,15 @@ function CardsGrid(props) {
   const { classes } = props;
 
   return (
-    <React.Fragment>
-      <CssBaseline />
-
-      <main>
-        <div className={classNames(classes.layout, classes.cardGrid)}>
-          <Grid container spacing={40}>
-            {cards.map(card => (
-              <Grid item key={CardsGrid} sm={CardsGrid} md={4} lg={3}>
-                <TourCard />
-              </Grid>
-            ))}
+    <div className={classNames(classes.layout, classes.cardGrid)}>
+      <Grid container spacing={40}>
+        {cards.map(card => (
+          <Grid item key={card} sm={6} md={4} lg={3}>
+            <TourCard />
           </Grid>
-        </div>
-      </main>
-    </React.Fragment>
+        ))}
+      </Grid>
+    </div>
   );
 }
 
