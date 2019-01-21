@@ -57,7 +57,7 @@ function NavBar(props) {
                                         </Icon>
                                     </Link>
                                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                                        0421631447
+                                        1800-900-700
                                     </Typography>
                                 </div>
                             </Grid>

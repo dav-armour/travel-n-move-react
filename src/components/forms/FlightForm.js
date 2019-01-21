@@ -4,16 +4,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import Input from '@material-ui/core/Input';
-import FormLabel from '@material-ui/core/FormLabel';
-import Grid from '@material-ui/core/Grid';
 
 
 const styles = theme => ({
@@ -111,13 +107,13 @@ class RadioButtonsGroup extends React.Component {
                     {/* <Grid> */}
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="audults-count-select">Audults</InputLabel>
+                        <InputLabel htmlFor="adults-count-select">Adults</InputLabel>
                         <Select
                             value={this.state.audultsCount}
                             onChange={this.handleChangeDropdown}
                             inputProps={{
-                                name: 'audultsCount',
-                                id: 'audults-count-select',
+                                name: 'adultsCount',
+                                id: 'adults-count-select',
                             }}
                         >
                             <MenuItem value="">
