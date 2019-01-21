@@ -53,7 +53,7 @@ function NavBar(props) {
                                 <div>
                                     <Link to="/contact">
                                         <Icon>
-                                            <i class="material-icons">local_phone</i>
+                                            <i className="material-icons">local_phone</i>
                                         </Icon>
                                     </Link>
                                     <Typography variant="h6" color="inherit" className={classes.grow}>
