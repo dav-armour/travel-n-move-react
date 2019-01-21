@@ -26,7 +26,7 @@ export default class PersonalInfoDialog extends React.Component {
             <div>
                 <Button
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     onClick={this.handleClickOpen}
                 >
                     Request Quote

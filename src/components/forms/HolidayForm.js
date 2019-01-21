@@ -6,9 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import Button from '@material-ui/core/Button';
 import PersonalInfoDialog from "./PersonalInfoDialog";
-
 
 
 const styles = theme => ({
@@ -26,32 +24,19 @@ const styles = theme => ({
     }
 });
 
-class HolidayForm extends React.Component {
+class RadioButtonsGroup extends React.Component {
     state = {
         value: "female",
-        roomCount: "",
-        adultCount: "",
-        childrenCount: "",
-        ticketType: "",
+        budget: "",
         labelWidth: 0
     };
 
-    handleChange = event => {
-        this.setState({ value: event.target.value });
-    };
+    // handleChange = event => {
+    //     this.setState({ value: event.target.value });
+    // };
 
-    handleChangeAdult = event => {
-        this.setState({ adultCount: event.target.value });
-
-    };
-
-    handleChangeRooms = event => {
-        this.setState({ roomCount: event.target.value });
-
-    };
-
-    handleChangeChildren = event => {
-        this.setState({ childrenCount: event.target.value });
+    handleChangeDropdown = event => {
+        this.setState({ budget: event.target.value });
 
     };
 
@@ -64,12 +49,13 @@ class HolidayForm extends React.Component {
             <div className={classes.root}>
                 <FormControl component="fieldset" className={classes.formControl}>
 
+
                     <TextField
                         autoFocus
                         required
                         margin="dense"
-                        id="FirstName"
-                        label="First Name"
+                        id="from"
+                        label="From"
                         type="text"
                         fullWidth
                     />
@@ -77,38 +63,23 @@ class HolidayForm extends React.Component {
                     <TextField
                         required
                         margin="dense"
-                        id="LastName"
-                        label="Last Name"
+                        id="to"
+                        label="To"
                         type="text"
                         fullWidth
                     />
                     <TextField
-                        required
-                        margin="dense"
-                        id="Phone"
-                        label="Phone"
-                        type="text"
-                        fullWidth
+                        id="start-date"
+                        label="Start Date"
+                        type="date"
+                        className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
                     />
                     <TextField
-                        required
-                        margin="dense"
-                        id="email"
-                        label="Email"
-                        type="text"
-                        fullWidth
-                    />
-                    <TextField
-                        required
-                        margin="dense"
-                        id="DestinationCity"
-                        label="Destination City"
-                        type="text"
-                        fullWidth
-                    />
-                    <TextField
-                        id="date"
-                        label="Check In Date"
+                        id="end-date"
+                        label="End date"
                         type="date"
                         className={classes.textField}
                         InputLabelProps={{
@@ -116,94 +87,33 @@ class HolidayForm extends React.Component {
                         }}
                     />
 
-
                     {/* <Grid> */}
 
                     <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="audults-count-select">Rooms</InputLabel>
+                        <InputLabel htmlFor="budget-count-select">Budget</InputLabel>
                         <Select
-                            value={this.state.roomCount}
-                            onChange={this.handleChangeRooms}
+                            value={this.state.budget}
+                            onChange={this.handleChangeDropdown}
                             inputProps={{
-                                name: 'roomCount',
-                                id: 'room-count-select',
+                                name: 'budget',
+                                id: 'budget-count-select',
                             }}
                         >
                             <MenuItem value="">
                                 <em>None</em>
                             </MenuItem>
 
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-                            <MenuItem value={6}>6</MenuItem>
-                            <MenuItem value={7}>7</MenuItem>
-                            <MenuItem value={8}>8</MenuItem>
-                            <MenuItem value={9}>9</MenuItem>
-                            <MenuItem value={10}>10</MenuItem>
-                        </Select>
-                    </FormControl>
+                            <MenuItem value={1}>Budget</MenuItem>
+                            <MenuItem value={2}>Luxury</MenuItem>
+                            <MenuItem value={3}>Premium</MenuItem>
 
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="audults-count-select">Adults</InputLabel>
-                        <Select
-                            value={this.state.adultCount}
-                            onChange={this.handleChangeAdult}
-                            inputProps={{
-                                name: 'adultCount',
-                                id: 'adults-count-select',
-                            }}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-                            <MenuItem value={6}>6</MenuItem>
-                            <MenuItem value={7}>7</MenuItem>
-                            <MenuItem value={8}>8</MenuItem>
-                            <MenuItem value={9}>9</MenuItem>
-                            <MenuItem value={10}>10</MenuItem>
                         </Select>
                     </FormControl>
 
 
-
-                    <FormControl className={classes.formControl}>
-                        <InputLabel htmlFor="audults-count-select">Children</InputLabel>
-                        <Select
-                            value={this.state.childrenCount}
-                            onChange={this.handleChangeChildren}
-                            inputProps={{
-                                name: 'childrenCount',
-                                id: 'children-count-select',
-                            }}
-                        >
-                            <MenuItem value="">
-                                <em>None</em>
-                            </MenuItem>
-
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                            <MenuItem value={4}>4</MenuItem>
-                            <MenuItem value={5}>5</MenuItem>
-                            <MenuItem value={6}>6</MenuItem>
-                            <MenuItem value={7}>7</MenuItem>
-                            <MenuItem value={8}>8</MenuItem>
-                            <MenuItem value={9}>9</MenuItem>
-                            <MenuItem value={10}>10</MenuItem>
-                        </Select>
-                    </FormControl>
+                    {/* </Grid> */}
 
                     <PersonalInfoDialog />
-                    {/* </Grid> */}
 
                 </FormControl>
 
@@ -216,8 +126,8 @@ class HolidayForm extends React.Component {
 
 
 
-HolidayForm.propTypes = {
+RadioButtonsGroup.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(HolidayForm);
+export default withStyles(styles)(RadioButtonsGroup);
