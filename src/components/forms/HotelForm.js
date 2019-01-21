@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from "@material-ui/core/TextField";
 import MenuItem from '@material-ui/core/MenuItem';
@@ -29,7 +26,10 @@ const styles = theme => ({
 class HotelForm extends React.Component {
     state = {
         value: "female",
-        audultsCount: "",
+        roomCount: "",
+        adultCount: "",
+        childrenCount: "",
+        ticketType: "",
         labelWidth: 0
     };
 
@@ -37,10 +37,19 @@ class HotelForm extends React.Component {
         this.setState({ value: event.target.value });
     };
 
-    handleChangeDropdown = event => {
-        this.setState({ audultsCount: event.target.value });
+    handleChangeAdult = event => {
+        this.setState({ adultCount: event.target.value });
 
-        console.log('new state', this.state);
+    };
+
+    handleChangeRooms = event => {
+        this.setState({ roomCount: event.target.value });
+
+    };
+
+    handleChangeChildren = event => {
+        this.setState({ childrenCount: event.target.value });
+
     };
 
     render() {
@@ -110,11 +119,67 @@ class HotelForm extends React.Component {
                     <FormControl className={classes.formControl}>
                         <InputLabel htmlFor="audults-count-select">Rooms</InputLabel>
                         <Select
-                            value={this.state.audultsCount}
-                            onChange={this.handleChangeDropdown}
+                            value={this.state.roomCount}
+                            onChange={this.handleChangeRooms}
                             inputProps={{
-                                name: 'audultsCount',
-                                id: 'audults-count-select',
+                                name: 'roomCount',
+                                id: 'room-count-select',
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                            <MenuItem value={7}>7</MenuItem>
+                            <MenuItem value={8}>8</MenuItem>
+                            <MenuItem value={9}>9</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                        </Select>
+                    </FormControl>
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="audults-count-select">Adults</InputLabel>
+                        <Select
+                            value={this.state.adultCount}
+                            onChange={this.handleChangeAdult}
+                            inputProps={{
+                                name: 'adultCount',
+                                id: 'adults-count-select',
+                            }}
+                        >
+                            <MenuItem value="">
+                                <em>None</em>
+                            </MenuItem>
+
+                            <MenuItem value={1}>1</MenuItem>
+                            <MenuItem value={2}>2</MenuItem>
+                            <MenuItem value={3}>3</MenuItem>
+                            <MenuItem value={4}>4</MenuItem>
+                            <MenuItem value={5}>5</MenuItem>
+                            <MenuItem value={6}>6</MenuItem>
+                            <MenuItem value={7}>7</MenuItem>
+                            <MenuItem value={8}>8</MenuItem>
+                            <MenuItem value={9}>9</MenuItem>
+                            <MenuItem value={10}>10</MenuItem>
+                        </Select>
+                    </FormControl>
+
+
+
+                    <FormControl className={classes.formControl}>
+                        <InputLabel htmlFor="audults-count-select">Children</InputLabel>
+                        <Select
+                            value={this.state.childrenCount}
+                            onChange={this.handleChangeChildren}
+                            inputProps={{
+                                name: 'childrenCount',
+                                id: 'children-count-select',
                             }}
                         >
                             <MenuItem value="">
@@ -136,18 +201,6 @@ class HotelForm extends React.Component {
 
 
                     {/* </Grid> */}
-
-                    <FormControl className={classes.formControl}>
-                        <InputLabel>Ticket Class</InputLabel>
-                        <Select>
-
-                            <MenuItem value={10}>Economy</MenuItem>
-                            <MenuItem value={20}>Business</MenuItem>
-                            <MenuItem value={30}>Premium</MenuItem>
-
-                        </Select>
-                    </FormControl>
-
 
                 </FormControl>
 
