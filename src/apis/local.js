@@ -3,7 +3,7 @@ import store from "./../store";
 
 //create an instance of axios
 const LocalApi = axios.create({
-  baseURL: "http://localhost:3001"
+  baseURL: process.env.REACT_APP_API_URI
 });
 
 LocalApi.interceptors.request.use(function(config) {

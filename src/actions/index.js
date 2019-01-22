@@ -26,7 +26,7 @@ export const getTours = () => {
   };
 };
 
-export const sendQuote = (quoteType, { client_comments, ...user }) => {
+export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
   let formName = "";
   switch (quoteType) {
     case "Flight":
