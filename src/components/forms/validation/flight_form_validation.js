@@ -6,7 +6,7 @@ const validate = ({ origin, destination, start_date, end_date }) => {
   }
 
   if (!destination) {
-    errors.destination = "Destination airport is required";
+    errors.destination = "Arrival airport is required";
   }
 
   if (start_date < new Date()) {
