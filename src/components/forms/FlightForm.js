@@ -1,163 +1,146 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
+import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { createSelectNumberRange } from "./../../helpers/input_helpers";
+import PersonalInfoDialog from "./PersonalInfoDialog";
+import ReduxTextField from "./fields/ReduxTextField";
+import ReduxSelectField from "./fields/ReduxSelectField";
+import ReduxCheckbox from "./fields/ReduxCheckbox";
+import ReduxRadioGroup from "./fields/ReduxRadioGroup";
+import validate from "./validation/flight_form_validation";
 
-const styles = theme => ({
-  root: {
-    display: "flex"
-  },
-  formControl: {
-    margin: theme.spacing.unit * 3
-  },
-  group: {
-    margin: `${theme.spacing.unit}px 0`
-  },
-  radioButtonsContainer: {
-    display: "flex"
-  }
-});
-
-class RadioButtonsGroup extends React.Component {
-  state = {
-    value: "female",
-    audultsCount: "",
-    labelWidth: 0
-  };
-
-  handleChange = event => {
-    this.setState({ value: event.target.value });
-  };
-
-  handleChangeDropdown = event => {
-    this.setState({ audultsCount: event.target.value });
-
-    console.log("new state", this.state);
-  };
-
-  render() {
-    const { classes } = this.props;
-
-    console.log("state on render", this.state);
-
-    return (
-      <div className={classes.root}>
-        <FormControl component="fieldset" className={classes.formControl}>
-          <RadioGroup
-            aria-label="Gender"
-            name="gender1"
-            className={classes.group}
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <div className={classes.radioButtonsContainer}>
-              <FormControlLabel
-                value="one-way"
-                control={<Radio />}
-                label="One Way"
-              />
-              <FormControlLabel
-                value="round-trip"
-                control={<Radio />}
-                label="Round Trip"
-              />
-            </div>
-          </RadioGroup>
-
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            id="from"
-            label="From"
-            type="text"
-            fullWidth
-          />
-
-          <TextField
-            required
-            margin="dense"
-            id="to"
-            label="To"
-            type="text"
-            fullWidth
-          />
-          <TextField
-            id="date"
-            label="departure-date"
-            type="date"
-            className={classes.textField}
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-
-          <TextField
-            id="date"
-            label="arrival-date"
-            type="date"
-            className={classes.textField}
-            onClose={this.handleClose}
-            onOpen={this.handleOpen}
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-
-          {/* <Grid> */}
-
-          <FormControl className={classes.formControl}>
-            <InputLabel htmlFor="audults-count-select">Audults</InputLabel>
-            <Select
-              value={this.state.audultsCount}
-              onChange={this.handleChangeDropdown}
-              inputProps={{
-                name: "audultsCount",
-                id: "audults-count-select"
-              }}
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-              <MenuItem value={6}>6</MenuItem>
-              <MenuItem value={7}>7</MenuItem>
-              <MenuItem value={8}>8</MenuItem>
-              <MenuItem value={9}>9</MenuItem>
-              <MenuItem value={10}>10</MenuItem>
-            </Select>
-          </FormControl>
-
-          {/* </Grid> */}
-
-          <FormControl className={classes.formControl}>
-            <InputLabel>Ticket Class</InputLabel>
-            <Select>
-              <MenuItem value={10}>Economy</MenuItem>
-              <MenuItem value={20}>Business</MenuItem>
-              <MenuItem value={30}>Premium</MenuItem>
-            </Select>
-          </FormControl>
-        </FormControl>
-      </div>
-    );
-  }
-}
-
-RadioButtonsGroup.propTypes = {
-  classes: PropTypes.object.isRequired
+const onFormSubmit = formValues => {
+  console.log("Form Submitted");
+  console.log(formValues);
 };
 
-export default withStyles(styles)(RadioButtonsGroup);
+const FlightForm = props => {
+  const { handleSubmit } = props;
+  return (
+    <form onSubmit={handleSubmit(onFormSubmit)}>
+      <div>
+        <Field
+          name="ticket_type"
+          component={ReduxRadioGroup}
+          radioOptions={[
+            { value: "return", label: "Return" },
+            { value: "one_way", label: "One-Way" }
+          ]}
+        />
+      </div>
+      <div>
+        <Field
+          type="text"
+          name="origin"
+          label="From"
+          component={ReduxTextField}
+          margin="dense"
+          required
+          style={{ marginTop: 0 }}
+        />
+      </div>
+      <div>
+        <Field
+          type="text"
+          name="destination"
+          label="To"
+          required
+          component={ReduxTextField}
+          margin="dense"
+        />
+      </div>
+      <div>
+        <Field
+          type="date"
+          name="start_date"
+          label="Start Date"
+          component={ReduxTextField}
+          margin="dense"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+      </div>
+      <div>
+        <Field
+          type="date"
+          name="end_date"
+          label="End Date"
+          component={ReduxTextField}
+          margin="dense"
+          InputLabelProps={{
+            shrink: true
+          }}
+        />
+      </div>
+      <div>
+        <Field
+          name="flexible_dates"
+          label="My dates are flexible"
+          component={ReduxCheckbox}
+          margin="dense"
+        />
+      </div>
+      <div>
+        <Field
+          name="adults"
+          component={ReduxSelectField}
+          label="Adults"
+          selectOptions={createSelectNumberRange(1, 9)}
+          margin="dense"
+        />
+      </div>
+      <div>
+        <Field
+          name="children"
+          component={ReduxSelectField}
+          label="Children"
+          selectOptions={createSelectNumberRange(0, 9)}
+          margin="dense"
+        />
+      </div>
+      <div>
+        <Field
+          name="ticket_class"
+          component={ReduxSelectField}
+          label="Ticket Class"
+          selectOptions={[
+            { value: "economy", label: "Economy" },
+            { value: "premium_economy", label: "Premium Economy" },
+            { value: "business", label: "Business" },
+            { value: "first_class", label: "First Class" }
+          ]}
+          margin="dense"
+        />
+      </div>
+      <div style={{ marginTop: 18 }}>
+        <PersonalInfoDialog />
+      </div>
+    </form>
+  );
+};
+
+const WrappedFlightForm = reduxForm({
+  form: "FlightForm",
+  validate
+})(FlightForm);
+
+const mapStateToProps = state => {
+  return {
+    initialValues: {
+      ticket_type: "return",
+      start_date: new Date().toISOString().split("T")[0],
+      end_date: new Date().toISOString().split("T")[0],
+      adults: 1,
+      children: 0,
+      ticket_class: "economy",
+      flexible_dates: false
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(withRouter(WrappedFlightForm));

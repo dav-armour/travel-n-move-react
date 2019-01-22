@@ -7,23 +7,23 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
+  withStyles
+  // createMuiTheme,
+  // MuiThemeProvider
 } from "@material-ui/core/styles";
-import green from "@material-ui/core/colors/green";
+// import green from "@material-ui/core/colors/green";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: green
-  },
-  typography: {
-    useNextVariants: true
-  },
-  text: {
-    color: "white"
-  }
-});
+// const theme = createMuiTheme({
+//   palette: {
+//     primary: green
+//   },
+//   typography: {
+//     useNextVariants: true
+//   },
+//   text: {
+//     color: "white"
+//   }
+// });
 
 const styles = theme => ({
   layout: {
@@ -60,7 +60,7 @@ function TourCard(props) {
     <Card className={classes.card} onClick={onCardClick}>
       <CardMedia
         className={classes.cardMedia}
-        image="https://loremflickr.com/300/300/india"
+        image="https://loremflickr.com/300/300/city"
         title="Image title"
       />
       <CardContent className={classes.cardContent}>
@@ -73,11 +73,11 @@ function TourCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <MuiThemeProvider theme={theme}>
-          <Button size="small" text="white" color="primary" variant="contained">
-            View
-          </Button>
-        </MuiThemeProvider>
+        {/* <MuiThemeProvider theme={theme}> */}
+        <Button size="small" color="primary" variant="outlined">
+          View
+        </Button>
+        {/* </MuiThemeProvider> */}
         <Button size="small" color="primary" variant="contained">
           Edit
         </Button>

@@ -5,7 +5,7 @@ class HotelForm extends Component {
   render() {
     return (
       <Grid>
-        <h1>This is hotel form</h1>
+        <h1>This is hotel form2</h1>
       </Grid>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import CardsGrid from "../modules/CardsGrid";
+import CardsGrid from "../modules/CardsGrid";
 import HeroImage from "./../modules/HeroImage";
 import MiddleBanner from "./../modules/MiddleBanner";
 
@@ -9,7 +9,7 @@ class HomePage extends Component {
       <div>
         <HeroImage />
         <MiddleBanner />
-        {/* <CardsGrid /> */}
+        <CardsGrid />
       </div>
     );
   }
