@@ -10,6 +10,7 @@ const styles = theme => ({
         minHeight: "500px",
         width: "100%",
         paddingTop: "100px",
+        backgroundRepeat: "no-repeat"
     },
 
     formContainer: {

@@ -63,7 +63,9 @@ class RadioButtonsGroup extends React.Component {
         console.log('state on render', this.state);
 
         return (
-            <div className={classes.root}>
+
+
+            <div className={classes.root} >
                 <FormControl component="fieldset" className={classes.formControl}>
                     <RadioGroup
                         aria-label="Gender"
