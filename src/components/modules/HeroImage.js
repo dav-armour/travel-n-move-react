@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import MenuDisplay from "./../forms/MenuDisplay";
-// import photo from "./../../public/london-eye.jpg"
+import React from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import QuoteFormTabs from "./QuoteFormTabs";
 
 const styles = theme => ({
     bannerStyle: {
@@ -24,19 +23,17 @@ const styles = theme => ({
 function HeroImage(props) {
     const { classes } = props;
 
-
     return (
         <div className={classes.bannerStyle}>
             <div className={classes.formContainer}>
-                <MenuDisplay />
+                <QuoteFormTabs />
             </div>
-
         </div>
     );
 }
 
 HeroImage.propTypes = {
-    classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(HeroImage);

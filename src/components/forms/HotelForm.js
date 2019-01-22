@@ -59,7 +59,7 @@ class HotelForm extends React.Component {
 
     };
     handleChangeHotelType = event => {
-        this.setState({hotelType: event.target.value});
+        this.setState({ hotelType: event.target.value });
     };
 
     render() {
@@ -247,12 +247,4 @@ class HotelForm extends React.Component {
     }
 }
 
-
-
-
-
-HotelForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(HotelForm);
+export default HotelForm;

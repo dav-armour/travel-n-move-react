@@ -1,93 +1,118 @@
-import React from "react";
+import React, { Component } from "react";
+import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import ReduxTextField from "./fields/ReduxTextField";
+import validate from "./validation/personal_info_validation";
+import {
+    setPersonalInfoDialogOpen,
+    sendQuoteRequest
+} from "./../../actions/index";
 
-export default class PersonalInfoDialog extends React.Component {
-    state = {
-        open: false
+class PersonalInfoDialog extends Component {
+    onClose = () => {
+        this.props.setPersonalInfoDialogOpen(false);
+        this.props.reset();
     };
 
-    handleClickOpen = () => {
-        console.log("Opening dialog")
-        this.setState({ open: true });
-    };
-
-    handleClose = () => {
-        this.setState({ open: false });
+    onSubmit = personalDetails => {
+        const {
+            quoteType,
+            setPersonalInfoDialogOpen,
+            sendQuoteRequest
+        } = this.props;
+        setPersonalInfoDialogOpen(false);
+        sendQuoteRequest(quoteType, personalDetails);
     };
 
     render() {
+        const { handleSubmit, dialogOpen } = this.props;
         return (
-            <div>
-                <Button
-                    variant="contained"
-                    color="secondary"
-                    onClick={this.handleClickOpen}
-                >
-                    Request Quote
-        </Button>
+            <>
                 <Dialog
-                    open={this.state.open}
-                    onClose={this.handleClose}
+                    open={dialogOpen}
+                    onClose={this.onClose}
                     aria-labelledby="form-dialog-title"
                 >
                     <DialogTitle id="form-dialog-title">Request Quote</DialogTitle>
-                    <DialogContent>
-                        <DialogContentText>
-                            Please enter your details so we can prepare your quote.
-            </DialogContentText>
-                        <TextField
-                            autoFocus
-                            required
-                            margin="dense"
-                            id="name"
-                            label="Name"
-                            type="text"
-                            fullWidth
-                        />
-                        <TextField
-                            required
-                            margin="dense"
-                            id="email"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                        />
-                        <TextField
-                            required
-                            margin="dense"
-                            id="phone"
-                            label="Phone Number"
-                            type="phone"
-                            fullWidth
-                        />
-                        <TextField
-                            margin="dense"
-                            id="comment"
-                            label="Additional Comments"
-                            type="text"
-                            fullWidth
-                        />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={this.handleClose} color="secondary">
-                            Cancel
-            </Button>
-                        <Button
-                            variant="contained"
-                            onClick={this.handleClose}
-                            color="secondary"
-                        >
-                            Send Request
-            </Button>
-                    </DialogActions>
+                    <form onSubmit={handleSubmit(this.onSubmit)}>
+                        <DialogContent>
+                            <DialogContentText>
+                                Please enter your details so we can prepare your quote.
+              </DialogContentText>
+                            <Field
+                                type="text"
+                                name="first_name"
+                                label="First Name"
+                                component={ReduxTextField}
+                                margin="dense"
+                            // required
+                            />
+                            <Field
+                                type="text"
+                                name="last_name"
+                                label="Last Name"
+                                component={ReduxTextField}
+                                margin="dense"
+                            // required
+                            />
+                            <Field
+                                type="email"
+                                name="email"
+                                label="Email"
+                                component={ReduxTextField}
+                                margin="dense"
+                            // required
+                            />
+                            <Field
+                                type="text"
+                                name="telephone"
+                                label="Phone Number"
+                                component={ReduxTextField}
+                                margin="dense"
+                            // required
+                            />
+                            <Field
+                                type="text"
+                                name="client_comments"
+                                label="Comments"
+                                component={ReduxTextField}
+                                margin="dense"
+                            />
+                        </DialogContent>
+                        <DialogActions>
+                            <Button onClick={this.onClose} color="default">
+                                Cancel
+              </Button>
+                            <Button type="submit" variant="contained" color="secondary">
+                                Send Request
+              </Button>
+                        </DialogActions>
+                    </form>
                 </Dialog>
-            </div>
+            </>
         );
     }
 }
+
+const WrappedPersonalInfoDialog = reduxForm({
+    form: "PersonalInfoDialog",
+    validate
+})(PersonalInfoDialog);
+
+const mapStateToProps = state => {
+    return {
+        dialogOpen: state.dialog.personalInfoDialog.open
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    { setPersonalInfoDialogOpen, sendQuoteRequest }
+)(withRouter(WrappedPersonalInfoDialog));
