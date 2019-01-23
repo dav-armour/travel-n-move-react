@@ -109,7 +109,7 @@ class HolidayForm extends Component {
             </Button>
                     </div>
                 </form>
-                <PersonalInfoDialog quoteType="Hotel" />
+                <PersonalInfoDialog quoteType="Holiday" />
             </>
         );
     }
