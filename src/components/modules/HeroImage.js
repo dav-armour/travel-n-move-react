@@ -8,7 +8,7 @@ const styles = theme => ({
         backgroundImage: 'url("./london-eye.jpg")',
         minHeight: "500px",
         width: "100%",
-        paddingTop: "100px",
+        paddingTop: "5px",
         backgroundRepeat: "no-repeat"
     },
 

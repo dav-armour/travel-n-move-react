@@ -49,35 +49,36 @@ const styles = theme => ({
   }
 });
 
-function onCardClick() {
-  alert("its working");
+function onCardClick(cardId) {
+  console.log('Clicked card', cardId);
 }
 
 function TourCard(props) {
-  const { classes } = props;
+  const {
+    classes,
+    _id,
+    description,
+    title,
+    image
+  } = props;
 
   return (
-    <Card className={classes.card} onClick={onCardClick}>
+    <Card className={classes.card} onClick={() => onCardClick(_id)}>
       <CardMedia
         className={classes.cardMedia}
-        image="https://loremflickr.com/300/300/city"
-        title="Image title"
+        image={image}
+        title={title}
       />
       <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h5" component="h2">
-          Heading
+          {title}
         </Typography>
-        <Typography>
-          This is a media card. You can use this section to describe the
-          content.
-        </Typography>
+        <Typography>{description}</Typography>
       </CardContent>
       <CardActions>
-        {/* <MuiThemeProvider theme={theme}> */}
         <Button size="small" color="primary" variant="outlined">
           View
         </Button>
-        {/* </MuiThemeProvider> */}
         <Button size="small" color="primary" variant="contained">
           Edit
         </Button>
@@ -87,7 +88,11 @@ function TourCard(props) {
 }
 
 TourCard.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: PropTypes.string
 };
 
 export default withStyles(styles)(TourCard);
