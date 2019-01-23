@@ -36,7 +36,7 @@ const styles = theme => ({
 
 class QuoteFormTabs extends React.Component {
   state = {
-    value: 2
+    value: 0
   };
 
   handleChange = (event, value) => {

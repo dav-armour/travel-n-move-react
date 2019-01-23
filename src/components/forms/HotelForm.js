@@ -67,7 +67,7 @@ class HotelForm extends Component {
 
                     <div>
                         <Field
-                            name="room"
+                            name="num_rooms"
                             component={ReduxSelectField}
                             label="Room"
                             selectOptions={createSelectNumberRange(1, 9)}
@@ -132,7 +132,7 @@ const mapStateToProps = state => {
             end_date: new Date().toISOString().split("T")[0],
             adults: 1,
             children: 0,
-            room: 1,
+            num_rooms: 1,
             hotel_type: 1,
             flexible_dates: false
         }

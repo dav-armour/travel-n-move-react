@@ -129,7 +129,7 @@ const mapStateToProps = state => {
             adults: 1,
             children: 0,
             flexible_dates: false,
-            budget_tier: "Bdget"
+            budget_tier: "budget"
         }
     };
 };
