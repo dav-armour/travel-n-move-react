@@ -8,8 +8,8 @@ import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
-import ReduxRadioGroup from "./fields/ReduxRadioGroup";
 import validate from "./validation/flight_form_validation";
+import ReduxRadioGroup from "./fields/ReduxRadioGroup";
 import { setPersonalInfoDialogOpen } from "./../../actions/index";
 
 class FlightForm extends Component {
