@@ -11,7 +11,7 @@ import validate from "./validation/hotel_form_validation";
 import { setPersonalInfoDialogOpen } from "./../../actions/index";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 
-class HotelForm extends Component {
+class HolidayForm extends Component {
   onFormSubmit = formValues => {
     this.props.setPersonalInfoDialogOpen(true);
   };
@@ -54,21 +54,12 @@ class HotelForm extends Component {
               }}
             />
           </div>
+
           <div>
             <Field
               name="flexible_dates"
               label="My dates are flexible"
               component={ReduxCheckbox}
-              margin="dense"
-            />
-          </div>
-
-          <div>
-            <Field
-              name="num_rooms"
-              component={ReduxSelectField}
-              label="Room"
-              selectOptions={createSelectNumberRange(1, 9)}
               margin="dense"
             />
           </div>
@@ -93,10 +84,14 @@ class HotelForm extends Component {
           </div>
           <div>
             <Field
-              name="hotel_type"
+              name="budget_tier"
               component={ReduxSelectField}
-              label="Hotel Type"
-              selectOptions={createSelectNumberRange(1, 5, " Stars")}
+              label="Budget"
+              selectOptions={[
+                { value: "budget", label: "Budget" },
+                { value: "mid-range", label: "Mid Range" },
+                { value: "luxury", label: "Luxury" }
+              ]}
               margin="dense"
             />
           </div>
@@ -111,16 +106,16 @@ class HotelForm extends Component {
             </Button>
           </div>
         </form>
-        <PersonalInfoDialog quoteType="Hotel" />
+        <PersonalInfoDialog quoteType="Holiday" />
       </>
     );
   }
 }
 
-const WrappedHotelForm = reduxForm({
-  form: "HotelForm",
+const WrappedHolidayForm = reduxForm({
+  form: "HolidayForm",
   validate
-})(HotelForm);
+})(HolidayForm);
 
 const mapStateToProps = state => {
   return {
@@ -130,9 +125,8 @@ const mapStateToProps = state => {
       end_date: new Date().toISOString().split("T")[0],
       adults: 1,
       children: 0,
-      num_rooms: 1,
-      hotel_type: 1,
-      flexible_dates: false
+      flexible_dates: false,
+      budget_tier: "budget"
     }
   };
 };
@@ -140,4 +134,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { setPersonalInfoDialogOpen }
-)(withRouter(WrappedHotelForm));
+)(withRouter(WrappedHolidayForm));

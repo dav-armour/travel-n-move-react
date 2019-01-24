@@ -6,9 +6,10 @@ import QuoteFormTabs from "./QuoteFormTabs";
 const styles = theme => ({
   bannerStyle: {
     backgroundImage: 'url("./london-eye.jpg")',
-    minHeight: "700px",
+    minHeight: "500px",
     width: "100%",
-    paddingTop: "100px"
+    paddingTop: "100px",
+    backgroundRepeat: "no-repeat"
   },
 
   formContainer: {
