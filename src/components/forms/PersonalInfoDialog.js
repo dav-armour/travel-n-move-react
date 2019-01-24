@@ -11,108 +11,108 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/personal_info_validation";
 import {
-    setPersonalInfoDialogOpen,
-    sendQuoteRequest
+  setPersonalInfoDialogOpen,
+  sendQuoteRequest
 } from "./../../actions/index";
 
 class PersonalInfoDialog extends Component {
-    onClose = () => {
-        this.props.setPersonalInfoDialogOpen(false);
-        this.props.reset();
-    };
+  onClose = () => {
+    this.props.setPersonalInfoDialogOpen(false);
+    this.props.reset();
+  };
 
-    onSubmit = personalDetails => {
-        const {
-            quoteType,
-            setPersonalInfoDialogOpen,
-            sendQuoteRequest
-        } = this.props;
-        setPersonalInfoDialogOpen(false);
-        sendQuoteRequest(quoteType, personalDetails);
-    };
+  onSubmit = personalDetails => {
+    const {
+      quoteType,
+      setPersonalInfoDialogOpen,
+      sendQuoteRequest
+    } = this.props;
+    setPersonalInfoDialogOpen(false);
+    sendQuoteRequest(quoteType, personalDetails);
+  };
 
-    render() {
-        const { handleSubmit, dialogOpen } = this.props;
-        return (
-            <>
-                <Dialog
-                    open={dialogOpen}
-                    onClose={this.onClose}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">Request Quote</DialogTitle>
-                    <form onSubmit={handleSubmit(this.onSubmit)}>
-                        <DialogContent>
-                            <DialogContentText>
-                                Please enter your details so we can prepare your quote.
+  render() {
+    const { handleSubmit, dialogOpen } = this.props;
+    return (
+      <>
+        <Dialog
+          open={dialogOpen}
+          onClose={this.onClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Request Quote</DialogTitle>
+          <form onSubmit={handleSubmit(this.onSubmit)}>
+            <DialogContent>
+              <DialogContentText>
+                Please enter your details so we can prepare your quote.
               </DialogContentText>
-                            <Field
-                                type="text"
-                                name="first_name"
-                                label="First Name"
-                                component={ReduxTextField}
-                                margin="dense"
-                            // required
-                            />
-                            <Field
-                                type="text"
-                                name="last_name"
-                                label="Last Name"
-                                component={ReduxTextField}
-                                margin="dense"
-                            // required
-                            />
-                            <Field
-                                type="email"
-                                name="email"
-                                label="Email"
-                                component={ReduxTextField}
-                                margin="dense"
-                            // required
-                            />
-                            <Field
-                                type="text"
-                                name="telephone"
-                                label="Phone Number"
-                                component={ReduxTextField}
-                                margin="dense"
-                            // required
-                            />
-                            <Field
-                                type="text"
-                                name="client_comments"
-                                label="Comments"
-                                component={ReduxTextField}
-                                margin="dense"
-                            />
-                        </DialogContent>
-                        <DialogActions>
-                            <Button onClick={this.onClose} color="default">
-                                Cancel
+              <Field
+                type="text"
+                name="first_name"
+                label="First Name"
+                component={ReduxTextField}
+                margin="dense"
+                // required
+              />
+              <Field
+                type="text"
+                name="last_name"
+                label="Last Name"
+                component={ReduxTextField}
+                margin="dense"
+                // required
+              />
+              <Field
+                type="email"
+                name="email"
+                label="Email"
+                component={ReduxTextField}
+                margin="dense"
+                // required
+              />
+              <Field
+                type="text"
+                name="telephone"
+                label="Phone Number"
+                component={ReduxTextField}
+                margin="dense"
+                // required
+              />
+              <Field
+                type="text"
+                name="client_comments"
+                label="Comments"
+                component={ReduxTextField}
+                margin="dense"
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.onClose} color="default">
+                Cancel
               </Button>
-                            <Button type="submit" variant="contained" color="secondary">
-                                Send Request
+              <Button type="submit" variant="contained" color="secondary">
+                Send Request
               </Button>
-                        </DialogActions>
-                    </form>
-                </Dialog>
-            </>
-        );
-    }
+            </DialogActions>
+          </form>
+        </Dialog>
+      </>
+    );
+  }
 }
 
 const WrappedPersonalInfoDialog = reduxForm({
-    form: "PersonalInfoDialog",
-    validate
+  form: "PersonalInfoDialog",
+  validate
 })(PersonalInfoDialog);
 
 const mapStateToProps = state => {
-    return {
-        dialogOpen: state.dialog.personalInfoDialog.open
-    };
+  return {
+    dialogOpen: state.dialog.personalInfoDialog.open
+  };
 };
 
 export default connect(
-    mapStateToProps,
-    { setPersonalInfoDialogOpen, sendQuoteRequest }
+  mapStateToProps,
+  { setPersonalInfoDialogOpen, sendQuoteRequest }
 )(withRouter(WrappedPersonalInfoDialog));
