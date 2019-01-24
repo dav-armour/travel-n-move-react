@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import NavBar from "./../modules/NavBar";
 
 class TourShowPage extends Component {
   render() {
     return (
       <div>
-        <h1>Tour Show Page</h1>
+        <NavBar />
       </div>
     );
   }
