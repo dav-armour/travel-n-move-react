@@ -1,40 +1,55 @@
 import React, { Component } from "react";
-import { Field, reduxForm } from "redux-form";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import ReduxTextField from "./../forms/fields/ReduxTextField";
+import Typography from "@material-ui/core/Typography";
 import ContactUsForm from "./../forms/contactUsForm";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import { FormLabel } from "@material-ui/core";
+
+const styles = theme => ({
+  paper: {
+    flexGrow: 1
+    // minWidth: 300
+  }
+});
+
+function FormContainer(props) {
+  return (
+    <Typography component="div" style={{ padding: "12px 24px 24px" }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+FormContainer.propTypes = {
+  children: PropTypes.node.isRequired
+};
 
 class ContactUsPage extends Component {
-  onFormSubmit = formValues => {};
-
   render() {
-    const { handleSubmit } = this.props;
+    const { classes } = this.props;
     return (
       <div>
-        <ContactUsForm />
+        <Grid container spacing={24} justify="center">
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper className={classes.paper}>
+              <FormContainer>
+                <ContactUsForm />
+              </FormContainer>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <Paper className={classes.paper}>
+              <FormContainer>
+                <FormLabel>Our Contact</FormLabel>
+              </FormContainer>
+            </Paper>
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
 
-const WrappedContactUsPage = reduxForm({
-  form: "ContactUsPage"
-})(ContactUsPage);
-
-// const mapStateToProps = state => {
-//   return {
-//     initialValues: {
-//       ticket_type: "return",
-//       start_date: new Date().toISOString().split("T")[0],
-//       end_date: new Date().toISOString().split("T")[0],
-//       adults: 1,
-//       children: 0,
-//       seat_type: "economy",
-//       flexible_dates: false
-//     }
-//   };
-// };
-
-export default withRouter(WrappedContactUsPage);
+export default withStyles(styles)(ContactUsPage);

@@ -5,9 +5,9 @@ import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxTextArea from "./fields/ReduxTextarea";
-import validate from "./validation/flight_form_validation";
+import validate from "./validation/contact_form_validation";
 
-class FlightForm extends Component {
+class ContactUsForm extends Component {
   onFormSubmit = formValues => {};
 
   // onDialogSubmit = formValues => {
@@ -19,7 +19,7 @@ class FlightForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div style={{ width: 200 }}>
+      <div>
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
           <div>
             <Field
@@ -35,7 +35,7 @@ class FlightForm extends Component {
           <div>
             <Field
               type="text"
-              name="destination"
+              name="last_name"
               label="Last Name"
               component={ReduxTextField}
               margin="dense"
@@ -44,7 +44,7 @@ class FlightForm extends Component {
           <div>
             <Field
               type="text"
-              name="destination"
+              name="email"
               label="Email"
               component={ReduxTextField}
               margin="dense"
@@ -61,7 +61,7 @@ class FlightForm extends Component {
           <div>
             <Field
               type="text"
-              name="subject"
+              name="message"
               label="Message"
               component={ReduxTextArea}
             />
@@ -86,7 +86,7 @@ class FlightForm extends Component {
 const WrappedFlightForm = reduxForm({
   form: "ContactUsForm",
   validate
-})(FlightForm);
+})(ContactUsForm);
 
 const mapStateToProps = state => {
   return {
