@@ -24,7 +24,7 @@ class FlightForm extends Component {
           <div>
             <Field
               type="text"
-              name="origin"
+              name="first_name"
               label="First Name"
               component={ReduxTextField}
               margin="dense"
