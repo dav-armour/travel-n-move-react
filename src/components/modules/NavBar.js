@@ -15,6 +15,9 @@ const styles = theme => ({
   root: {
     flexGrow: 1
   },
+  navBarContainer: {
+    marginBottom: "200px" //margin bottom is to push content under the nav bar David
+  },
   grow: {
     flexGrow: 1
   },
@@ -34,7 +37,7 @@ const styles = theme => ({
 function NavBar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
+    <div className={classes.navBarContainer}>
       <AppBar>
         <Toolbar>
           <Grid container className={classes.root} spacing={16}>
