@@ -12,8 +12,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { Link } from "react-router-dom";
 
 const styles = theme => ({
+  navBarContainer: {
+    display: 'inline-block',
+    marginBottom: '90px'
+  },
   root: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   grow: {
     flexGrow: 1
@@ -34,7 +38,7 @@ const styles = theme => ({
 function NavBar(props) {
   const { classes } = props;
   return (
-    <div className={classes.root}>
+    <div className={classes.navBarContainer}>
       <AppBar>
         <Toolbar>
           <Grid container className={classes.root} spacing={16}>
