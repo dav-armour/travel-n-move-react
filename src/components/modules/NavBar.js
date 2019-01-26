@@ -93,6 +93,10 @@ function NavBar(props) {
             <Button className={classes.button} component={Link} to="/login">
               Login
             </Button>
+
+            <Button className={classes.button} component={Link} to="/tours/new">
+              Tour Form
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
