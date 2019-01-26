@@ -15,6 +15,13 @@ export const setPersonalInfoDialogOpen = open => {
   };
 };
 
+export const setMenuDrawerOpen = open => {
+  return {
+    type: "MENU_DRAWER_OPEN",
+    payload: { open }
+  };
+};
+
 export const getTours = () => {
   return async (dispatch, getState) => {
     try {
