@@ -21,8 +21,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+    marginLeft: -14
   },
   control: {
     padding: theme.spacing.unit * 2
@@ -36,6 +35,10 @@ const styles = theme => ({
   },
   label: {
     fontSize: "1.25em"
+  },
+  contactButton: {
+    fontSize: "1.25em",
+    padding: 0
   }
 });
 
@@ -59,7 +62,7 @@ function NavBar(props) {
         </Typography>
         <Button
           size="large"
-          className={classes.label}
+          className={classes.contactButton}
           color="inherit"
           component={Link}
           to="/contact"
