@@ -1,8 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
+import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
@@ -26,65 +28,61 @@ import {
 // });
 
 const styles = theme => ({
-  layout: {
-    width: "auto",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
-  },
   cardMedia: {
     paddingTop: "56.25%" // 16:9
+  },
+  cardContent: {
+    paddingBottom: 8
   },
   cardActions: {
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-end"
+    justifyContent: "flex-start"
   }
 });
 
-function onCardClick(cardId) {
-  console.log('Clicked card', cardId);
-}
+class TourCard extends Component {
+  onCardClick = () => {
+    console.log(this.props);
+    const { _id } = this.props;
+    console.log("Clicked card", _id);
+    this.props.history.push(`/tours/${_id}`);
+  };
 
-function TourCard(props) {
-  const {
-    classes,
-    _id,
-    description,
-    title,
-    image
-  } = props;
+  render() {
+    const { classes, summary, title, image, price } = this.props;
 
-  return (
-    <Card className={classes.card} onClick={() => onCardClick(_id)}>
-      <CardMedia
-        className={classes.cardMedia}
-        image={image}
-        title={title}
-      />
-      <CardContent className={classes.cardContent}>
-        <Typography gutterBottom variant="h5" component="h2">
-          {title}
-        </Typography>
-        <Typography>{description}</Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small" color="primary" variant="outlined">
-          View
-        </Button>
-        <Button size="small" color="primary" variant="contained">
-          Edit
-        </Button>
-      </CardActions>
-    </Card>
-  );
+    return (
+      <Card className={classes.card}>
+        <CardActionArea onClick={this.onCardClick}>
+          <CardMedia
+            className={classes.cardMedia}
+            image={image}
+            title={title}
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography gutterBottom variant="h5" component="h2">
+              {title}
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              {summary}
+            </Typography>
+            <Typography variant="subtitle2">
+              Starting from Rs {price}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions className={classes.cardActions}>
+          <Button size="small" color="primary" onClick={this.onCardClick}>
+            Learn More
+          </Button>
+          <Button size="small" color="secondary" variant="outlined">
+            Request Quote
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  }
 }
 
 TourCard.propTypes = {
@@ -95,4 +93,4 @@ TourCard.propTypes = {
   image: PropTypes.string
 };
 
-export default withStyles(styles)(TourCard);
+export default withStyles(styles)(withRouter(TourCard));

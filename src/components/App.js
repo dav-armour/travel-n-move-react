@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import NavBar from "./modules/NavBar";
 import HomePage from "./pages/HomePage";
@@ -9,6 +9,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
 import TourForm from "./forms/TourForm";
+import MenuDrawer from "./modules/MenuDrawer";
 
 class App extends Component {
   render() {
@@ -17,9 +18,8 @@ class App extends Component {
         <CssBaseline />
         <BrowserRouter>
           <>
-            <div style={{ marginBottom: 100 }}>
-              <NavBar />
-            </div>
+            <NavBar />
+            <MenuDrawer />
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/tours" component={TourIndexPage} />
@@ -28,6 +28,7 @@ class App extends Component {
               <Route exact path="/about" component={AboutUsPage} />
               <Route exact path="/contact" component={ContactUsPage} />
               <Route exact path="/login" component={LoginPage} />
+              <Redirect from="*" to="/" />
             </Switch>
           </>
         </BrowserRouter>
