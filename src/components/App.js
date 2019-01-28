@@ -6,7 +6,8 @@ import TourIndexPage from "./pages/TourIndexPage";
 import TourShowPage from "./pages/TourShowPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
-import LoginPage from "./pages/LoginPage";
+import LoginForm from "./forms/LoginForm";
+import DashboardPage from "./pages/DashboardPage";
 
 class App extends Component {
   render() {
@@ -20,7 +21,8 @@ class App extends Component {
             <Route exact path="/tours/:id" component={TourShowPage} />
             <Route exact path="/about" component={AboutUsPage} />
             <Route exact path="/contact" component={ContactUsPage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/dashboard" component={DashboardPage} />
           </div>
         </BrowserRouter>
       </div>
