@@ -5,11 +5,11 @@ import QuoteFormTabs from "./QuoteFormTabs";
 
 const styles = theme => ({
   bannerStyle: {
-    backgroundImage: 'url("./london-eye.jpg")',
+    background: 'url("./london-eye.jpg") no-repeat center center',
+    backgroundSize: "cover",
     minHeight: "500px",
     width: "100%",
-    paddingTop: "100px",
-    backgroundRepeat: "no-repeat"
+    paddingTop: "100px"
   },
 
   formContainer: {

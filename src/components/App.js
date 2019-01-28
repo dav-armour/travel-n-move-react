@@ -1,31 +1,40 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import NavBar from "./modules/NavBar";
 import HomePage from "./pages/HomePage";
 import TourIndexPage from "./pages/TourIndexPage";
 import TourShowPage from "./pages/TourShowPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
-import LoginForm from "./forms/LoginForm";
 import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import TourForm from "./forms/TourForm";
+import MenuDrawer from "./modules/MenuDrawer";
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <>
+        <CssBaseline />
         <BrowserRouter>
-          <div>
+          <>
             <NavBar />
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/tours" component={TourIndexPage} />
-            <Route exact path="/tours/:id" component={TourShowPage} />
-            <Route exact path="/about" component={AboutUsPage} />
-            <Route exact path="/contact" component={ContactUsPage} />
-            <Route exact path="/login" component={LoginForm} />
-            <Route exact path="/dashboard" component={DashboardPage} />
-          </div>
+            <MenuDrawer />
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/tours" component={TourIndexPage} />
+              <Route exact path="/tours/new" component={TourForm} />
+              <Route exact path="/tours/:id" component={TourShowPage} />
+              <Route exact path="/about" component={AboutUsPage} />
+              <Route exact path="/contact" component={ContactUsPage} />
+              <Route exact path="/login" component={LoginForm} />
+              <Route exact path="/dashboard" component={DashboardPage} />
+              <Redirect from="*" to="/" />
+            </Switch>
+          </>
         </BrowserRouter>
-      </div>
+      </>
     );
   }
 }

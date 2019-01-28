@@ -2,7 +2,7 @@ import React from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const renderCheckbox = ({ input, label, color }) => (
+const ReduxCheckbox = ({ input, label, color }) => (
   <FormControlLabel
     control={
       <Checkbox
@@ -15,4 +15,4 @@ const renderCheckbox = ({ input, label, color }) => (
   />
 );
 
-export default renderCheckbox;
+export default ReduxCheckbox;

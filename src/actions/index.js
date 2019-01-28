@@ -15,14 +15,63 @@ export const setPersonalInfoDialogOpen = open => {
   };
 };
 
+export const setMenuDrawerOpen = open => {
+  return {
+    type: "MENU_DRAWER_OPEN",
+    payload: { open }
+  };
+};
+
 export const getTours = () => {
   return async (dispatch, getState) => {
-    let response = await LocalApi.get("/tours");
+    try {
+      let response = await LocalApi.get("/tours");
 
-    dispatch({
-      type: "TOURS",
-      payload: response.data.tours
-    });
+      dispatch({
+        type: "TOURS",
+        payload: response.data.tours
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getTour = _id => {
+  console.log("Getting tour");
+  return async (dispatch, getState) => {
+    try {
+      let response = await LocalApi.get(`/tours/${_id}`);
+
+      dispatch({
+        type: "TOUR",
+        payload: response.data.tour
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const createOrUpdateTour = (_id, formData) => {
+  console.log("ID: ", _id);
+  return async (dispatch, getState) => {
+    try {
+      let response = {};
+      if (!_id) {
+        console.log("creating tour");
+        response = await LocalApi.post("/tours", formData);
+      } else {
+        console.log("updating tour");
+        response = await LocalApi.put(`/tours/${_id}`, formData);
+      }
+      dispatch({
+        type: "TOUR",
+        payload: response.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
@@ -52,7 +101,7 @@ export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
       let response = await LocalApi.post("/quotes", data);
       console.log("RESPONSE: ", response.data);
       dispatch({
-        type: "QUOTE_REQUEST",
+        type: "QUOTE",
         payload: response.data
       });
     } catch (err) {
