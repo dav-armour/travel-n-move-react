@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
-const renderSelectField = ({
+const ReduxSelectField = ({
   label,
   input,
   selectOptions,
@@ -29,4 +29,4 @@ const renderSelectField = ({
   );
 };
 
-export default renderSelectField;
+export default ReduxSelectField;
