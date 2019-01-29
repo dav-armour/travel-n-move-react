@@ -8,7 +8,7 @@ import TourShowPage from "./pages/TourShowPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
 import DashboardPage from "./pages/DashboardPage";
-import LoginPage from "./pages/LoginPage";
+import LoginForm from "./forms/LoginForm";
 import TourForm from "./forms/TourForm";
 import MenuDrawer from "./modules/MenuDrawer";
 
@@ -29,7 +29,7 @@ class App extends Component {
               <Route exact path="/about" component={AboutUsPage} />
               <Route exact path="/contact" component={ContactUsPage} />
               <Route exact path="/login" component={LoginForm} />
-              <Route exact path="/dashboard" component={DashboardPage} />
+              <Route exact path="/admin/dashboard" component={DashboardPage} />
               <Redirect from="*" to="/" />
             </Switch>
           </>
