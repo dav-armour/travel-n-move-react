@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
@@ -9,8 +9,8 @@ import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import { dashboardMenuItems } from "./../modules/dashboardMenuItems";
-import QuotesTable from "./../modules/QuotesTable";
+import { dashboardMenuItems } from "./../../modules/dashboardMenuItems";
+import QuotesTable from "./../../modules/QuotesTable";
 
 const drawerWidth = 200;
 
@@ -66,7 +66,7 @@ const styles = theme => ({
   }
 });
 
-class AdminDashboard extends React.Component {
+class QuotesPage extends Component {
   state = {
     open: true
   };
@@ -121,8 +121,8 @@ class AdminDashboard extends React.Component {
   }
 }
 
-AdminDashboard.propTypes = {
+QuotesPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(AdminDashboard);
+export default withStyles(styles)(QuotesPage);

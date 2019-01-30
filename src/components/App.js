@@ -10,7 +10,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import LoginPage from "./pages/LoginPage";
 import TourForm from "./forms/TourForm";
 import MenuDrawer from "./modules/MenuDrawer";
-import AdminDashboard from "./pages/AdminDashboard";
+import QuotesPage from "./pages/admin/QuotesPage";
 
 class App extends Component {
   render() {
@@ -26,11 +26,14 @@ class App extends Component {
               <Route exact path="/tours" component={TourIndexPage} />
               <Route exact path="/tours/new" component={TourForm} />
               <Route exact path="/tours/:id" component={TourShowPage} />
-              <Route exact path="/tours/:id/edit" component={TourForm} />
               <Route exact path="/about" component={AboutUsPage} />
               <Route exact path="/contact" component={ContactUsPage} />
               <Route exact path="/login" component={LoginPage} />
-              <Route exact path="/admin/dashboard" component={AdminDashboard} />
+              <Route exact path="/admin/dashboard" component={QuotesPage} />
+              <Route exact path="/admin/quotes" component={QuotesPage} />
+              <Route exact path="/admin/enquiries" component={QuotesPage} />
+              <Route exact path="/admin/tours" component={QuotesPage} />
+              <Route exact path="/admin/tours/:id/edit" component={TourForm} />
               <Redirect from="*" to="/" />
             </Switch>
           </>
