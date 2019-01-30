@@ -109,3 +109,68 @@ export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
     }
   };
 };
+
+export const updateQuoteRequest = ({ _id, ...quoteDetails }) => {
+  delete quoteDetails.user._id;
+  delete quoteDetails.__v;
+  delete quoteDetails.createdAt;
+  delete quoteDetails.updatedAt;
+  return async (dispatch, getState) => {
+    try {
+      let response = await LocalApi.put(`/quotes/${_id}`, quoteDetails);
+      dispatch({
+        type: "QUOTE",
+        payload: response.data.quote
+      });
+      const { page, rowsPerPage } = getState().table_settings;
+      response = await LocalApi.get("/quotes", {
+        params: { page, rowsPerPage }
+      });
+      dispatch({
+        type: "QUOTES",
+        payload: response.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const getQuotes = () => {
+  return async (dispatch, getState) => {
+    const { page, rowsPerPage } = getState().table_settings;
+    try {
+      let response = await LocalApi.get("/quotes", {
+        params: { page, rowsPerPage }
+      });
+
+      dispatch({
+        type: "QUOTES",
+        payload: response.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
+export const setQuote = quoteDetails => {
+  return {
+    type: "QUOTE",
+    payload: quoteDetails
+  };
+};
+
+export const setQuoteDetailsDialogOpen = open => {
+  return {
+    type: "QUOTE_DETAILS_DIALOG_OPEN",
+    payload: { open }
+  };
+};
+
+export const setTableSettings = settings => {
+  return {
+    type: "SET_TABLE_SETTINGS",
+    payload: settings
+  };
+};

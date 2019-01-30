@@ -67,7 +67,7 @@ class HotelForm extends Component {
             <Field
               name="num_rooms"
               component={ReduxSelectField}
-              label="Room"
+              label="Rooms"
               selectOptions={createSelectNumberRange(1, 9)}
               margin="dense"
             />

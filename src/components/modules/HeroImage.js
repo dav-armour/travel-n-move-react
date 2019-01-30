@@ -9,12 +9,11 @@ const styles = theme => ({
     backgroundSize: "cover",
     minHeight: "500px",
     width: "100%",
-    paddingTop: "100px"
+    padding: "50px 0"
   },
 
   formContainer: {
     maxWidth: "1024px",
-    marginTop: "50px",
     marginLeft: "80px"
   }
 });
