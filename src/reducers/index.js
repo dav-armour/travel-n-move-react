@@ -4,8 +4,10 @@ import toursReducer from "./tours_reducer";
 import tourReducer from "./tour_reducer";
 import dialogReducer from "./dialog_reducer";
 import quoteReducer from "./quote_reducer";
+import quotesReducer from "./quotes_reducer";
 import { reducer as formReducer } from "redux-form";
 import menuDrawerReducer from "./menu_drawer_reducer";
+import tableReducer from "./table_reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -14,5 +16,7 @@ export default combineReducers({
   tour: tourReducer,
   dialog: dialogReducer,
   quote: quoteReducer,
-  menu_drawer: menuDrawerReducer
+  quotes: quotesReducer,
+  menu_drawer: menuDrawerReducer,
+  table_settings: tableReducer
 });

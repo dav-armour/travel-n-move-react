@@ -84,6 +84,7 @@ class PersonalInfoDialog extends Component {
                 label="Comments"
                 component={ReduxTextField}
                 margin="dense"
+                multiline
               />
             </DialogContent>
             <DialogActions>

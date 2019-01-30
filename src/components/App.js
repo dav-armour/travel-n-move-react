@@ -11,6 +11,7 @@ import DashboardPage from "./pages/DashboardPage";
 import LoginForm from "./forms/LoginForm";
 import TourForm from "./forms/TourForm";
 import MenuDrawer from "./modules/MenuDrawer";
+import QuotesPage from "./pages/admin/QuotesPage";
 
 class App extends Component {
   render() {
@@ -28,8 +29,12 @@ class App extends Component {
               <Route exact path="/tours/:id" component={TourShowPage} />
               <Route exact path="/about" component={AboutUsPage} />
               <Route exact path="/contact" component={ContactUsPage} />
-              <Route exact path="/login" component={LoginForm} />
-              <Route exact path="/admin/dashboard" component={DashboardPage} />
+              <Route exact path="/login" component={LoginPage} />
+              <Route exact path="/admin/dashboard" component={QuotesPage} />
+              <Route exact path="/admin/quotes" component={QuotesPage} />
+              <Route exact path="/admin/enquiries" component={QuotesPage} />
+              <Route exact path="/admin/tours" component={QuotesPage} />
+              <Route exact path="/admin/tours/:id/edit" component={TourForm} />
               <Redirect from="*" to="/" />
             </Switch>
           </>

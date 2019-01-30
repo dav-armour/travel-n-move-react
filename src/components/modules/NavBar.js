@@ -14,9 +14,6 @@ import LocalPhone from "@material-ui/icons/LocalPhone";
 import { setMenuDrawerOpen } from "./../../actions";
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1
-  },
   grow: {
     flexGrow: 1
   },
@@ -92,6 +89,14 @@ function NavBar(props) {
 
             <Button className={classes.button} component={Link} to="/login">
               Login
+            </Button>
+
+            <Button
+              className={classes.button}
+              component={Link}
+              to="/admin/dashboard"
+            >
+              Dashboard
             </Button>
 
             <Button className={classes.button} component={Link} to="/tours/new">

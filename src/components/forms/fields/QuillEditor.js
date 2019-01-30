@@ -19,6 +19,7 @@ class QuillEditor extends Component {
         }}
         modules={QuillEditor.modules}
         formats={QuillEditor.formats}
+        className="QuillEditor"
       />
     );
   }
