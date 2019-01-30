@@ -8,8 +8,9 @@ import DashboardIcon from "@material-ui/icons/Dashboard";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import MailIcon from "@material-ui/icons/Mail";
 import ViewListIcon from "@material-ui/icons/ViewList";
+import LibraryAdd from "@material-ui/icons/LibraryAdd";
 
-export const dashboardMenuItems = (
+export const AdminMenuItems = (
   <div>
     <ListItem button component={Link} to="/admin/dashboard">
       <ListItemIcon>
@@ -34,6 +35,12 @@ export const dashboardMenuItems = (
         <ViewListIcon />
       </ListItemIcon>
       <ListItemText primary="Tours" />
+    </ListItem>
+    <ListItem button component={Link} to="/admin/tours/new">
+      <ListItemIcon>
+        <LibraryAdd />
+      </ListItemIcon>
+      <ListItemText primary="Create Tour" />
     </ListItem>
     {/* <Divider />
     <ListItem button component={Link} to="/admin/create_admin">

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import QuotesTable from "./../../modules/QuotesTable";
 import AdminMenu from "../../modules/AdminMenu";
+import TourForm from "../../forms/TourForm";
 
 const styles = theme => ({
   root: {
@@ -20,7 +19,7 @@ const styles = theme => ({
   }
 });
 
-class QuotesPage extends Component {
+class ToursPage extends Component {
   state = {
     open: true
   };
@@ -40,20 +39,15 @@ class QuotesPage extends Component {
       <div className={classes.root}>
         <AdminMenu />
         <main className={classes.content}>
-          <Typography variant="h4" gutterBottom component="h2">
-            Quote Requests
-          </Typography>
-          <div className={classes.tableContainer}>
-            <QuotesTable />
-          </div>
+          <TourForm />
         </main>
       </div>
     );
   }
 }
 
-QuotesPage.propTypes = {
+ToursPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(QuotesPage);
+export default withStyles(styles)(ToursPage);

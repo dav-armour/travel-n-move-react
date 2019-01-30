@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import QuotesTable from "./../../modules/QuotesTable";
+// import EnquiriesTable from "./../../modules/EnquiriesTable";
 import AdminMenu from "../../modules/AdminMenu";
 
 const styles = theme => ({
@@ -20,7 +20,7 @@ const styles = theme => ({
   }
 });
 
-class QuotesPage extends Component {
+class EnquiriesPage extends Component {
   state = {
     open: true
   };
@@ -41,10 +41,11 @@ class QuotesPage extends Component {
         <AdminMenu />
         <main className={classes.content}>
           <Typography variant="h4" gutterBottom component="h2">
-            Quote Requests
+            Customer Enquiries
           </Typography>
           <div className={classes.tableContainer}>
-            <QuotesTable />
+            Table Goes Here
+            {/* <EnquiriesTable /> */}
           </div>
         </main>
       </div>
@@ -52,8 +53,8 @@ class QuotesPage extends Component {
   }
 }
 
-QuotesPage.propTypes = {
+EnquiriesPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(QuotesPage);
+export default withStyles(styles)(EnquiriesPage);
