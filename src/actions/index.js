@@ -1,6 +1,7 @@
 import LocalApi from "./../apis/local";
 
 export const setAuthToken = token => {
+  console.log("here");
   sessionStorage.setItem("token", token);
   return {
     type: "AUTH_TOKEN",

@@ -1,4 +1,4 @@
-export default function(values) {
+const validate = values => {
   const errors = {};
   const requiredFields = ["email", "password"];
   requiredFields.forEach(field => {
@@ -13,4 +13,6 @@ export default function(values) {
     errors.email = "Invalid email address";
   }
   return errors;
-}
+};
+
+export default validate;
