@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import LocalPhone from "@material-ui/icons/LocalPhone";
-import { setMenuDrawerOpen } from "./../../actions";
+import { setMenuDrawerOpen, setAuthToken } from "./../../actions";
 
 const styles = theme => ({
   grow: {
@@ -39,81 +39,97 @@ const styles = theme => ({
   }
 });
 
-function NavBar(props) {
-  const { classes, setMenuDrawerOpen } = props;
-  return (
-    <AppBar position="sticky">
-      <Toolbar>
-        <Hidden mdUp>
-          <IconButton
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="Menu"
-            onClick={() => setMenuDrawerOpen(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-        </Hidden>
-        <Typography variant="h6" color="inherit" className={classes.grow}>
-          Travel N Move
-        </Typography>
-        <Button
-          size="large"
-          className={classes.contactButton}
-          color="inherit"
-          component={Link}
-          to="/contact"
-        >
-          <LocalPhone className={classes.leftIcon} />
-          0421631447
-        </Button>
-      </Toolbar>
-      <Hidden smDown>
-        <Toolbar className={classes.secondaryBar}>
-          <div>
-            <Button className={classes.button} component={Link} to="/">
-              Home
-            </Button>
+class NavBar extends Component {
+  logout = () => {
+    this.props.setAuthToken(null);
+  };
 
-            <Button className={classes.button} component={Link} to="/tours">
-              Tour Packages
-            </Button>
-
-            <Button className={classes.button} component={Link} to="/about">
-              About Us
-            </Button>
-
-            <Button className={classes.button} component={Link} to="/contact">
-              Contact Us
-            </Button>
-
-            <Button className={classes.button} component={Link} to="/login">
-              Login
-            </Button>
-
-            <Button
-              className={classes.button}
-              component={Link}
-              to="/admin/dashboard"
+  render() {
+    const { classes, setMenuDrawerOpen, token } = this.props;
+    return (
+      <AppBar position="sticky">
+        <Toolbar>
+          <Hidden mdUp>
+            <IconButton
+              className={classes.menuButton}
+              color="inherit"
+              aria-label="Menu"
+              onClick={() => setMenuDrawerOpen(true)}
             >
-              Dashboard
-            </Button>
-
-            <Button className={classes.button} component={Link} to="/tours/new">
-              Tour Form
-            </Button>
-          </div>
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
+          <Typography variant="h6" color="inherit" className={classes.grow}>
+            Travel N Move
+          </Typography>
+          <Button
+            size="large"
+            className={classes.contactButton}
+            color="inherit"
+            component={Link}
+            to="/contact"
+          >
+            <LocalPhone className={classes.leftIcon} />
+            0421631447
+          </Button>
         </Toolbar>
-      </Hidden>
-    </AppBar>
-  );
+        <Hidden smDown>
+          <Toolbar className={classes.secondaryBar}>
+            <div>
+              <Button className={classes.button} component={Link} to="/">
+                Home
+              </Button>
+
+              <Button className={classes.button} component={Link} to="/tours">
+                Tour Packages
+              </Button>
+
+              <Button className={classes.button} component={Link} to="/about">
+                About Us
+              </Button>
+
+              <Button className={classes.button} component={Link} to="/contact">
+                Contact Us
+              </Button>
+
+              {token ? (
+                <>
+                  <Button
+                    className={classes.button}
+                    component={Link}
+                    to="/admin/dashboard"
+                  >
+                    Dashboard
+                  </Button>
+
+                  <Button className={classes.button} onClick={this.logout}>
+                    Logout
+                  </Button>
+                </>
+              ) : (
+                <Button className={classes.button} component={Link} to="/login">
+                  Login
+                </Button>
+              )}
+            </div>
+          </Toolbar>
+        </Hidden>
+      </AppBar>
+    );
+  }
 }
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  };
+};
+
 export default connect(
-  null,
-  { setMenuDrawerOpen }
+  mapStateToProps,
+  { setMenuDrawerOpen, setAuthToken }
 )(withStyles(styles)(NavBar));
