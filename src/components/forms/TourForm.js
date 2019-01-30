@@ -30,10 +30,9 @@ class TourForm extends Component {
   };
 
   componentDidMount() {
-    const { _id } = this.props.match.params;
-    console.log(_id);
-    if (_id) {
-      this.props.getTour(_id);
+    const { id } = this.props.match.params;
+    if (id) {
+      this.props.getTour(id);
     }
   }
 
@@ -158,13 +157,13 @@ const mapStateToProps = state => {
   return {
     initialValues
     // initialValues: {
-    //   // title: "",
-    //   // image: "",
-    //   // summary: "",
-    //   // description: "",
-    //   // description:
-    //   //   "<h1>Heading</h1><h2>subheading</h2><p>dfsdfsdfsdfsadfs</p><p>dsfadfsdfsadsfadsf</p><ol><li>test</li><li>this</li><li>out</li></ol><p><br></p>",
-    //   // price: 0,
+    //   title: "",
+    //   image: "",
+    //   summary: "",
+    //   description: "",
+    //   description:
+    //     "<h1>Heading</h1><h2>subheading</h2><p>dfsdfsdfsdfsadfs</p><p>dsfadfsdfsadsfadsf</p><ol><li>test</li><li>this</li><li>out</li></ol><p><br></p>",
+    //   price: 0,
     //   featured: false
     // }
   };
