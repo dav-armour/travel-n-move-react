@@ -10,7 +10,7 @@ import Home from "@material-ui/icons/Home";
 import FlightTakeoff from "@material-ui/icons/FlightTakeoff";
 import FlightForm from "./../forms/FlightForm";
 import HotelForm from "./../forms/HotelForm";
-import TourForm from "./../forms/TourForm";
+import HolidayForm from "./../forms/HolidayForm";
 
 function TabContainer(props) {
   return (
@@ -36,7 +36,7 @@ const styles = theme => ({
 
 class QuoteFormTabs extends React.Component {
   state = {
-    value: 2
+    value: 0
   };
 
   handleChange = (event, value) => {
@@ -68,7 +68,7 @@ class QuoteFormTabs extends React.Component {
         </Tabs>
         {value === 0 && (
           <TabContainer>
-            <TourForm />
+            <HolidayForm />
           </TabContainer>
         )}
         {value === 1 && (

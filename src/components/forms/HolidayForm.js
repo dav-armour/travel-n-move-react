@@ -7,23 +7,14 @@ import { createSelectNumberRange } from "./../../helpers/input_helpers";
 import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
-import ReduxCheckbox from "./fields/ReduxCheckbox";
-import ReduxRadioGroup from "./fields/ReduxRadioGroup";
-import validate from "./validation/flight_form_validation";
+import validate from "./validation/hotel_form_validation";
 import { setPersonalInfoDialogOpen } from "./../../actions";
+import ReduxCheckbox from "./fields/ReduxCheckbox";
 
-class FlightForm extends Component {
+class HolidayForm extends Component {
   onFormSubmit = formValues => {
-    console.log("Clicked Request Quote. Opening Dialog");
-    console.log(formValues);
     this.props.setPersonalInfoDialogOpen(true);
   };
-
-  // onDialogSubmit = formValues => {
-  //   setPersonalInfoDialogOpen(false);
-  //   console.log("Dialog submitted back to form");
-  //   console.log(formValues);
-  // };
 
   render() {
     const { handleSubmit } = this.props;
@@ -32,31 +23,9 @@ class FlightForm extends Component {
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
           <div>
             <Field
-              name="ticket_type"
-              component={ReduxRadioGroup}
-              radioOptions={[
-                { value: "return", label: "Return" },
-                { value: "one_way", label: "One-Way" }
-              ]}
-            />
-          </div>
-          <div>
-            <Field
-              type="text"
-              name="origin"
-              label="From"
-              component={ReduxTextField}
-              margin="dense"
-              // required
-              style={{ marginTop: 0 }}
-            />
-          </div>
-          <div>
-            <Field
               type="text"
               name="destination"
-              label="To"
-              // required
+              label="Destination City"
               component={ReduxTextField}
               margin="dense"
             />
@@ -65,7 +34,7 @@ class FlightForm extends Component {
             <Field
               type="date"
               name="start_date"
-              label="Start Date"
+              label="Check In Date"
               component={ReduxTextField}
               margin="dense"
               InputLabelProps={{
@@ -77,7 +46,7 @@ class FlightForm extends Component {
             <Field
               type="date"
               name="end_date"
-              label="End Date"
+              label="Check Out Date"
               component={ReduxTextField}
               margin="dense"
               InputLabelProps={{
@@ -85,6 +54,7 @@ class FlightForm extends Component {
               }}
             />
           </div>
+
           <div>
             <Field
               name="flexible_dates"
@@ -93,6 +63,7 @@ class FlightForm extends Component {
               margin="dense"
             />
           </div>
+
           <div>
             <Field
               name="adults"
@@ -113,14 +84,13 @@ class FlightForm extends Component {
           </div>
           <div>
             <Field
-              name="seat_type"
+              name="budget_tier"
               component={ReduxSelectField}
-              label="Ticket Class"
+              label="Budget"
               selectOptions={[
-                { value: "economy", label: "Economy" },
-                { value: "premium economy", label: "Premium Economy" },
-                { value: "business", label: "Business" },
-                { value: "first class", label: "First Class" }
+                { value: "budget", label: "Budget" },
+                { value: "mid-range", label: "Mid Range" },
+                { value: "luxury", label: "Luxury" }
               ]}
               margin="dense"
             />
@@ -136,28 +106,27 @@ class FlightForm extends Component {
             </Button>
           </div>
         </form>
-        <PersonalInfoDialog quoteType="Flight" />
+        <PersonalInfoDialog quoteType="Holiday" />
       </>
     );
   }
 }
 
-const WrappedFlightForm = reduxForm({
-  form: "FlightForm",
+const WrappedHolidayForm = reduxForm({
+  form: "HolidayForm",
   validate
-})(FlightForm);
+})(HolidayForm);
 
 const mapStateToProps = state => {
   return {
     dialogOpen: state.dialog.personalInfoDialog.open,
     initialValues: {
-      ticket_type: "return",
       start_date: new Date().toISOString().split("T")[0],
       end_date: new Date().toISOString().split("T")[0],
       adults: 1,
       children: 0,
-      seat_type: "economy",
-      flexible_dates: false
+      flexible_dates: false,
+      budget_tier: "budget"
     }
   };
 };
@@ -165,4 +134,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { setPersonalInfoDialogOpen }
-)(withRouter(WrappedFlightForm));
+)(withRouter(WrappedHolidayForm));

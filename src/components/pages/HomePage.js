@@ -8,7 +8,6 @@ import QuoteFormTabs from "./../modules/QuoteFormTabs";
 const styles = theme => ({
   formContainer: {
     maxWidth: "1024px",
-    marginTop: "0px",
     marginLeft: "80px"
   }
 });

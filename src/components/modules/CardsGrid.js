@@ -1,54 +1,36 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
+import { getTours } from "./../../actions";
 import TourCard from "./TourCard";
-import { withStyles } from "@material-ui/core/styles";
 
-const styles = theme => ({
-  layout: {
-    width: "auto",
-    marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
-  },
-  cardMedia: {
-    paddingTop: "56.25%" // 16:9
-  },
-  cardActions: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end"
+class CardsGrid extends Component {
+  componentDidMount() {
+    const { getTours } = this.props;
+    getTours();
   }
-});
 
-const cards = [1, 2, 3, 4];
-
-function CardsGrid(props) {
-  const { classes } = props;
-
-  return (
-    <div className={classNames(classes.layout, classes.cardGrid)}>
+  render() {
+    const { tours } = this.props;
+    return (
       <Grid container spacing={40}>
-        {cards.map(card => (
-          <Grid item key={card} sm={6} md={4} lg={3}>
-            <TourCard />
+        {tours.map(tour => (
+          <Grid item key={tour._id} sm={6} md={4} lg={3}>
+            <TourCard {...tour} />
           </Grid>
         ))}
       </Grid>
-    </div>
-  );
+    );
+  }
 }
 
-CardsGrid.propTypes = {
-  classes: PropTypes.object.isRequired
+const mapStateToProps = state => {
+  return {
+    tours: state.tours
+  };
 };
 
-export default withStyles(styles)(CardsGrid);
+export default connect(
+  mapStateToProps,
+  { getTours }
+)(CardsGrid);

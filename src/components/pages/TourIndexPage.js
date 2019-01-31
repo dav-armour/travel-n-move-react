@@ -1,31 +1,20 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getTours } from "./../../actions";
+import CardsGrid from "./../modules/CardsGrid";
 
 class TourIndexPage extends Component {
-  componentDidMount() {
-    const { getTours } = this.props;
-    getTours();
-  }
-
   render() {
     const { tours } = this.props;
+    console.log("Tour Index Page", tours);
+
     return (
       <div>
         <h1>Tour Page</h1>
-        <p>Number of tours: {tours.length}</p>
+        <div>
+          <CardsGrid />
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    tours: state.tours
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { getTours }
-)(TourIndexPage);
+export default TourIndexPage;

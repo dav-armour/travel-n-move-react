@@ -1,13 +1,16 @@
-const defaultState = {};
+const defaultState = {
+  quotes: [],
+  total: 0
+};
 // Action
 // {
-//   type: "QUOTE",
-//   payload: {}
+//   type: "QUOTES",
+//   payload: { quotes: [ quotes ], total: total }
 // }
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case "QUOTE":
+    case "QUOTES":
       return action.payload;
     default:
       return state;

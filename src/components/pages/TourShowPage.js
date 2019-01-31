@@ -2,11 +2,8 @@ import React, { Component } from "react";
 
 class TourShowPage extends Component {
   render() {
-    return (
-      <div>
-        <h1>Tour Show Page</h1>
-      </div>
-    );
+    console.log(this.props);
+    return <div>ID: {this.props.match.params.id}</div>;
   }
 }
 

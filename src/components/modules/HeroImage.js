@@ -5,18 +5,12 @@ import QuoteFormTabs from "./QuoteFormTabs";
 
 const styles = theme => ({
   bannerStyle: {
-    minHeight: "700px",
+    minHeight: "740px",
     width: "100%",
-    paddingTop: "0px",
+    paddingTop: "40px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center"
-  },
-
-  formContainer: {
-    maxWidth: "1024px",
-    marginTop: "0px",
-    marginLeft: "80px"
   }
 });
 
