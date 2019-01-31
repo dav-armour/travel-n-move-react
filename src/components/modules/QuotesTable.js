@@ -85,9 +85,7 @@ class QuotesTable extends Component {
                       <TableCell>
                         {status[0].toUpperCase() + status.substr(1)}
                       </TableCell>
-                      <TableCell component="th" scope="row">
-                        {type}
-                      </TableCell>
+                      <TableCell>{type}</TableCell>
                       <TableCell>{first_name}</TableCell>
                       <TableCell>{last_name}</TableCell>
                       <TableCell>

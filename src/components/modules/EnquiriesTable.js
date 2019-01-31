@@ -9,12 +9,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
+import EnquirieDetailsDialog from "./../forms/EnquiryDetailsDialog";
 import {
   getEnquiries,
   setEnquiry,
   setEnquiryDetailsDialogOpen,
   setTableSettings
-} from "../../actions";
+} from "./../../actions";
 
 const styles = {
   root: {
@@ -33,9 +34,9 @@ class EnquiriesTable extends Component {
   }
 
   toggleDialogOpen = enquiryDetails => {
-    const { setEnquirie, setEnquirieDetailsDialogOpen } = this.props;
-    setEnquirie(enquiryDetails);
-    setEnquirieDetailsDialogOpen(true);
+    const { setEnquiry, setEnquiryDetailsDialogOpen } = this.props;
+    setEnquiry(enquiryDetails);
+    setEnquiryDetailsDialogOpen(true);
   };
 
   onChangePage = (event, page) => {
@@ -72,8 +73,15 @@ class EnquiriesTable extends Component {
             </TableHead>
             <TableBody>
               {enquiries.map(enquiry => {
-                const { _id, type, createdAt, updatedAt, status } = enquiry;
-                const { first_name, last_name } = enquiry.user;
+                const {
+                  _id,
+                  status,
+                  first_name,
+                  last_name,
+                  subject,
+                  createdAt,
+                  updatedAt
+                } = enquiry;
                 return (
                   <Fragment key={_id}>
                     <TableRow
@@ -84,11 +92,9 @@ class EnquiriesTable extends Component {
                       <TableCell>
                         {status[0].toUpperCase() + status.substr(1)}
                       </TableCell>
-                      <TableCell component="th" scope="row">
-                        {type}
-                      </TableCell>
                       <TableCell>{first_name}</TableCell>
                       <TableCell>{last_name}</TableCell>
+                      <TableCell>{subject.substr(0, 30)}</TableCell>
                       <TableCell>
                         {new Date(Date.parse(createdAt)).toLocaleString()}
                       </TableCell>
@@ -144,5 +150,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getEnquiries, setEnquiry, setEnquirieDetailsDialogOpen, setTableSettings }
+  { getEnquiries, setEnquiry, setEnquiryDetailsDialogOpen, setTableSettings }
 )(withStyles(styles)(EnquiriesTable));
