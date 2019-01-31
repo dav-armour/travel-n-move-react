@@ -10,10 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/personal_info_validation";
-import {
-  setPersonalInfoDialogOpen,
-  sendQuoteRequest
-} from "./../../actions/index";
+import { setPersonalInfoDialogOpen, sendQuoteRequest } from "./../../actions";
 
 class PersonalInfoDialog extends Component {
   onClose = () => {

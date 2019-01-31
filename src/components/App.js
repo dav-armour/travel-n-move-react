@@ -16,6 +16,7 @@ import QuotesPage from "./pages/admin/QuotesPage";
 import NewTourPage from "./pages/admin/NewTourPage";
 import EnquiriesPage from "./pages/admin/EnquiriesPage";
 import ToursPage from "./pages/admin/ToursPage";
+import DashboardPage from "./pages/admin/DashboardPage";
 
 class App extends Component {
   render() {
@@ -36,7 +37,7 @@ class App extends Component {
               <PrivateRoute
                 exact
                 path="/admin/dashboard"
-                component={QuotesPage}
+                component={DashboardPage}
               />
               <PrivateRoute exact path="/admin/quotes" component={QuotesPage} />
               <PrivateRoute
