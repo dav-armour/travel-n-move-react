@@ -12,7 +12,7 @@ import QuillEditor from "./fields/QuillEditor";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/tour_form_validation";
-import { createOrUpdateTour, getTour } from "./../../actions/index";
+import { createOrUpdateTour, getTour } from "./../../actions";
 
 class TourForm extends Component {
   onFormSubmit = formValues => {

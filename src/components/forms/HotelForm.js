@@ -8,7 +8,7 @@ import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
 import validate from "./validation/hotel_form_validation";
-import { setPersonalInfoDialogOpen } from "./../../actions/index";
+import { setPersonalInfoDialogOpen } from "./../../actions";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 
 class HotelForm extends Component {

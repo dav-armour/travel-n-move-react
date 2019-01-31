@@ -12,10 +12,7 @@ import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
 import validate from "./validation/personal_info_validation";
 import { createSelectNumberRange } from "./../../helpers//input_helpers";
-import {
-  setQuoteDetailsDialogOpen,
-  updateQuoteRequest
-} from "./../../actions/index";
+import { setQuoteDetailsDialogOpen, updateQuoteRequest } from "./../../actions";
 
 class QuoteDetailsDialog extends Component {
   onClose = () => {

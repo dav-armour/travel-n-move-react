@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import { getTours } from "./../../actions/index";
+import { getTours } from "./../../actions";
 import TourCard from "./TourCard";
 
 class CardsGrid extends Component {
