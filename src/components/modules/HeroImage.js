@@ -5,27 +5,31 @@ import QuoteFormTabs from "./QuoteFormTabs";
 
 const styles = theme => ({
   bannerStyle: {
-    backgroundImage: 'url("./london-eye.jpg")',
     minHeight: "700px",
     width: "100%",
-    paddingTop: "100px"
+    paddingTop: "0px",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center"
   },
 
   formContainer: {
     maxWidth: "1024px",
-    marginTop: "50px",
+    marginTop: "0px",
     marginLeft: "80px"
   }
 });
 
 function HeroImage(props) {
-  const { classes } = props;
+  console.log(props);
+  const { classes, imageLink } = props;
 
   return (
-    <div className={classes.bannerStyle}>
-      <div className={classes.formContainer}>
-        <QuoteFormTabs />
-      </div>
+    <div
+      className={classes.bannerStyle}
+      style={{ backgroundImage: `url(${imageLink})` }}
+    >
+      {props.children}
     </div>
   );
 }

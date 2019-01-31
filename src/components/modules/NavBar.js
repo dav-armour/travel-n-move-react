@@ -16,7 +16,7 @@ const styles = theme => ({
     flexGrow: 1
   },
   navBarContainer: {
-    marginBottom: "200px" //margin bottom is to push content under the nav bar David
+    marginBottom: "105px" //margin bottom is to push content under the nav bar David
   },
   grow: {
     flexGrow: 1

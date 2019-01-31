@@ -39,11 +39,11 @@ class ContactUsPage extends Component {
               </FormContainer>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid container xs={12} sm={6} md={4}>
             <Paper className={classes.paper}>
-              <FormContainer>
-                <FormLabel>Our Contact</FormLabel>
-              </FormContainer>
+              {/* <FormContainer> */}
+              {/* <FormLabel>Our Contact</FormLabel> */}
+              {/* </FormContainer> */}
             </Paper>
           </Grid>
         </Grid>
