@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
-import { getTour } from "./../../actions";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import HeroImage from "./../modules/HeroImage";
+import { getTour } from "./../../actions";
 
 const styles = theme => ({
   bannerStyle: {
@@ -72,13 +73,10 @@ class TourShowPage extends Component {
 
     return (
       <div className={classes.mainContainer}>
-        <div className={classes.bannerImageWrapper}>
-          {/* <img
-            src={tour.image}
-            alt="photo not found"
-            className={classes.bannerStyle}
-          /> */}
-        </div>
+        <HeroImage imageLink={tour.image} height={"30vh"} />
+        {/* <div className={classes.bannerImageWrapper}>
+         
+        </div> */}
 
         <div className={classes.tourTitle}>
           <Typography component="h2" variant="display3" gutterBottom>
