@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { getTour } from "./../../actions";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import classes from "*.module.sass";
 
 const styles = theme => ({
   bannerStyle: {
@@ -74,11 +73,11 @@ class TourShowPage extends Component {
     return (
       <div className={classes.mainContainer}>
         <div className={classes.bannerImageWrapper}>
-          <img
+          {/* <img
             src={tour.image}
             alt="photo not found"
             className={classes.bannerStyle}
-          />
+          /> */}
         </div>
 
         <div className={classes.tourTitle}>
