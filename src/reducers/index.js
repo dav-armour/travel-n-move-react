@@ -11,6 +11,7 @@ import { reducer as formReducer } from "redux-form";
 import menuDrawerReducer from "./menu_drawer_reducer";
 import tableReducer from "./table_reducer";
 import snackbarReducer from "./snackbar_reducer";
+import adminOverviewReducer from "./admin_overview_reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   enquiries: enquiriesReducer,
   menu_drawer: menuDrawerReducer,
   table_settings: tableReducer,
-  snackbar: snackbarReducer
+  snackbar: snackbarReducer,
+  admin_overview: adminOverviewReducer
 });

@@ -22,7 +22,8 @@ const styles = theme => ({
 
 class OverviewCard extends Component {
   render() {
-    const { classes, rows, title, updatedAt, avatarStyle } = this.props;
+    const { classes, data, title, avatarStyle } = this.props;
+    const { last_updated, ...rowData } = data;
 
     return (
       <Card className={classes.card}>
@@ -33,7 +34,9 @@ class OverviewCard extends Component {
             </Avatar>
           }
           title={title}
-          subheader={`Last Updated - ${updatedAt}`}
+          subheader={`Last Updated - ${new Date(
+            Date.parse(last_updated)
+          ).toLocaleString()}`}
         />
         <CardContent className={classes.content}>
           <Table>
@@ -44,12 +47,12 @@ class OverviewCard extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map(row => (
-                <TableRow key={row.id}>
+              {Object.keys(rowData).map(key => (
+                <TableRow key={key}>
                   <TableCell component="th" scope="row">
-                    {row.status}
+                    {key[0].toUpperCase() + key.substr(1)}
                   </TableCell>
-                  <TableCell align="right">{row.qty}</TableCell>
+                  <TableCell align="right">{rowData[key]}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

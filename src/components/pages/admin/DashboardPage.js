@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
@@ -6,6 +7,7 @@ import AdminMenu from "../../modules/AdminMenu";
 import OverviewCard from "./OverviewCard";
 import { Grid } from "@material-ui/core";
 import { red, blue, green } from "@material-ui/core/colors";
+import { getAdminOverview } from "./../../../actions";
 
 const styles = theme => ({
   root: {
@@ -19,34 +21,13 @@ const styles = theme => ({
   }
 });
 
-let id = 0;
-function createData(status, qty) {
-  id += 1;
-  return { id, status, qty };
-}
-
-const quotes = [
-  createData("New", 5),
-  createData("Researching", 2),
-  createData("Pending", 4),
-  createData("Finalized", 30),
-  createData("Declined", 10)
-];
-const enquiries = [
-  createData("New", 2),
-  createData("Researching", 3),
-  createData("Pending", 4),
-  createData("Closed", 25)
-];
-const tours = [
-  createData("Featured", 5),
-  createData("Active", 20),
-  createData("Inactive", 3)
-];
-
 class DashboardPage extends Component {
+  componentDidMount() {
+    this.props.getAdminOverview();
+  }
+
   render() {
-    const { classes } = this.props;
+    const { classes, quotes, enquiries, tours } = this.props;
 
     return (
       <div className={classes.root}>
@@ -64,7 +45,7 @@ class DashboardPage extends Component {
           >
             <Grid item>
               <OverviewCard
-                rows={quotes}
+                data={quotes}
                 title="Quote Requests"
                 updatedAt="26 Jan 2019"
                 avatarStyle={{ backgroundColor: blue[500] }}
@@ -72,7 +53,7 @@ class DashboardPage extends Component {
             </Grid>
             <Grid item>
               <OverviewCard
-                rows={enquiries}
+                data={enquiries}
                 title="Enquiries"
                 updatedAt="25 Jan 2019"
                 avatarStyle={{ backgroundColor: red[500] }}
@@ -80,7 +61,7 @@ class DashboardPage extends Component {
             </Grid>
             <Grid item>
               <OverviewCard
-                rows={tours}
+                data={tours}
                 title="Tour Packages"
                 updatedAt="23 Jan 2019"
                 avatarStyle={{ backgroundColor: green[500] }}
@@ -97,4 +78,16 @@ DashboardPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(DashboardPage);
+const mapStateToProps = state => {
+  const { quotes, enquiries, tours } = state.admin_overview;
+  return {
+    quotes,
+    enquiries,
+    tours
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getAdminOverview }
+)(withStyles(styles)(DashboardPage));

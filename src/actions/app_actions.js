@@ -1,3 +1,6 @@
+import LocalApi from "./../apis/local";
+import { handleServerError } from "./../helpers/error_helper";
+
 export const setAuthToken = token => {
   sessionStorage.setItem("token", token);
   return {
@@ -31,5 +34,20 @@ export const setSnackbarSettings = settings => {
   return {
     type: "SET_SNACKBAR_SETTINGS",
     payload: settings
+  };
+};
+
+export const getAdminOverview = () => {
+  return async (dispatch, getState) => {
+    try {
+      let response = await LocalApi.get("/admin/overview");
+
+      dispatch({
+        type: "ADMIN_OVERVIEW",
+        payload: response.data
+      });
+    } catch (err) {
+      handleServerError(err, dispatch);
+    }
   };
 };

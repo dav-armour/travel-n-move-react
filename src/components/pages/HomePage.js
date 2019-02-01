@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import CardsGrid from "../modules/CardsGrid";
 import HeroImage from "./../modules/HeroImage";
 import MiddleBanner from "./../modules/MiddleBanner";

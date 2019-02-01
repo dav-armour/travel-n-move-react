@@ -52,7 +52,7 @@ class LoginForm extends Component {
 
     LocalApi.post("/auth/login", { email, password })
       .then(response => {
-        this.props.setAuthToken(response.data);
+        this.props.setAuthToken(response.data.token);
         this.props.history.push("/admin/dashboard");
       })
       .catch(err => {
