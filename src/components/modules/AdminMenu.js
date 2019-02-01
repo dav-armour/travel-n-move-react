@@ -49,17 +49,27 @@ const styles = theme => ({
   }
 });
 
+function getDrawerStatusFromSession() {
+  const status = sessionStorage.getItem("admin_menu_open");
+  if (status === undefined) {
+    return true;
+  }
+  return JSON.parse(status);
+}
+
 class AdminMenu extends Component {
   state = {
-    open: true
+    open: getDrawerStatusFromSession()
   };
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
+    sessionStorage.setItem("admin_menu_open", true);
   };
 
   handleDrawerClose = () => {
     this.setState({ open: false });
+    sessionStorage.setItem("admin_menu_open", false);
   };
 
   render() {

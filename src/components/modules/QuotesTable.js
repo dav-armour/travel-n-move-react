@@ -106,7 +106,7 @@ class QuotesTable extends Component {
             </TableBody>
           </Table>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={[5, 10, 20, 30, 40, 50].filter(n => n <= total)}
             component="div"
             count={total}
             rowsPerPage={rowsPerPage}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-// import ToursTable from "./../../modules/ToursTable";
+import ToursTable from "./../../modules/ToursTable";
 import AdminMenu from "../../modules/AdminMenu";
 
 const styles = theme => ({
@@ -44,8 +44,7 @@ class ToursPage extends Component {
             Tour Packages
           </Typography>
           <div className={classes.tableContainer}>
-            Table Goes Here
-            {/* <ToursTable /> */}
+            <ToursTable />
           </div>
         </main>
       </div>

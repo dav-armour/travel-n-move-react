@@ -9,7 +9,7 @@ class HomePage extends Component {
       <div>
         <HeroImage />
         <MiddleBanner />
-        <CardsGrid />
+        <CardsGrid query={{ featured: true }} />
       </div>
     );
   }

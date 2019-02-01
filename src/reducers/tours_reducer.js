@@ -1,4 +1,7 @@
-const defaultState = [];
+const defaultState = {
+  tours: [],
+  total: 0
+};
 // Action
 // {
 //   type: "TOURS",
