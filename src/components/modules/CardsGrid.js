@@ -9,8 +9,7 @@ const styles = theme => ({
   cardsContainer: {
     width: "auto",
     marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    padding: `${theme.spacing.unit * 8}px 0`
+    marginRight: theme.spacing.unit * 3
   }
 });
 
