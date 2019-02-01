@@ -36,6 +36,12 @@ const styles = theme => ({
   buttonWrapper: {
     display: "flex",
     justifyContent: "center"
+  },
+  priceAndStartingFrom: {
+    height: "72px",
+    width: "292px",
+    border: "1px solid red",
+    margin: "0 auto"
   }
 });
 
@@ -66,6 +72,7 @@ class TourShowPage extends Component {
             {tour.title}
           </Typography>
         </div>
+        <div className={classes.priceAndStartingFrom} />
         <div className={classes.descriptionWrapper}>
           <Typography variant="body2" gutterBottom>
             {tour.description}
