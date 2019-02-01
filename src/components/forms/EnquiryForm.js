@@ -6,15 +6,14 @@ import Button from "@material-ui/core/Button";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxTextArea from "./fields/ReduxTextarea";
 import validate from "./validation/contact_form_validation";
+import { createOrUpdateEnquiry } from "./../../actions";
 
 class ContactUsForm extends Component {
-  onFormSubmit = formValues => {};
-
-  // onDialogSubmit = formValues => {
-  //   setPersonalInfoDialogOpen(false);
-  //   console.log("Dialog submitted back to form");
-  //   console.log(formValues);
-  // };
+  onFormSubmit = formValues => {
+    console.log(formValues);
+    const { createOrUpdateEnquiry } = this.props;
+    createOrUpdateEnquiry(formValues);
+  };
 
   render() {
     const { handleSubmit } = this.props;
@@ -88,19 +87,7 @@ const WrappedFlightForm = reduxForm({
   validate
 })(ContactUsForm);
 
-const mapStateToProps = state => {
-  return {
-    dialogOpen: state.dialog.personalInfoDialog.open,
-    initialValues: {
-      ticket_type: "return",
-      start_date: new Date().toISOString().split("T")[0],
-      end_date: new Date().toISOString().split("T")[0],
-      adults: 1,
-      children: 0,
-      seat_type: "economy",
-      flexible_dates: false
-    }
-  };
-};
-
-export default connect(mapStateToProps)(withRouter(WrappedFlightForm));
+export default connect(
+  null,
+  { createOrUpdateEnquiry }
+)(withRouter(WrappedFlightForm));

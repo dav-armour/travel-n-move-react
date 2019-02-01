@@ -1,4 +1,5 @@
 import LocalApi from "./../apis/local";
+import { handleServerError } from "./../helpers/error_helper";
 
 export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
   let formName = "";
@@ -22,15 +23,21 @@ export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
     try {
       const values = getState().form[formName].values;
       const data = { type: quoteType, ...values, user, client_comments };
-      console.log("DATA: ", data);
       let response = await LocalApi.post("/quotes", data);
-      console.log("RESPONSE: ", response.data);
       dispatch({
         type: "QUOTE",
         payload: response.data
       });
+      dispatch({
+        type: "SET_SNACKBAR_SETTINGS",
+        payload: {
+          open: true,
+          variant: "success",
+          message: `Thank you for your request. An email has been sent to your account.`
+        }
+      });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };
@@ -55,8 +62,16 @@ export const updateQuoteRequest = ({ _id, ...quoteDetails }) => {
         type: "QUOTES",
         payload: response.data
       });
+      dispatch({
+        type: "SET_SNACKBAR_SETTINGS",
+        payload: {
+          open: true,
+          variant: "success",
+          message: `Succesfully updated`
+        }
+      });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };
@@ -74,7 +89,7 @@ export const getQuotes = () => {
         payload: response.data
       });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };

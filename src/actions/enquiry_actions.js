@@ -1,4 +1,5 @@
 import LocalApi from "./../apis/local";
+import { handleServerError } from "./../helpers/error_helper";
 
 export const getEnquiries = () => {
   return async (dispatch, getState) => {
@@ -13,7 +14,7 @@ export const getEnquiries = () => {
         payload: response.data
       });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };
@@ -28,7 +29,7 @@ export const getEnquiry = _id => {
         payload: response.data.enquiry
       });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };
@@ -49,16 +50,29 @@ export const createOrUpdateEnquiry = ({ _id, ...enquiryDetails }) => {
         type: "ENQUIRY",
         payload: response.data
       });
-      const { page, rowsPerPage } = getState().table_settings;
-      response = await LocalApi.get("/enquiries", {
-        params: { page, rowsPerPage }
-      });
+      if (_id) {
+        const { page, rowsPerPage } = getState().table_settings;
+        response = await LocalApi.get("/enquiries", {
+          params: { page, rowsPerPage }
+        });
+        dispatch({
+          type: "ENQUIRIES",
+          payload: response.data
+        });
+      }
+      const message = _id
+        ? " Succesfully updated"
+        : "Thank you for your enquiry. We will be in touch";
       dispatch({
-        type: "ENQUIRIES",
-        payload: response.data
+        type: "SET_SNACKBAR_SETTINGS",
+        payload: {
+          open: true,
+          variant: "success",
+          message
+        }
       });
     } catch (err) {
-      console.log(err);
+      handleServerError(err, dispatch);
     }
   };
 };

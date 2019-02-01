@@ -157,16 +157,6 @@ const mapStateToProps = state => {
   return {
     initialValues,
     tour_id: _id
-    // initialValues: {
-    //   title: "",
-    //   image: "",
-    //   summary: "",
-    //   description: "",
-    //   description:
-    //     "<h1>Heading</h1><h2>subheading</h2><p>dfsdfsdfsdfsadfs</p><p>dsfadfsdfsadsfadsf</p><ol><li>test</li><li>this</li><li>out</li></ol><p><br></p>",
-    //   price: 0,
-    //   featured: false
-    // }
   };
 };
 

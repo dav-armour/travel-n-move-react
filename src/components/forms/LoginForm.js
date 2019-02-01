@@ -12,7 +12,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/login_form_validation";
 import LocalApi from "./../../apis/local";
-import { setAuthToken } from "./../../actions";
+import { setAuthToken, setSnackbarSettings } from "./../../actions";
 
 const styles = theme => ({
   paper: {
@@ -44,14 +44,28 @@ const styles = theme => ({
     marginTop: theme.spacing.unit * 3
   }
 });
+
 class LoginForm extends Component {
   onFormSubmit = formValues => {
     const { email, password } = formValues;
+    const { setSnackbarSettings } = this.props;
 
-    LocalApi.post("/auth/login", { email, password }).then(response => {
-      this.props.setAuthToken(response.data);
-      this.props.history.push("/admin/dashboard");
-    });
+    LocalApi.post("/auth/login", { email, password })
+      .then(response => {
+        this.props.setAuthToken(response.data);
+        this.props.history.push("/admin/dashboard");
+      })
+      .catch(err => {
+        let message = "Server Error. Please try again later";
+        if (err.response && err.response.status === 401) {
+          message = "Invalid email or password";
+        }
+        setSnackbarSettings({
+          open: true,
+          variant: "error",
+          message
+        });
+      });
   };
 
   render() {
@@ -114,6 +128,7 @@ const WrappedLoginForm = reduxForm({
 export default connect(
   null,
   {
-    setAuthToken
+    setAuthToken,
+    setSnackbarSettings
   }
 )(withStyles(styles)(withRouter(WrappedLoginForm)));

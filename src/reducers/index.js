@@ -10,6 +10,7 @@ import enquiriesReducer from "./enquiries_reducer";
 import { reducer as formReducer } from "redux-form";
 import menuDrawerReducer from "./menu_drawer_reducer";
 import tableReducer from "./table_reducer";
+import snackbarReducer from "./snackbar_reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   enquiry: enquiryReducer,
   enquiries: enquiriesReducer,
   menu_drawer: menuDrawerReducer,
-  table_settings: tableReducer
+  table_settings: tableReducer,
+  snackbar: snackbarReducer
 });

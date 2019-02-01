@@ -14,7 +14,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import {
   getTours,
   setTableSettings,
-  createOrUpdateTour
+  createOrUpdateTour,
+  setSnackbarSettings
 } from "./../../actions";
 
 const styles = {
@@ -52,10 +53,14 @@ class ToursTable extends Component {
 
   onCheckboxClick = (event, tourDetails) => {
     event.stopPropagation();
-    const { featured, ...rest } = tourDetails;
     const { createOrUpdateTour } = this.props;
-    createOrUpdateTour({ featured: !featured, ...rest });
-    setTableSettings({ page: 0 });
+    tourDetails.featured = !tourDetails.featured;
+    let formData = new FormData();
+    for (let key in tourDetails) {
+      formData.append(key, tourDetails[key]);
+    }
+    const _id = tourDetails._id;
+    createOrUpdateTour(_id, formData);
   };
 
   render() {
@@ -157,5 +162,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getTours, setTableSettings, createOrUpdateTour }
+  { getTours, setTableSettings, createOrUpdateTour, setSnackbarSettings }
 )(withRouter(withStyles(styles)(ToursTable)));

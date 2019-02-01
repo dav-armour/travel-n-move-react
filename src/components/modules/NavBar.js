@@ -14,8 +14,9 @@ import LocalPhone from "@material-ui/icons/LocalPhone";
 import { setMenuDrawerOpen, setAuthToken } from "./../../actions";
 
 const styles = theme => ({
-  grow: {
-    flexGrow: 1
+  logo: {
+    flexGrow: 1,
+    textDecoration: "none"
   },
   menuButton: {
     marginLeft: -14
@@ -59,7 +60,13 @@ class NavBar extends Component {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography
+            variant="h6"
+            color="inherit"
+            className={classes.logo}
+            component={Link}
+            to="/"
+          >
             Travel N Move
           </Typography>
           <Button
