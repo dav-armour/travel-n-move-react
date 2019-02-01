@@ -2,8 +2,11 @@ import LocalApi from "./../apis/local";
 
 export const getEnquiries = () => {
   return async (dispatch, getState) => {
+    const { page, rowsPerPage } = getState().table_settings;
     try {
-      let response = await LocalApi.get("/enquiries");
+      let response = await LocalApi.get("/enquiries", {
+        params: { page, rowsPerPage }
+      });
 
       dispatch({
         type: "ENQUIRIES",

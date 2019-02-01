@@ -6,8 +6,8 @@ import TourCard from "./TourCard";
 
 class CardsGrid extends Component {
   componentDidMount() {
-    const { getTours } = this.props;
-    getTours();
+    const { getTours, query } = this.props;
+    getTours(query);
   }
 
   render() {
@@ -26,7 +26,7 @@ class CardsGrid extends Component {
 
 const mapStateToProps = state => {
   return {
-    tours: state.tours
+    tours: state.tours.tours
   };
 };
 
