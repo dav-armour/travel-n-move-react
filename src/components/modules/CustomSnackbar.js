@@ -109,7 +109,6 @@ class CustomSnackbar extends Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.props);
     const { variant, message, open } = this.props.snackbar;
 
     return (

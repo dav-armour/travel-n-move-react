@@ -11,7 +11,6 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case "AUTH_TOKEN":
-      console.log("inside reducer payload: ", action.payload);
       return { ...state, token: action.payload };
     default:
       return state;

@@ -23,7 +23,6 @@ const styles = theme => ({
 class OverviewCard extends Component {
   render() {
     const { classes, rows, title, updatedAt, avatarStyle } = this.props;
-    console.log(avatarStyle);
 
     return (
       <Card className={classes.card}>

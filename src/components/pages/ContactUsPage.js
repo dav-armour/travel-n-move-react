@@ -10,9 +10,7 @@ const styles = theme => ({
   paper: {
     flexGrow: 1,
     minHeight: 390,
-    // minWidth: 400,
     maxWidth: 410
-    // minWidth: 300
   },
   mainWrapper: {
     marginTop: "40px"
@@ -20,14 +18,11 @@ const styles = theme => ({
   contactWrapper: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "center"
-    // justifyContent: "center",
     alignItems: "flex-start",
     paddingLeft: "30px",
     paddingTop: 15
   },
   contactRows: {
-    // border: "1px solid black",
     marginBottom: "10px"
   },
   rowTitle: {

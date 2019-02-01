@@ -14,16 +14,8 @@ import { setPersonalInfoDialogOpen } from "./../../actions";
 
 class FlightForm extends Component {
   onFormSubmit = formValues => {
-    console.log("Clicked Request Quote. Opening Dialog");
-    console.log(formValues);
     this.props.setPersonalInfoDialogOpen(true);
   };
-
-  // onDialogSubmit = formValues => {
-  //   setPersonalInfoDialogOpen(false);
-  //   console.log("Dialog submitted back to form");
-  //   console.log(formValues);
-  // };
 
   render() {
     const { handleSubmit } = this.props;
@@ -47,7 +39,6 @@ class FlightForm extends Component {
               label="From"
               component={ReduxTextField}
               margin="dense"
-              // required
               style={{ marginTop: 0 }}
             />
           </div>
@@ -56,7 +47,6 @@ class FlightForm extends Component {
               type="text"
               name="destination"
               label="To"
-              // required
               component={ReduxTextField}
               margin="dense"
             />

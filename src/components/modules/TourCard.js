@@ -8,24 +8,7 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import {
-  withStyles
-  // createMuiTheme,
-  // MuiThemeProvider
-} from "@material-ui/core/styles";
-// import green from "@material-ui/core/colors/green";
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: green
-//   },
-//   typography: {
-//     useNextVariants: true
-//   },
-//   text: {
-//     color: "white"
-//   }
-// });
+import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   cardMedia: {
@@ -43,9 +26,7 @@ const styles = theme => ({
 
 class TourCard extends Component {
   onCardClick = () => {
-    console.log(this.props);
     const { _id } = this.props;
-    console.log("Clicked card", _id);
     this.props.history.push(`/tours/${_id}`);
   };
 

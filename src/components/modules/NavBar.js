@@ -16,7 +16,10 @@ import { setMenuDrawerOpen, setAuthToken } from "./../../actions";
 const styles = theme => ({
   logo: {
     flexGrow: 1,
-    textDecoration: "none"
+    textDecoration: "none",
+    [theme.breakpoints.down(360)]: {
+      fontSize: "1rem"
+    }
   },
   menuButton: {
     marginLeft: -14
@@ -32,11 +35,14 @@ const styles = theme => ({
     minHeight: "30px"
   },
   label: {
-    fontSize: "1.25em"
+    fontSize: "1.25rem"
   },
   contactButton: {
-    fontSize: "1.25em",
-    padding: 0
+    fontSize: "1.25rem",
+    padding: 0,
+    [theme.breakpoints.down(360)]: {
+      fontSize: "1rem"
+    }
   }
 });
 

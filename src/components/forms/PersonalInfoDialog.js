@@ -49,7 +49,6 @@ class PersonalInfoDialog extends Component {
                 label="First Name"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"
@@ -57,7 +56,6 @@ class PersonalInfoDialog extends Component {
                 label="Last Name"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="email"
@@ -65,7 +63,6 @@ class PersonalInfoDialog extends Component {
                 label="Email"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"
@@ -73,7 +70,6 @@ class PersonalInfoDialog extends Component {
                 label="Phone Number"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"

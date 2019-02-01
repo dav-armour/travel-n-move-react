@@ -5,15 +5,12 @@ export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
   let formName = "";
   switch (quoteType) {
     case "Flight":
-      console.log("Sending flight quote");
       formName = "FlightForm";
       break;
     case "Hotel":
-      console.log("Sending hotel quote");
       formName = "HotelForm";
       break;
     case "Holiday":
-      console.log("Sending holiday quote");
       formName = "HolidayForm";
       break;
     default:

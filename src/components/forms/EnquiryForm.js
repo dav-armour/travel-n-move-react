@@ -4,13 +4,11 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import ReduxTextField from "./fields/ReduxTextField";
-import ReduxTextArea from "./fields/ReduxTextarea";
 import validate from "./validation/contact_form_validation";
 import { createOrUpdateEnquiry } from "./../../actions";
 
 class ContactUsForm extends Component {
   onFormSubmit = formValues => {
-    console.log(formValues);
     const { createOrUpdateEnquiry } = this.props;
     createOrUpdateEnquiry(formValues);
   };
@@ -27,7 +25,6 @@ class ContactUsForm extends Component {
               label="First Name"
               component={ReduxTextField}
               margin="dense"
-              // required
               style={{ marginTop: 0 }}
             />
           </div>
@@ -62,7 +59,10 @@ class ContactUsForm extends Component {
               type="text"
               name="message"
               label="Message"
-              component={ReduxTextArea}
+              component={ReduxTextField}
+              multiline
+              rows={3}
+              rowsMax={5}
             />
           </div>
           <div style={{ marginTop: 18 }}>

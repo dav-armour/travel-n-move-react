@@ -117,9 +117,6 @@ class TourForm extends Component {
                   />
                 </div>
                 <div>
-                  {/* <Typography variant="h5" gutterBottom>
-                    Description
-                  </Typography> */}
                   <InputLabel>Description</InputLabel>
                   <Field
                     name="description"

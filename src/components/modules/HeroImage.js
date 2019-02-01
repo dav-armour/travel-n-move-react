@@ -14,7 +14,6 @@ const styles = theme => ({
 });
 
 function HeroImage(props) {
-  console.log(props);
   const { classes, imageLink } = props;
 
   return (

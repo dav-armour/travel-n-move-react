@@ -150,7 +150,6 @@ ToursTable.propTypes = {
 
 const mapStateToProps = state => {
   const { tours, table_settings } = state;
-  console.log(tours);
   const { page, rowsPerPage } = table_settings;
   return {
     tours: tours.tours,
