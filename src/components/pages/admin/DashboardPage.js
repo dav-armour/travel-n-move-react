@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AdminMenu from "../../modules/AdminMenu";
-import OverviewCard from "./OverviewCard";
+import OverviewCard from "./../../modules/OverviewCard";
 import { Grid } from "@material-ui/core";
 import { red, blue, green } from "@material-ui/core/colors";
 import { getAdminOverview } from "./../../../actions";
@@ -47,7 +47,7 @@ class DashboardPage extends Component {
               <OverviewCard
                 data={quotes}
                 title="Quote Requests"
-                updatedAt="26 Jan 2019"
+                link="/admin/quotes"
                 avatarStyle={{ backgroundColor: blue[500] }}
               />
             </Grid>
@@ -55,7 +55,7 @@ class DashboardPage extends Component {
               <OverviewCard
                 data={enquiries}
                 title="Enquiries"
-                updatedAt="25 Jan 2019"
+                link="/admin/enquiries"
                 avatarStyle={{ backgroundColor: red[500] }}
               />
             </Grid>
@@ -63,7 +63,7 @@ class DashboardPage extends Component {
               <OverviewCard
                 data={tours}
                 title="Tour Packages"
-                updatedAt="23 Jan 2019"
+                link="/admin/tours"
                 avatarStyle={{ backgroundColor: green[500] }}
               />
             </Grid>
