@@ -1,16 +1,13 @@
-const defaultState = {
-  tours: [],
-  total: 0
-};
+const defaultState = {};
 // Action
 // {
-//   type: "TOURS",
-//   payload: [ tours ]
+//   type: "ENQUIRY",
+//   payload: {}
 // }
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case "TOURS":
+    case "ENQUIRY":
       return action.payload;
     default:
       return state;

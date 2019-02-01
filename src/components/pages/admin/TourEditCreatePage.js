@@ -19,19 +19,7 @@ const styles = theme => ({
   }
 });
 
-class ToursPage extends Component {
-  state = {
-    open: true
-  };
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
-
+class TourEditCreatePage extends Component {
   render() {
     const { classes } = this.props;
 
@@ -46,8 +34,8 @@ class ToursPage extends Component {
   }
 }
 
-ToursPage.propTypes = {
+TourEditCreatePage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ToursPage);
+export default withStyles(styles)(TourEditCreatePage);

@@ -10,7 +10,7 @@ import ReduxSelectField from "./fields/ReduxSelectField";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 import ReduxRadioGroup from "./fields/ReduxRadioGroup";
 import validate from "./validation/flight_form_validation";
-import { setPersonalInfoDialogOpen } from "./../../actions/index";
+import { setPersonalInfoDialogOpen } from "./../../actions";
 
 class FlightForm extends Component {
   onFormSubmit = formValues => {

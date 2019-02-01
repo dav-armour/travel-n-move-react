@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
@@ -9,13 +10,12 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
-import QuoteDetailsDialog from "./../forms/QuoteDetailsDialog";
+import Checkbox from "@material-ui/core/Checkbox";
 import {
-  getQuotes,
-  setQuote,
-  setQuoteDetailsDialogOpen,
-  setTableSettings
-} from "../../actions";
+  getTours,
+  setTableSettings,
+  createOrUpdateTour
+} from "./../../actions";
 
 const styles = {
   root: {
@@ -27,67 +27,80 @@ const styles = {
   }
 };
 
-class QuotesTable extends Component {
+class ToursTable extends Component {
   componentDidMount() {
-    const { getQuotes } = this.props;
-    getQuotes();
+    const { getTours, page, rowsPerPage } = this.props;
+    getTours({ page, rowsPerPage });
   }
 
-  toggleDialogOpen = quoteDetails => {
-    const { setQuote, setQuoteDetailsDialogOpen } = this.props;
-    setQuote(quoteDetails);
-    setQuoteDetailsDialogOpen(true);
+  onRowClick = _id => {
+    this.props.history.push(`/admin/tours/${_id}/edit`);
   };
 
   onChangePage = (event, page) => {
-    const { getQuotes, setTableSettings } = this.props;
+    const { getTours, setTableSettings, rowsPerPage } = this.props;
     setTableSettings({ page });
-    getQuotes();
+    getTours({ page, rowsPerPage });
   };
 
   onChangeRowsPerPage = event => {
-    const { getQuotes, setTableSettings } = this.props;
-    setTableSettings({ rowsPerPage: event.target.value });
-    getQuotes();
+    const rowsPerPage = event.target.value;
+    const { getTours, setTableSettings, page } = this.props;
+    setTableSettings({ rowsPerPage });
+    getTours({ page, rowsPerPage });
+  };
+
+  onCheckboxClick = (event, tourDetails) => {
+    event.stopPropagation();
+    const { featured, ...rest } = tourDetails;
+    const { createOrUpdateTour } = this.props;
+    createOrUpdateTour({ featured: !featured, ...rest });
+    setTableSettings({ page: 0 });
   };
 
   render() {
-    const { classes, quotes, total, page, rowsPerPage } = this.props;
+    const { classes, tours, total, page, rowsPerPage } = this.props;
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, total - page * rowsPerPage);
 
     return (
       <>
-        <QuoteDetailsDialog />
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
-                <TableCell>Status</TableCell>
-                <TableCell>Quote Type</TableCell>
-                <TableCell>First Name</TableCell>
-                <TableCell>Last Name</TableCell>
-                <TableCell>Date Received</TableCell>
+                <TableCell>Featured</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Summary</TableCell>
+                <TableCell>Date Created</TableCell>
                 <TableCell>Last Updated</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {quotes.map(quote => {
-                const { _id, type, createdAt, updatedAt, status } = quote;
-                const { first_name, last_name } = quote.user;
+              {tours.map(tour => {
+                const {
+                  _id,
+                  featured,
+                  title,
+                  summary,
+                  createdAt,
+                  updatedAt
+                } = tour;
                 return (
                   <Fragment key={_id}>
                     <TableRow
                       hover
                       style={{ cursor: "pointer" }}
-                      onClick={() => this.toggleDialogOpen(quote)}
+                      onClick={() => this.onRowClick(_id)}
                     >
-                      <TableCell>
-                        {status[0].toUpperCase() + status.substr(1)}
+                      <TableCell padding="checkbox">
+                        <Checkbox
+                          checked={featured}
+                          onClick={event => this.onCheckboxClick(event, tour)}
+                        />
                       </TableCell>
-                      <TableCell>{type}</TableCell>
-                      <TableCell>{first_name}</TableCell>
-                      <TableCell>{last_name}</TableCell>
+                      <TableCell>{title}</TableCell>
+                      <TableCell>{summary.substr(0, 30)}</TableCell>
                       <TableCell>
                         {new Date(Date.parse(createdAt)).toLocaleString()}
                       </TableCell>
@@ -126,16 +139,17 @@ class QuotesTable extends Component {
   }
 }
 
-QuotesTable.propTypes = {
+ToursTable.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
-  const { quotes, table_settings } = state;
+  const { tours, table_settings } = state;
+  console.log(tours);
   const { page, rowsPerPage } = table_settings;
   return {
-    quotes: quotes.quotes,
-    total: quotes.total,
+    tours: tours.tours,
+    total: tours.total,
     page,
     rowsPerPage
   };
@@ -143,5 +157,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getQuotes, setQuote, setQuoteDetailsDialogOpen, setTableSettings }
-)(withStyles(styles)(QuotesTable));
+  { getTours, setTableSettings, createOrUpdateTour }
+)(withRouter(withStyles(styles)(ToursTable)));

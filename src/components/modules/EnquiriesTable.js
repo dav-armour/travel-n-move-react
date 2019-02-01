@@ -9,13 +9,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TablePagination from "@material-ui/core/TablePagination";
 import Paper from "@material-ui/core/Paper";
-import QuoteDetailsDialog from "./../forms/QuoteDetailsDialog";
+import EnquirieDetailsDialog from "./../forms/EnquiryDetailsDialog";
 import {
-  getQuotes,
-  setQuote,
-  setQuoteDetailsDialogOpen,
+  getEnquiries,
+  setEnquiry,
+  setEnquiryDetailsDialogOpen,
   setTableSettings
-} from "../../actions";
+} from "./../../actions";
 
 const styles = {
   root: {
@@ -27,67 +27,74 @@ const styles = {
   }
 };
 
-class QuotesTable extends Component {
+class EnquiriesTable extends Component {
   componentDidMount() {
-    const { getQuotes } = this.props;
-    getQuotes();
+    const { getEnquiries } = this.props;
+    getEnquiries();
   }
 
-  toggleDialogOpen = quoteDetails => {
-    const { setQuote, setQuoteDetailsDialogOpen } = this.props;
-    setQuote(quoteDetails);
-    setQuoteDetailsDialogOpen(true);
+  toggleDialogOpen = enquiryDetails => {
+    const { setEnquiry, setEnquiryDetailsDialogOpen } = this.props;
+    setEnquiry(enquiryDetails);
+    setEnquiryDetailsDialogOpen(true);
   };
 
   onChangePage = (event, page) => {
-    const { getQuotes, setTableSettings } = this.props;
+    const { getEnquiries, setTableSettings } = this.props;
     setTableSettings({ page });
-    getQuotes();
+    getEnquiries();
   };
 
   onChangeRowsPerPage = event => {
-    const { getQuotes, setTableSettings } = this.props;
+    const { getEnquiries, setTableSettings } = this.props;
     setTableSettings({ rowsPerPage: event.target.value });
-    getQuotes();
+    getEnquiries();
   };
 
   render() {
-    const { classes, quotes, total, page, rowsPerPage } = this.props;
+    const { classes, enquiries, total, page, rowsPerPage } = this.props;
     const emptyRows =
       rowsPerPage - Math.min(rowsPerPage, total - page * rowsPerPage);
 
     return (
       <>
-        <QuoteDetailsDialog />
+        <EnquirieDetailsDialog />
         <Paper className={classes.root}>
           <Table className={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>Status</TableCell>
-                <TableCell>Quote Type</TableCell>
                 <TableCell>First Name</TableCell>
                 <TableCell>Last Name</TableCell>
+                <TableCell>Subject</TableCell>
                 <TableCell>Date Received</TableCell>
                 <TableCell>Last Updated</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {quotes.map(quote => {
-                const { _id, type, createdAt, updatedAt, status } = quote;
-                const { first_name, last_name } = quote.user;
+              {enquiries.map(enquiry => {
+                const {
+                  _id,
+                  status,
+                  first_name,
+                  last_name,
+                  subject,
+                  createdAt,
+                  updatedAt
+                } = enquiry;
                 return (
                   <Fragment key={_id}>
                     <TableRow
                       hover
                       style={{ cursor: "pointer" }}
-                      onClick={() => this.toggleDialogOpen(quote)}
+                      onClick={() => this.toggleDialogOpen(enquiry)}
                     >
                       <TableCell>
                         {status[0].toUpperCase() + status.substr(1)}
                       </TableCell>
-                      <TableCell>{type}</TableCell>
                       <TableCell>{first_name}</TableCell>
                       <TableCell>{last_name}</TableCell>
+                      <TableCell>{subject.substr(0, 30)}</TableCell>
                       <TableCell>
                         {new Date(Date.parse(createdAt)).toLocaleString()}
                       </TableCell>
@@ -126,16 +133,16 @@ class QuotesTable extends Component {
   }
 }
 
-QuotesTable.propTypes = {
+EnquiriesTable.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => {
-  const { quotes, table_settings } = state;
+  const { enquiries, table_settings } = state;
   const { page, rowsPerPage } = table_settings;
   return {
-    quotes: quotes.quotes,
-    total: quotes.total,
+    enquiries: enquiries.enquiries,
+    total: enquiries.total,
     page,
     rowsPerPage
   };
@@ -143,5 +150,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getQuotes, setQuote, setQuoteDetailsDialogOpen, setTableSettings }
-)(withStyles(styles)(QuotesTable));
+  { getEnquiries, setEnquiry, setEnquiryDetailsDialogOpen, setTableSettings }
+)(withStyles(styles)(EnquiriesTable));

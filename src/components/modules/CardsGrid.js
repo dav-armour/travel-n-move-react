@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import { getTours } from "./../../actions/index";
+import { getTours } from "./../../actions";
 import TourCard from "./TourCard";
 
 class CardsGrid extends Component {
   componentDidMount() {
-    const { getTours } = this.props;
-    getTours();
+    const { getTours, query } = this.props;
+    getTours(query);
   }
 
   render() {
@@ -26,7 +26,7 @@ class CardsGrid extends Component {
 
 const mapStateToProps = state => {
   return {
-    tours: state.tours
+    tours: state.tours.tours
   };
 };
 

@@ -12,15 +12,12 @@ import QuillEditor from "./fields/QuillEditor";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/tour_form_validation";
-import { createOrUpdateTour, getTour } from "./../../actions/index";
+import { createOrUpdateTour, getTour, setTour } from "./../../actions";
 
 class TourForm extends Component {
   onFormSubmit = formValues => {
     const { createOrUpdateTour, match } = this.props;
     const { _id } = match.params;
-    console.log("ID on submit", _id);
-    console.log("Clicked Submit.");
-    console.log(formValues);
     formValues.image = formValues.image[0];
     let formData = new FormData();
     for (let key in formValues) {
@@ -30,20 +27,23 @@ class TourForm extends Component {
   };
 
   componentDidMount() {
-    const { id } = this.props.match.params;
+    const { match, getTour, setTour } = this.props;
+    const { id } = match.params;
     if (id) {
-      this.props.getTour(id);
+      getTour(id);
+    } else {
+      setTour({});
     }
   }
 
   render() {
-    const { _id, handleSubmit } = this.props;
+    const { tour_id, handleSubmit } = this.props;
     return (
       <div style={{ padding: "50px 0px" }}>
         <Grid container justify="center">
           <Grid item xs={12} sm={10} md={8}>
             <Paper style={{ padding: "12px 24px 24px" }}>
-              {_id ? (
+              {tour_id ? (
                 <Typography variant="h3" gutterBottom>
                   Edit Existing Tour
                 </Typography>
@@ -155,7 +155,8 @@ const WrappedTourForm = reduxForm({
 const mapStateToProps = state => {
   const { _id, ...initialValues } = state.tour;
   return {
-    initialValues
+    initialValues,
+    tour_id: _id
     // initialValues: {
     //   title: "",
     //   image: "",
@@ -171,5 +172,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { createOrUpdateTour, getTour }
+  { createOrUpdateTour, getTour, setTour }
 )(withRouter(WrappedTourForm));

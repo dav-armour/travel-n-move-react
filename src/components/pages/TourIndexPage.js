@@ -10,7 +10,7 @@ class TourIndexPage extends Component {
       <div>
         <h1>Tour Page</h1>
         <div>
-          <CardsGrid />
+          <CardsGrid query={{}} />
         </div>
       </div>
     );

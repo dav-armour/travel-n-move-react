@@ -8,14 +8,13 @@ import TourIndexPage from "./pages/TourIndexPage";
 import TourShowPage from "./pages/TourShowPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
-// import DashboardPage from "./pages/DashboardPage";
 import LoginForm from "./forms/LoginForm";
-import TourForm from "./forms/TourForm";
+import TourEditCreatePage from "./pages/admin/TourEditCreatePage";
 import MenuDrawer from "./modules/MenuDrawer";
 import QuotesPage from "./pages/admin/QuotesPage";
-import NewTourPage from "./pages/admin/NewTourPage";
 import EnquiriesPage from "./pages/admin/EnquiriesPage";
 import ToursPage from "./pages/admin/ToursPage";
+import DashboardPage from "./pages/admin/DashboardPage";
 
 class App extends Component {
   render() {
@@ -36,7 +35,7 @@ class App extends Component {
               <PrivateRoute
                 exact
                 path="/admin/dashboard"
-                component={QuotesPage}
+                component={DashboardPage}
               />
               <PrivateRoute exact path="/admin/quotes" component={QuotesPage} />
               <PrivateRoute
@@ -48,12 +47,12 @@ class App extends Component {
               <PrivateRoute
                 exact
                 path="/admin/tours/new"
-                component={NewTourPage}
+                component={() => <TourEditCreatePage />}
               />
               <PrivateRoute
                 exact
                 path="/admin/tours/:id/edit"
-                component={TourForm}
+                component={() => <TourEditCreatePage />}
               />
               <Redirect from="*" to="/" />
             </Switch>
