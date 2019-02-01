@@ -23,7 +23,6 @@ class EnquiryDetailsDialog extends Component {
   };
 
   onSubmit = formValues => {
-    console.log(formValues);
     const { setEnquiryDetailsDialogOpen, createOrUpdateEnquiry } = this.props;
     setEnquiryDetailsDialogOpen(false);
     createOrUpdateEnquiry(formValues);

@@ -15,12 +15,14 @@ import QuotesPage from "./pages/admin/QuotesPage";
 import EnquiriesPage from "./pages/admin/EnquiriesPage";
 import ToursPage from "./pages/admin/ToursPage";
 import DashboardPage from "./pages/admin/DashboardPage";
+import CustomSnackbar from "./modules/CustomSnackbar";
 
 class App extends Component {
   render() {
     return (
       <>
         <CssBaseline />
+        <CustomSnackbar />
         <BrowserRouter>
           <>
             <NavBar />

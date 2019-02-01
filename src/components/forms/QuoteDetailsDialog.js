@@ -21,7 +21,6 @@ class QuoteDetailsDialog extends Component {
   };
 
   onSubmit = formValues => {
-    console.log(formValues);
     const { setQuoteDetailsDialogOpen, updateQuoteRequest } = this.props;
     setQuoteDetailsDialogOpen(false);
     updateQuoteRequest(formValues);
@@ -96,9 +95,6 @@ class QuoteDetailsDialog extends Component {
                     label="Start Date"
                     component={ReduxTextField}
                     margin="dense"
-                    // InputProps={{
-                    //   readOnly: true
-                    // }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} style={{ padding: "0 16px" }}>
@@ -108,9 +104,6 @@ class QuoteDetailsDialog extends Component {
                     label="End Date"
                     component={ReduxTextField}
                     margin="dense"
-                    // InputProps={{
-                    //   readOnly: true
-                    // }}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6} style={{ padding: "0 16px" }}>

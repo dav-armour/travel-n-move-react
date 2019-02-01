@@ -26,3 +26,10 @@ export const setTableSettings = settings => {
     payload: settings
   };
 };
+
+export const setSnackbarSettings = settings => {
+  return {
+    type: "SET_SNACKBAR_SETTINGS",
+    payload: settings
+  };
+};

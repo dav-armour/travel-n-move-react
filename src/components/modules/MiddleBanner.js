@@ -21,18 +21,9 @@ const styles = theme => ({
 function MiddleBanner(props) {
   const { classes } = props;
   return (
-    <div
-      className={classes.root}
-      //   className={classes.popular}
-      //   className={classes.typo}
-    >
+    <div className={classes.root}>
       <Toolbar className={classes.popular}>
-        <Grid
-          container
-          className={classes.root}
-          //   className={classes.popular}
-          justify="center"
-        >
+        <Grid container className={classes.root} justify="center">
           <Typography variant="h6" color="inherit" className={classes.popular}>
             Popular Tour Packages
           </Typography>

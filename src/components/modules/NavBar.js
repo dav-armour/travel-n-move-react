@@ -14,8 +14,12 @@ import LocalPhone from "@material-ui/icons/LocalPhone";
 import { setMenuDrawerOpen, setAuthToken } from "./../../actions";
 
 const styles = theme => ({
-  grow: {
-    flexGrow: 1
+  logo: {
+    flexGrow: 1,
+    textDecoration: "none",
+    [theme.breakpoints.down(360)]: {
+      fontSize: "1rem"
+    }
   },
   menuButton: {
     marginLeft: -14
@@ -31,11 +35,14 @@ const styles = theme => ({
     minHeight: "30px"
   },
   label: {
-    fontSize: "1.25em"
+    fontSize: "1.25rem"
   },
   contactButton: {
-    fontSize: "1.25em",
-    padding: 0
+    fontSize: "1.25rem",
+    padding: 0,
+    [theme.breakpoints.down(360)]: {
+      fontSize: "1rem"
+    }
   }
 });
 
@@ -59,7 +66,13 @@ class NavBar extends Component {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography variant="h6" color="inherit" className={classes.grow}>
+          <Typography
+            variant="h6"
+            color="inherit"
+            className={classes.logo}
+            component={Link}
+            to="/"
+          >
             Travel N Move
           </Typography>
           <Button
