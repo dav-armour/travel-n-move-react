@@ -37,11 +37,24 @@ const styles = theme => ({
     display: "flex",
     justifyContent: "center"
   },
-  priceAndStartingFrom: {
-    height: "72px",
-    width: "292px",
-    border: "1px solid red",
-    margin: "0 auto"
+  priceAndDurationWrapper: {
+    height: "100px",
+    width: "700px",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center"
+  },
+  priceAndDuration: {
+    height: "100px",
+    width: "350px",
+    border: "1px solid black"
+  },
+  priceAndDurationInnerWrapper: {
+    display: "flex",
+    justifyContent: "center"
+  },
+  centerBorder: {
+    border: "1px solid red"
   }
 });
 
@@ -72,7 +85,34 @@ class TourShowPage extends Component {
             {tour.title}
           </Typography>
         </div>
-        <div className={classes.priceAndStartingFrom} />
+        {/* styling price and duration */}
+        <div className={classes.priceAndDurationWrapper}>
+          <div className={classes.priceAndDuration}>
+            <div className={classes.priceAndDurationInnerWrapper}>
+              <Typography component="h2" variant="display1" gutterBottom>
+                Duration
+              </Typography>
+            </div>
+            <div className={classes.priceAndDurationInnerWrapper}>
+              <Typography component="h2" variant="headline" gutterBottom>
+                {tour.duration}
+              </Typography>
+            </div>
+          </div>
+
+          <div className={classes.priceAndDuration}>
+            <div className={classes.priceAndDurationInnerWrapper}>
+              <Typography component="h2" variant="display1" gutterBottom>
+                Starting From
+              </Typography>
+            </div>
+            <div className={classes.priceAndDurationInnerWrapper}>
+              <Typography component="h2" variant="headline" gutterBottom>
+                Rs. {tour.price}
+              </Typography>
+            </div>
+          </div>
+        </div>
         <div className={classes.descriptionWrapper}>
           <Typography variant="body2" gutterBottom>
             {tour.description}
