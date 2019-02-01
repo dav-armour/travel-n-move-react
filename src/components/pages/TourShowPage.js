@@ -35,7 +35,8 @@ const styles = theme => ({
   },
   buttonWrapper: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    marginBottom: "40px"
   },
   priceAndDurationWrapper: {
     height: "100px",
@@ -123,7 +124,7 @@ class TourShowPage extends Component {
           </Typography>
         </div>
         <div className={classes.buttonWrapper}>
-          <Button size="small" color="secondary" variant="outlined">
+          <Button size="large" color="secondary" variant="outlined">
             Request Quote
           </Button>
         </div>
@@ -139,11 +140,6 @@ const mapStateToProps = state => {
     tour: state.tour
   };
 };
-
-// export default connect(
-//   mapStateToProps,
-//   { getTour }
-// )(TourShowPage);
 
 export default withStyles(styles)(
   connect(
