@@ -2,7 +2,11 @@ import LocalApi from "./../apis/local";
 import { handleServerError } from "./../helpers/error_helper";
 
 export const setAuthToken = token => {
-  sessionStorage.setItem("token", token);
+  if (token) {
+    sessionStorage.setItem("token", token);
+  } else {
+    sessionStorage.removeItem("token");
+  }
   return {
     type: "AUTH_TOKEN",
     payload: token
