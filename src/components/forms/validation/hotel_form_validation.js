@@ -1,7 +1,7 @@
 import validateQuote from "./quote_validation";
 
 const validate = ({ num_stars, num_rooms, ...common_fields }) => {
-  const errors = validateQuote({ ...common_fields });
+  const errors = validateQuote(common_fields);
 
   if (!num_stars) {
     errors.num_stars = "Required";
