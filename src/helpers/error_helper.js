@@ -9,8 +9,12 @@ export function handleServerError(err, dispatch) {
       message = "You are not authorized";
     }
 
-    if (status === 400 || status === 422) {
-      message = response.body.message;
+    if (status === 400) {
+      message = "Bad Request";
+    }
+
+    if (status === 422) {
+      message = "Creation Failed";
     }
   }
 

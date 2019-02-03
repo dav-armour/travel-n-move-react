@@ -28,7 +28,7 @@ class FlightForm extends Component {
               component={ReduxRadioGroup}
               radioOptions={[
                 { value: "return", label: "Return" },
-                { value: "one_way", label: "One-Way" }
+                { value: "one-way", label: "One-Way" }
               ]}
             />
           </div>
