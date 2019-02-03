@@ -15,7 +15,7 @@ const styles = theme => ({
     //padding: "50px 0"
   },
 
-  mainContainer: {
+  contentContainer: {
     maxWidth: "1300px",
     margin: "0 auto"
   },
@@ -72,58 +72,59 @@ class TourShowPage extends Component {
     console.log("from componentDidMount", tour);
 
     return (
-      <div className={classes.mainContainer}>
-        <HeroImage imageLink={tour.image} height={"30vh"} />
+      <div>
+        <HeroImage imageLink={tour.image} height={"40vh"} />
         {/* <div className={classes.bannerImageWrapper}>
          
         </div> */}
-
-        <div className={classes.tourTitle}>
-          <Typography component="h2" variant="display3" gutterBottom>
-            {tour.title}
-          </Typography>
-        </div>
-        {/* styling price and duration */}
-        <div className={classes.priceAndDurationWrapper}>
-          <div className={classes.priceAndDuration}>
-            <div className={classes.priceAndDurationInnerWrapper}>
-              <Typography component="h2" variant="display1" gutterBottom>
-                Duration
-              </Typography>
+        <div className={classes.contentContainer}>
+          <div className={classes.tourTitle}>
+            <Typography component="h2" variant="display3" gutterBottom>
+              {tour.title}
+            </Typography>
+          </div>
+          {/* styling price and duration */}
+          <div className={classes.priceAndDurationWrapper}>
+            <div className={classes.priceAndDuration}>
+              <div className={classes.priceAndDurationInnerWrapper}>
+                <Typography variant="h5" gutterBottom>
+                  Duration
+                </Typography>
+              </div>
+              <div className={classes.priceAndDurationInnerWrapper}>
+                <Typography variant="h4" gutterBottom>
+                  {tour.duration}
+                </Typography>
+              </div>
             </div>
-            <div className={classes.priceAndDurationInnerWrapper}>
-              <Typography component="h2" variant="headline" gutterBottom>
-                {tour.duration}
-              </Typography>
+
+            <div className={classes.priceAndDuration}>
+              <div className={classes.priceAndDurationInnerWrapper}>
+                <Typography variant="h5" gutterBottom>
+                  Starting From
+                </Typography>
+              </div>
+              <div className={classes.priceAndDurationInnerWrapper}>
+                <Typography variant="h4" gutterBottom>
+                  Rs. {tour.price}
+                </Typography>
+              </div>
             </div>
           </div>
-
-          <div className={classes.priceAndDuration}>
-            <div className={classes.priceAndDurationInnerWrapper}>
-              <Typography component="h2" variant="display1" gutterBottom>
-                Starting From
-              </Typography>
-            </div>
-            <div className={classes.priceAndDurationInnerWrapper}>
-              <Typography component="h2" variant="headline" gutterBottom>
-                Rs. {tour.price}
-              </Typography>
-            </div>
+          <div className={classes.descriptionWrapper}>
+            <Typography variant="body2" gutterBottom>
+              {tour.description}
+              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
+              consectetur, neque doloribus, cupiditate numquam dignissimos
+              laborum fugiat deleniti? Eum quasi quidem quibusdam.
+            </Typography>
           </div>
-        </div>
-        <div className={classes.descriptionWrapper}>
-          <Typography variant="body2" gutterBottom>
-            {tour.description}
-            body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
-            consectetur, neque doloribus, cupiditate numquam dignissimos laborum
-            fugiat deleniti? Eum quasi quidem quibusdam.
-          </Typography>
-        </div>
-        <div className={classes.buttonWrapper}>
-          <Button size="large" color="secondary" variant="outlined">
-            Request Quote
-          </Button>
+          <div className={classes.buttonWrapper}>
+            <Button size="large" color="secondary" variant="outlined">
+              Request Quote
+            </Button>
+          </div>
         </div>
       </div>
     );

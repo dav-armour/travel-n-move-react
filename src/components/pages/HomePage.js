@@ -17,7 +17,7 @@ class HomePage extends Component {
     const { classes } = this.props;
     return (
       <div>
-        <HeroImage imageLink={"./london-eye.jpg"}>
+        <HeroImage imageLink={"./london-eye.jpg"} height={"740px"}>
           <div className={classes.formContainer}>
             <QuoteFormTabs />
           </div>
