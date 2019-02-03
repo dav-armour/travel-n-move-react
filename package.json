@@ -41,6 +41,7 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
-    "jest-enzyme": "^7.0.1"
+    "jest-enzyme": "^7.0.1",
+    "moxios": "^0.4.0"
   }
 }

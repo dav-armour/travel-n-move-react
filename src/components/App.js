@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import PrivateRoute from "./PrivateRoute";
 import NavBar from "./modules/NavBar";
@@ -23,43 +23,39 @@ class App extends Component {
       <>
         <CssBaseline />
         <CustomSnackbar />
-        <BrowserRouter>
-          <>
-            <NavBar />
-            <MenuDrawer />
-            <Switch>
-              <Route exact path="/" component={HomePage} />
-              <Route exact path="/tours" component={TourIndexPage} />
-              <Route exact path="/tours/:id" component={TourShowPage} />
-              <Route exact path="/about" component={AboutUsPage} />
-              <Route exact path="/contact" component={ContactUsPage} />
-              <Route exact path="/login" component={LoginForm} />
-              <PrivateRoute
-                exact
-                path="/admin/dashboard"
-                component={DashboardPage}
-              />
-              <PrivateRoute exact path="/admin/quotes" component={QuotesPage} />
-              <PrivateRoute
-                exact
-                path="/admin/enquiries"
-                component={EnquiriesPage}
-              />
-              <PrivateRoute exact path="/admin/tours" component={ToursPage} />
-              <PrivateRoute
-                exact
-                path="/admin/tours/new"
-                component={() => <TourEditCreatePage />}
-              />
-              <PrivateRoute
-                exact
-                path="/admin/tours/:id/edit"
-                component={() => <TourEditCreatePage />}
-              />
-              <Redirect from="*" to="/" />
-            </Switch>
-          </>
-        </BrowserRouter>
+        <NavBar />
+        <MenuDrawer />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/tours" component={TourIndexPage} />
+          <Route exact path="/tours/:id" component={TourShowPage} />
+          <Route exact path="/about" component={AboutUsPage} />
+          <Route exact path="/contact" component={ContactUsPage} />
+          <Route exact path="/login" component={LoginForm} />
+          <PrivateRoute
+            exact
+            path="/admin/dashboard"
+            component={DashboardPage}
+          />
+          <PrivateRoute exact path="/admin/quotes" component={QuotesPage} />
+          <PrivateRoute
+            exact
+            path="/admin/enquiries"
+            component={EnquiriesPage}
+          />
+          <PrivateRoute exact path="/admin/tours" component={ToursPage} />
+          <PrivateRoute
+            exact
+            path="/admin/tours/new"
+            component={() => <TourEditCreatePage />}
+          />
+          <PrivateRoute
+            exact
+            path="/admin/tours/:id/edit"
+            component={() => <TourEditCreatePage />}
+          />
+          <Redirect from="*" to="/" />
+        </Switch>
       </>
     );
   }
