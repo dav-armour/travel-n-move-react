@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HeroImage from "./../modules/HeroImage";
 import { withStyles } from "@material-ui/core/styles";
-import classes from "*.module.css";
+// import classes from "*.module.css";
 
 const styles = theme => {
   aboutUsWrapper: {
