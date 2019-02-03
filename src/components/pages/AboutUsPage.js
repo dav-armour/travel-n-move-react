@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HeroImage from "./../modules/HeroImage";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+// import photo from "./../../../public/"
 // import classes from "*.module.css";
 
 const styles = theme => ({
@@ -24,15 +25,28 @@ const styles = theme => ({
   },
   paperWrapper: {
     display: "flex",
-    width: "80%",
-    // flexDirection: "row",
+    width: "70%",
     justifyContent: "flex-start",
-    border: "1px solid red",
-    height: "200px",
-    marginBottom: "40px"
+    // border: "1px solid red",
+    marginBottom: "40px",
+
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+      textAlign: "center"
+    }
   },
   photo: {
-    float: "left"
+    // border: "1px solid black",
+    minWidth: "220px",
+    maxWidth: "220px",
+    margin: "10px"
+  },
+  content: {
+    marginLeft: "20px",
+    [theme.breakpoints.down("sm")]: {
+      textAlign: "justify",
+      margin: "20px"
+    }
   }
 });
 
@@ -49,8 +63,15 @@ class AboutUsPage extends Component {
           </div>
 
           <Paper className={classes.paperWrapper}>
-            <div className={classes.photo}>
-              <p>photo here</p>
+            <div>
+              <img
+                src="./Deepak1.png"
+                alt="Deepak Sharma's Photo"
+                className={classes.photo}
+              />
+              {/* className={classes.photo}
+              style={{ backgroundImage: `url(./DeepakSharma.jpg)` }}
+            /> */}
             </div>
             <div className={classes.content}>
               <p>
