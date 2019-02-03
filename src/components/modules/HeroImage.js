@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   bannerStyle: {
-    minHeight: "740px",
+    minHeight: "440px",
     width: "100%",
     paddingTop: "40px",
     backgroundSize: "cover",
