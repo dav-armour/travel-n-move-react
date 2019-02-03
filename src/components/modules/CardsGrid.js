@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import { getTours } from "./../../actions";
 import TourCard from "./TourCard";
+import QuoteDetailsDialog from "./../forms/QuoteDetailsDialog";
 
 const styles = theme => ({
   cardsContainer: {
@@ -23,6 +24,7 @@ class CardsGrid extends Component {
     const { tours, classes } = this.props;
     return (
       <div className={classes.cardsContainer}>
+        <QuoteDetailsDialog />
         <Grid container spacing={40}>
           {tours.map(tour => (
             <Grid item key={tour._id} sm={6} md={4} lg={3}>

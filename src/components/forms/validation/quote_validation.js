@@ -1,26 +1,42 @@
-const validate = ({ destination, start_date, end_date, adults, children }) => {
-  const errors = {};
-  const start_date_parsed = new Date(start_date);
-  const end_date_parsed = new Date(end_date);
-  const now_date = new Date();
+import moment from "moment";
 
-  if (!destination) {
-    errors.destination = "Arrival airport is required";
+const validate = (values = {}) => {
+  const errors = {};
+  const start_date_parsed = moment(values.start_date);
+  const end_date_parsed = moment(values.end_date);
+  const today = moment().startOf("day");
+
+  const requiredFields = [
+    "destination",
+    "start_date",
+    "end_date",
+    "adults",
+    "children"
+  ];
+
+  requiredFields.forEach(field => {
+    if (!values[field]) {
+      errors[field] = "Required";
+    }
+  });
+
+  if (values.children === 0) {
+    delete errors.children;
   }
 
-  if (start_date_parsed < now_date) {
+  if (start_date_parsed < today) {
     errors.start_date = "Invalid date";
   }
 
-  if (end_date_parsed < now_date || end_date_parsed < start_date_parsed) {
+  if (end_date_parsed < today || end_date_parsed < start_date_parsed) {
     errors.end_date = "Invalid date";
   }
 
-  if (adults < 1) {
+  if (values.adults < 1) {
     errors.adults = "Invalid";
   }
 
-  if (children < 0) {
+  if (values.children < 0) {
     errors.children = "Invalid";
   }
 
