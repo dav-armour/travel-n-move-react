@@ -56,12 +56,7 @@ class AboutUsPage extends Component {
       <div>
         <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
         <div className={classes.aboutUsWrapper}>
-          <Typography
-            component="h2"
-            variant="h2"
-            className={classes.titleText}
-            gutterBottom
-          >
+          <Typography variant="h2" className={classes.titleText} gutterBottom>
             About Us
           </Typography>
 

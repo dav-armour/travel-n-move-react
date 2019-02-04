@@ -28,12 +28,7 @@ class TourIndexPage extends Component {
     return (
       <div>
         <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
-        <Typography
-          component="h2"
-          variant="display3"
-          className={classes.titleText}
-          gutterBottom
-        >
+        <Typography variant="h2" className={classes.titleText} gutterBottom>
           Tour Packages
         </Typography>
         <div className={classes.cardsGrid}>
