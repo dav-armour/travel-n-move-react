@@ -84,12 +84,12 @@ class HolidayForm extends Component {
           </div>
           <div>
             <Field
-              name="budget_tier"
+              name="budget"
               component={ReduxSelectField}
               label="Budget"
               selectOptions={[
-                { value: "budget", label: "Budget" },
-                { value: "mid-range", label: "Mid Range" },
+                { value: "affordable", label: "Affordable" },
+                { value: "premium", label: "Premium" },
                 { value: "luxury", label: "Luxury" }
               ]}
               margin="dense"
@@ -126,7 +126,7 @@ const mapStateToProps = state => {
       adults: 1,
       children: 0,
       flexible_dates: false,
-      budget_tier: "budget"
+      budget: "affordable"
     }
   };
 };
