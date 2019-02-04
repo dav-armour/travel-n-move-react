@@ -4,7 +4,6 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   bannerStyle: {
-    minHeight: "440px",
     width: "100%",
     paddingTop: "40px",
     backgroundSize: "cover",
@@ -14,12 +13,12 @@ const styles = theme => ({
 });
 
 function HeroImage(props) {
-  const { classes, imageLink } = props;
+  const { classes, imageLink, height } = props;
 
   return (
     <div
       className={classes.bannerStyle}
-      style={{ backgroundImage: `url(${imageLink})` }}
+      style={{ backgroundImage: `url(${imageLink})`, height }}
     >
       {props.children}
     </div>
