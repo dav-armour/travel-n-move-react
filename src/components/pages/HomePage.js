@@ -8,7 +8,7 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <HeroImage imageLink={"./london-eye.jpg"}>
+        <HeroImage imageLink={"./londonEye.jpg"} height={"740px"}>
           <QuoteFormTabs />
         </HeroImage>
         <MiddleBanner />
