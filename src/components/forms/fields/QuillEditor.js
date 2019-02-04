@@ -49,7 +49,6 @@ QuillEditor.modules = {
  */
 QuillEditor.formats = [
   "header",
-  // "font",
   "bold",
   "italic",
   "underline",

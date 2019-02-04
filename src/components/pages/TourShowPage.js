@@ -137,10 +137,6 @@ class TourShowPage extends Component {
               </div>
             </div>
           </div>
-          {/* <div
-            className={classes.descriptionWrapper}
-            dangerouslySetInnerHTML={{ __html: tour.description }}
-          /> */}
           <div className={classes.descriptionWrapper}>
             <Typography
               variant="body1"
