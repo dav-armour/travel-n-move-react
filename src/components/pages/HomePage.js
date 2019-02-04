@@ -8,8 +8,10 @@ class HomePage extends Component {
   render() {
     return (
       <div>
-        <HeroImage imageLink={"./london-eye.jpg"}>
-          <QuoteFormTabs />
+        <HeroImage imageLink={"./london-eye.jpg"} height={"740px"}>
+          <div className={classes.formContainer}>
+            <QuoteFormTabs />
+          </div>
         </HeroImage>
         <MiddleBanner />
         <CardsGrid query={{ featured: true }} />
