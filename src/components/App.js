@@ -16,6 +16,7 @@ import EnquiriesPage from "./pages/admin/EnquiriesPage";
 import ToursPage from "./pages/admin/ToursPage";
 import DashboardPage from "./pages/admin/DashboardPage";
 import CustomSnackbar from "./modules/CustomSnackbar";
+import "./../css/Body.css";
 
 class App extends Component {
   render() {

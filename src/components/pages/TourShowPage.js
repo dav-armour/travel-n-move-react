@@ -95,7 +95,7 @@ class TourShowPage extends Component {
           <div className={classes.tourTitle}>
             <Typography
               component="h2"
-              variant="display3"
+              variant="h2"
               className={classes.titleText}
               gutterBottom
             >
@@ -138,13 +138,12 @@ class TourShowPage extends Component {
             </div>
           </div>
           <div className={classes.descriptionWrapper}>
-            <Typography variant="body2" gutterBottom>
-              {tour.description}
-              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
-              consectetur, neque doloribus, cupiditate numquam dignissimos
-              laborum fugiat deleniti? Eum quasi quidem quibusdam.
-            </Typography>
+            <Typography
+              variant="body1"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: tour.description }}
+              className="tourDescriptionContent"
+            />
           </div>
           <div className={classes.buttonWrapper}>
             <Button size="large" color="secondary" variant="outlined">

@@ -27,7 +27,7 @@ class QuillEditor extends Component {
 
 QuillEditor.modules = {
   toolbar: [
-    [{ header: "1" }, { header: "2" }, { font: [] }],
+    [{ header: "1" }, { header: "2" }],
     ["bold", "italic", "underline", "strike", "blockquote"],
     [
       { list: "ordered" },
@@ -49,7 +49,6 @@ QuillEditor.modules = {
  */
 QuillEditor.formats = [
   "header",
-  "font",
   "bold",
   "italic",
   "underline",

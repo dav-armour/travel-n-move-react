@@ -58,7 +58,7 @@ class AboutUsPage extends Component {
         <div className={classes.aboutUsWrapper}>
           <Typography
             component="h2"
-            variant="display3"
+            variant="h2"
             className={classes.titleText}
             gutterBottom
           >
@@ -74,7 +74,7 @@ class AboutUsPage extends Component {
               />
             </div>
             <div className={classes.content}>
-              <Typography variant="body2" gutterBottom>
+              <Typography variant="body1" gutterBottom>
                 Mr. Deepak Sharma is an Entrepreneur. He is a well-qualified
                 &amp; has management experience in industries like insurance,
                 facility, overseas education. He lived in New Zealand, a
