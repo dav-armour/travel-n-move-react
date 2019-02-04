@@ -12,7 +12,8 @@ describe("Enquiry Page", () => {
     input_last_name,
     input_email,
     input_subject,
-    input_message;
+    input_message,
+    submit_button;
 
   beforeEach(() => {
     moxios.install();
@@ -34,6 +35,7 @@ describe("Enquiry Page", () => {
     input_email = wrapper.find('input[name="email"]');
     input_subject = wrapper.find('input[name="subject"]');
     input_message = wrapper.find('textarea[name="message"]');
+    submit_button = wrapper.find('button[type="submit"]');
   });
 
   afterEach(() => {
@@ -48,5 +50,6 @@ describe("Enquiry Page", () => {
     expect(input_email).toHaveLength(1);
     expect(input_subject).toHaveLength(1);
     expect(input_message).toHaveLength(1);
+    expect(submit_button).toHaveLength(1);
   });
 });

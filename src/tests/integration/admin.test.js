@@ -64,7 +64,7 @@ describe("ADMIN ROUTES: The correct page renders for each route and navbar shows
     wrapper.unmount();
   });
 
-  test.skip("Admin Tours Edit Create Page renders for root route '/admin/tours/new'", () => {
+  test("Admin Tours Edit Create Page renders for root route '/admin/tours/new'", () => {
     const wrapper = mount(
       <Root initialState={initialState}>
         <MemoryRouter initialEntries={["/admin/tours/new"]}>

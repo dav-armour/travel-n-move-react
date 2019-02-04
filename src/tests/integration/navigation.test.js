@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, MemoryRouter, StaticRouter } from "react-router-dom";
+import { MemoryRouter, StaticRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import Root from "./../../Root";
 import NavBar from "./../../components/modules/NavBar";
