@@ -1,33 +1,38 @@
 import React, { Component } from "react";
-import { withStyles } from "@material-ui/core/styles";
 import { connect } from "react-redux";
+import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
 import HeroImage from "./../modules/HeroImage";
 import { getTour } from "./../../actions";
 
 const styles = theme => ({
-  bannerStyle: {
-    //background: 'url("./london-eye.jpg") no-repeat center center',
-    //backgroundSize: "cover",
-    height: "auto",
-    width: "100%"
-    //padding: "50px 0"
-  },
-
   contentContainer: {
     maxWidth: "1300px",
-    margin: "0 auto"
+    margin: "0 auto",
+    textAlign: "center"
   },
 
-  bannerImageWrapper: {
-    maxHeight: "400px",
-    overflow: "hidden"
-  },
   tourTitle: {
     textAlign: "center",
-    fontSize: "30px",
-    padding: "10px 0"
+    padding: "10px 0",
+    margin: "0 auto"
+  },
+  titleText: {
+    [theme.breakpoints.down(400)]: {
+      fontSize: "2.5rem"
+    }
+  },
+  priceText: {
+    [theme.breakpoints.down(400)]: {
+      fontSize: "1.5rem"
+    }
+  },
+  durationText: {
+    [theme.breakpoints.down(400)]: {
+      fontSize: "1.5rem"
+    }
   },
   descriptionWrapper: {
     padding: "20px",
@@ -40,22 +45,44 @@ const styles = theme => ({
   },
   priceAndDurationWrapper: {
     height: "100px",
-    width: "700px",
+    width: "100%",
     margin: "0 auto",
     display: "flex",
     justifyContent: "center"
+    // border: "1px solid black"
   },
-  priceAndDuration: {
+  infoBox: {
     height: "100px",
-    width: "350px",
-    border: "1px solid black"
+    width: "50%"
+    // borderRight: "1px solid #000"
   },
   priceAndDurationInnerWrapper: {
     display: "flex",
     justifyContent: "center"
   },
-  centerBorder: {
-    border: "1px solid red"
+  startingFrom: {
+    display: "flex",
+    paddingLeft: "20px"
+  },
+
+  price: {
+    display: "flex",
+    justifyContent: "flex-start",
+    paddingLeft: "20px"
+  },
+
+  duration: {
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingRight: "20px"
+  },
+  durationSummary: {
+    display: "flex",
+    justifyContent: "flex-end",
+    paddingRight: "20px"
+  },
+  rightBorder: {
+    borderRight: "1px solid black"
   }
 });
 
@@ -79,33 +106,46 @@ class TourShowPage extends Component {
         </div> */}
         <div className={classes.contentContainer}>
           <div className={classes.tourTitle}>
-            <Typography component="h2" variant="display3" gutterBottom>
+            <Typography
+              component="h2"
+              variant="display3"
+              className={classes.titleText}
+              gutterBottom
+            >
               {tour.title}
             </Typography>
           </div>
           {/* styling price and duration */}
           <div className={classes.priceAndDurationWrapper}>
-            <div className={classes.priceAndDuration}>
-              <div className={classes.priceAndDurationInnerWrapper}>
+            <div className={classNames(classes.infoBox, classes.rightBorder)}>
+              <div className={classes.duration}>
                 <Typography variant="h5" gutterBottom>
                   Duration
                 </Typography>
               </div>
-              <div className={classes.priceAndDurationInnerWrapper}>
-                <Typography variant="h4" gutterBottom>
+              <div className={classes.durationSummary}>
+                <Typography
+                  variant="h4"
+                  gutterBottom
+                  className={classes.durationText}
+                >
                   {tour.duration}
                 </Typography>
               </div>
             </div>
 
-            <div className={classes.priceAndDuration}>
-              <div className={classes.priceAndDurationInnerWrapper}>
+            <div className={classes.infoBox}>
+              <div className={classes.startingFrom}>
                 <Typography variant="h5" gutterBottom>
                   Starting From
                 </Typography>
               </div>
-              <div className={classes.priceAndDurationInnerWrapper}>
-                <Typography variant="h4" gutterBottom>
+              <div className={classes.price}>
+                <Typography
+                  variant="h4"
+                  gutterBottom
+                  className={classes.priceText}
+                >
                   Rs. {tour.price}
                 </Typography>
               </div>
@@ -128,8 +168,6 @@ class TourShowPage extends Component {
         </div>
       </div>
     );
-
-    // ) <div>ID: {this.props.match.params.id}</div>;
   }
 }
 
