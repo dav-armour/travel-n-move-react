@@ -3,14 +3,11 @@ import HeroImage from "./../modules/HeroImage";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-// import photo from "./../../../public/"
-// import classes from "*.module.css";
 
 const styles = theme => ({
   aboutUsWrapper: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "space-around",
     border: "1px solid black",
     alignItems: "center"
   },
@@ -20,15 +17,12 @@ const styles = theme => ({
     border: "1px solid red"
   },
   contentWrapper: {
-    // height: "50px",
-    // width: "40px",
     border: "1px solid red"
   },
   paperWrapper: {
     display: "flex",
     width: "70%",
     justifyContent: "flex-start",
-    // border: "1px solid red",
     marginBottom: "40px",
 
     [theme.breakpoints.down("sm")]: {
@@ -37,20 +31,19 @@ const styles = theme => ({
     }
   },
   photo: {
-    // border: "1px solid black",
     minWidth: "220px",
     maxWidth: "220px",
-    margin: "20px"
+    padding: "20px"
   },
   aboutUs: {
-    marginTop: "10px"
+    paddingTop: "10px"
   },
   content: {
-    margin: "10px 20px 0 20px",
+    padding: "10px 20px 0 20px",
     textAlign: "justify",
     [theme.breakpoints.down("sm")]: {
       textAlign: "justify",
-      margin: "20px"
+      padding: "20px"
     }
   }
 });
@@ -80,9 +73,6 @@ class AboutUsPage extends Component {
                 alt="Deepak Sharma's Photo"
                 className={classes.photo}
               />
-              {/* className={classes.photo}
-              style={{ backgroundImage: `url(./DeepakSharma.jpg)` }}
-            /> */}
             </div>
             <div className={classes.content}>
               <Typography variant="body2" gutterBottom>
@@ -112,10 +102,3 @@ class AboutUsPage extends Component {
 }
 
 export default withStyles(styles)(AboutUsPage);
-
-// export default withStyles(styles)(
-//   connect(
-//   mapStateToProps,
-//   { getTour }
-//   )(TourShowPage)
-//   );
