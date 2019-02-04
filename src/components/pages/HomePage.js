@@ -6,6 +6,7 @@ import QuoteFormTabs from "./../modules/QuoteFormTabs";
 
 class HomePage extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <HeroImage imageLink={"./london-eye.jpg"} height={"740px"}>
