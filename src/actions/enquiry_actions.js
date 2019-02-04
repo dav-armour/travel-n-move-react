@@ -1,5 +1,11 @@
 import LocalApi from "./../apis/local";
 import { handleServerError } from "./../helpers/error_helper";
+import {
+  ENQUIRY,
+  ENQUIRIES,
+  SET_SNACKBAR_SETTINGS,
+  ENQUIRY_DETAILS_DIALOG_OPEN
+} from "./types";
 
 export const getEnquiries = () => {
   return async (dispatch, getState) => {
@@ -10,7 +16,7 @@ export const getEnquiries = () => {
       });
 
       dispatch({
-        type: "ENQUIRIES",
+        type: ENQUIRIES,
         payload: response.data
       });
     } catch (err) {
@@ -25,7 +31,7 @@ export const getEnquiry = _id => {
       let response = await LocalApi.get(`/enquiries/${_id}`);
 
       dispatch({
-        type: "ENQUIRY",
+        type: ENQUIRY,
         payload: response.data.enquiry
       });
     } catch (err) {
@@ -47,7 +53,7 @@ export const createOrUpdateEnquiry = ({ _id, ...enquiryDetails }) => {
         response = await LocalApi.put(`/enquiries/${_id}`, enquiryDetails);
       }
       dispatch({
-        type: "ENQUIRY",
+        type: ENQUIRY,
         payload: response.data
       });
       if (_id) {
@@ -56,7 +62,7 @@ export const createOrUpdateEnquiry = ({ _id, ...enquiryDetails }) => {
           params: { page, rowsPerPage }
         });
         dispatch({
-          type: "ENQUIRIES",
+          type: ENQUIRIES,
           payload: response.data
         });
       }
@@ -64,7 +70,7 @@ export const createOrUpdateEnquiry = ({ _id, ...enquiryDetails }) => {
         ? " Succesfully updated"
         : "Thank you for your enquiry. We will be in touch";
       dispatch({
-        type: "SET_SNACKBAR_SETTINGS",
+        type: SET_SNACKBAR_SETTINGS,
         payload: {
           open: true,
           variant: "success",
@@ -79,14 +85,14 @@ export const createOrUpdateEnquiry = ({ _id, ...enquiryDetails }) => {
 
 export const setEnquiry = enquiryDetails => {
   return {
-    type: "ENQUIRY",
+    type: ENQUIRY,
     payload: enquiryDetails
   };
 };
 
 export const setEnquiryDetailsDialogOpen = open => {
   return {
-    type: "ENQUIRY_DETAILS_DIALOG_OPEN",
+    type: ENQUIRY_DETAILS_DIALOG_OPEN,
     payload: { open }
   };
 };
