@@ -9,7 +9,6 @@ import { createOrUpdateEnquiry } from "./../../actions";
 
 export class EnquiryForm extends Component {
   onFormSubmit = formValues => {
-    console.log("submitting");
     const { createOrUpdateEnquiry } = this.props;
     createOrUpdateEnquiry(formValues);
   };

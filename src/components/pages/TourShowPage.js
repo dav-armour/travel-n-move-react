@@ -49,28 +49,20 @@ const styles = theme => ({
     margin: "0 auto",
     display: "flex",
     justifyContent: "center"
-    // border: "1px solid black"
   },
   infoBox: {
     height: "100px",
     width: "50%"
-    // borderRight: "1px solid #000"
-  },
-  priceAndDurationInnerWrapper: {
-    display: "flex",
-    justifyContent: "center"
   },
   startingFrom: {
     display: "flex",
     paddingLeft: "20px"
   },
-
   price: {
     display: "flex",
     justifyContent: "flex-start",
     paddingLeft: "20px"
   },
-
   duration: {
     display: "flex",
     justifyContent: "flex-end",
@@ -96,14 +88,9 @@ class TourShowPage extends Component {
   render() {
     const { classes, tour } = this.props;
 
-    console.log("from componentDidMount", tour);
-
     return (
       <div>
         <HeroImage imageLink={tour.image} height={"40vh"} />
-        {/* <div className={classes.bannerImageWrapper}>
-         
-        </div> */}
         <div className={classes.contentContainer}>
           <div className={classes.tourTitle}>
             <Typography
@@ -115,7 +102,6 @@ class TourShowPage extends Component {
               {tour.title}
             </Typography>
           </div>
-          {/* styling price and duration */}
           <div className={classes.priceAndDurationWrapper}>
             <div className={classNames(classes.infoBox, classes.rightBorder)}>
               <div className={classes.duration}>

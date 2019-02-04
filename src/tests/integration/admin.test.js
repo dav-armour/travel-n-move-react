@@ -8,14 +8,16 @@ import QuotesPage from "../../components/pages/admin/QuotesPage";
 import EnquiriesPage from "../../components/pages/admin/EnquiriesPage";
 import ToursPage from "../../components/pages/admin/ToursPage";
 import TourEditCreatePage from "../../components/pages/admin/TourEditCreatePage";
+import AdminMenu from "../../components/modules/AdminMenu";
+import { store } from "./../../Root";
+
+const initialState = {
+  auth: {
+    token: "token"
+  }
+};
 
 describe("ADMIN ROUTES: The correct page renders for each route and navbar shows on all routes", () => {
-  const initialState = {
-    auth: {
-      token: "token"
-    }
-  };
-
   test("Admin Dashboard Page renders for root route '/admin/dashboard'", () => {
     const wrapper = mount(
       <Root initialState={initialState}>
@@ -74,5 +76,39 @@ describe("ADMIN ROUTES: The correct page renders for each route and navbar shows
     );
     expect(wrapper.find(TourEditCreatePage)).toHaveLength(1);
     wrapper.unmount();
+  });
+});
+
+describe("Admin menu", () => {
+  let wrapper, admin_menu;
+  beforeAll(() => {
+    wrapper = mount(
+      <Root initialState={initialState}>
+        <MemoryRouter initialEntries={["/admin/dashboard"]}>
+          <App />
+        </MemoryRouter>
+      </Root>
+    );
+    admin_menu = wrapper.find(AdminMenu);
+  });
+
+  test("Admin menu renders", () => {
+    expect(admin_menu).toHaveLength(1);
+  });
+
+  test.skip("clicking on each button changes page", () => {
+    const quotes_button = admin_menu.find('a[href="/admin/quotes"]');
+    const enquiries_button = admin_menu.find('a[href="/admin/enquiries"]');
+    const tours_button = admin_menu.find('a[href="/admin/tours"]');
+    const new_tour_button = admin_menu.find('a[href="/admin/tours/new"]');
+    const dashboard_button = admin_menu.find('a[href="/admin/dashboard"]');
+    expect(quotes_button).toHaveLength(1);
+    expect(enquiries_button).toHaveLength(1);
+    expect(tours_button).toHaveLength(1);
+    expect(new_tour_button).toHaveLength(1);
+    expect(dashboard_button).toHaveLength(1);
+    quotes_button.simulate("click");
+    wrapper.update();
+    expect(wrapper.find(QuotesPage)).toHaveLength(1);
   });
 });
