@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HeroImage from "./../modules/HeroImage";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
 // import photo from "./../../../public/"
 // import classes from "*.module.css";
 
@@ -41,8 +42,12 @@ const styles = theme => ({
     maxWidth: "220px",
     margin: "10px"
   },
+  aboutUs: {
+    marginTop: "10px"
+  },
   content: {
-    marginLeft: "20px",
+    margin: "10px 20px 0 20px",
+    textAlign: "justify",
     [theme.breakpoints.down("sm")]: {
       textAlign: "justify",
       margin: "20px"
@@ -58,9 +63,15 @@ class AboutUsPage extends Component {
       <div>
         <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
         <div className={classes.aboutUsWrapper}>
-          <div>
-            <p>About Us</p>
-          </div>
+          <Typography
+            component="h2"
+            variant="display3"
+            className={classes.titleText}
+            gutterBottom
+            className={classes.aboutUs}
+          >
+            About Us
+          </Typography>
 
           <Paper className={classes.paperWrapper}>
             <div>
@@ -74,7 +85,7 @@ class AboutUsPage extends Component {
             /> */}
             </div>
             <div className={classes.content}>
-              <p>
+              <Typography variant="body2" gutterBottom>
                 Mr. Deepak Sharma is an Entrepreneur. He is a well-qualified
                 &amp; has management experience in industries like insurance,
                 facility, overseas education. He lived in New Zealand, a
@@ -90,7 +101,8 @@ class AboutUsPage extends Component {
                 at religious place or medical travel (few treatment are very
                 pocket friendly in Chennai). So it can be any reason for
                 spending time at separate place.
-              </p>
+              </Typography>
+              <p />
             </div>
           </Paper>
         </div>
