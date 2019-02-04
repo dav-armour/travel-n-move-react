@@ -40,7 +40,7 @@ const styles = theme => ({
     // border: "1px solid black",
     minWidth: "220px",
     maxWidth: "220px",
-    margin: "10px"
+    margin: "20px"
   },
   aboutUs: {
     marginTop: "10px"
