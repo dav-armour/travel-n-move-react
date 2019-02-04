@@ -93,7 +93,7 @@ class HotelForm extends Component {
           </div>
           <div>
             <Field
-              name="hotel_type"
+              name="num_stars"
               component={ReduxSelectField}
               label="Hotel Type"
               selectOptions={createSelectNumberRange(1, 5, " Stars")}
@@ -131,7 +131,7 @@ const mapStateToProps = state => {
       adults: 1,
       children: 0,
       num_rooms: 1,
-      hotel_type: 1,
+      num_stars: 3,
       flexible_dates: false
     }
   };

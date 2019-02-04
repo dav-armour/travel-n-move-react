@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
@@ -8,24 +9,8 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
-import {
-  withStyles
-  // createMuiTheme,
-  // MuiThemeProvider
-} from "@material-ui/core/styles";
-// import green from "@material-ui/core/colors/green";
-
-// const theme = createMuiTheme({
-//   palette: {
-//     primary: green
-//   },
-//   typography: {
-//     useNextVariants: true
-//   },
-//   text: {
-//     color: "white"
-//   }
-// });
+import { withStyles } from "@material-ui/core/styles";
+import { setQuote, setQuoteDetailsDialogOpen } from "./../../actions";
 
 const styles = theme => ({
   cardMedia: {
@@ -43,10 +28,22 @@ const styles = theme => ({
 
 class TourCard extends Component {
   onCardClick = () => {
-    console.log(this.props);
     const { _id } = this.props;
-    console.log("Clicked card", _id);
     this.props.history.push(`/tours/${_id}`);
+  };
+
+  onQuoteClick = event => {
+    const { title, summary, setQuote, setQuoteDetailsDialogOpen } = this.props;
+    setQuote({
+      type: "Holiday",
+      destination: title,
+      client_comments: `REQUESTING TOUR PACKAGE\nTitle: ${title}\nSummary: ${summary}`,
+      adults: 1,
+      children: 0,
+      budget: "affordable"
+    });
+    setQuoteDetailsDialogOpen(true);
+    event.stopPropagation();
   };
 
   render() {
@@ -76,7 +73,12 @@ class TourCard extends Component {
           <Button size="small" color="primary" onClick={this.onCardClick}>
             Learn More
           </Button>
-          <Button size="small" color="secondary" variant="outlined">
+          <Button
+            size="small"
+            color="secondary"
+            variant="outlined"
+            onClick={this.onQuoteClick}
+          >
             Request Quote
           </Button>
         </CardActions>
@@ -93,4 +95,7 @@ TourCard.propTypes = {
   image: PropTypes.string
 };
 
-export default withStyles(styles)(withRouter(TourCard));
+export default connect(
+  null,
+  { setQuote, setQuoteDetailsDialogOpen }
+)(withStyles(styles)(withRouter(TourCard)));

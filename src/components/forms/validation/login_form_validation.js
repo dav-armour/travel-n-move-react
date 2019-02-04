@@ -1,4 +1,4 @@
-const validate = values => {
+const validate = (values = {}) => {
   const errors = {};
   const requiredFields = ["email", "password"];
   requiredFields.forEach(field => {

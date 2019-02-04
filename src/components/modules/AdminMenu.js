@@ -51,8 +51,8 @@ const styles = theme => ({
 
 function getDrawerStatusFromSession() {
   const status = sessionStorage.getItem("admin_menu_open");
-  if (status === undefined) {
-    return true;
+  if (status === null) {
+    return document.body.clientWidth > 600;
   }
   return JSON.parse(status);
 }

@@ -1,19 +1,16 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
-import ContactUsForm from "./../forms/contactUsForm";
+import EnquiryForm from "./../forms/EnquiryForm";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import { FormLabel } from "@material-ui/core";
 
 const styles = theme => ({
   paper: {
     flexGrow: 1,
     minHeight: 390,
-    // minWidth: 400,
     maxWidth: 410
-    // minWidth: 300
   },
   mainWrapper: {
     marginTop: "40px"
@@ -21,14 +18,11 @@ const styles = theme => ({
   contactWrapper: {
     display: "flex",
     flexDirection: "column",
-    // justifyContent: "center"
-    // justifyContent: "center",
     alignItems: "flex-start",
     paddingLeft: "30px",
     paddingTop: 15
   },
   contactRows: {
-    // border: "1px solid black",
     marginBottom: "10px"
   },
   rowTitle: {
@@ -53,11 +47,11 @@ class ContactUsPage extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.mainWrapper}>
-        <Grid container spacing={24} justify="center">
+        <Grid container spacing={16} justify="center">
           <Grid item xs={10} sm={6} md={4}>
             <Paper className={classes.paper}>
               <FormContainer>
-                <ContactUsForm />
+                <EnquiryForm />
               </FormContainer>
             </Paper>
           </Grid>
