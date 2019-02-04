@@ -26,7 +26,7 @@ const styles = theme => ({
     marginBottom: "10px"
   },
   rowTitle: {
-    fontWeight: "bold"
+    fontWeight: 500
   }
 });
 
