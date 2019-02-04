@@ -35,7 +35,7 @@ const styles = theme => ({
     maxWidth: "220px",
     padding: "20px"
   },
-  aboutUs: {
+  titleText: {
     paddingTop: "10px"
   },
   content: {
@@ -61,7 +61,6 @@ class AboutUsPage extends Component {
             variant="display3"
             className={classes.titleText}
             gutterBottom
-            className={classes.aboutUs}
           >
             About Us
           </Typography>
@@ -70,7 +69,7 @@ class AboutUsPage extends Component {
             <div>
               <img
                 src="./Deepak1.png"
-                alt="Deepak Sharma's Photo"
+                alt="Deepak Sharma's"
                 className={classes.photo}
               />
             </div>
