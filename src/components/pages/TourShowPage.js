@@ -49,28 +49,20 @@ const styles = theme => ({
     margin: "0 auto",
     display: "flex",
     justifyContent: "center"
-    // border: "1px solid black"
   },
   infoBox: {
     height: "100px",
     width: "50%"
-    // borderRight: "1px solid #000"
-  },
-  priceAndDurationInnerWrapper: {
-    display: "flex",
-    justifyContent: "center"
   },
   startingFrom: {
     display: "flex",
     paddingLeft: "20px"
   },
-
   price: {
     display: "flex",
     justifyContent: "flex-start",
     paddingLeft: "20px"
   },
-
   duration: {
     display: "flex",
     justifyContent: "flex-end",
@@ -96,26 +88,20 @@ class TourShowPage extends Component {
   render() {
     const { classes, tour } = this.props;
 
-    console.log("from componentDidMount", tour);
-
     return (
       <div>
         <HeroImage imageLink={tour.image} height={"40vh"} />
-        {/* <div className={classes.bannerImageWrapper}>
-         
-        </div> */}
         <div className={classes.contentContainer}>
           <div className={classes.tourTitle}>
             <Typography
               component="h2"
-              variant="display3"
+              variant="h2"
               className={classes.titleText}
               gutterBottom
             >
               {tour.title}
             </Typography>
           </div>
-          {/* styling price and duration */}
           <div className={classes.priceAndDurationWrapper}>
             <div className={classNames(classes.infoBox, classes.rightBorder)}>
               <div className={classes.duration}>
@@ -152,13 +138,12 @@ class TourShowPage extends Component {
             </div>
           </div>
           <div className={classes.descriptionWrapper}>
-            <Typography variant="body2" gutterBottom>
-              {tour.description}
-              body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore
-              consectetur, neque doloribus, cupiditate numquam dignissimos
-              laborum fugiat deleniti? Eum quasi quidem quibusdam.
-            </Typography>
+            <Typography
+              variant="body1"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: tour.description }}
+              className="tourDescriptionContent"
+            />
           </div>
           <div className={classes.buttonWrapper}>
             <Button size="large" color="secondary" variant="outlined">

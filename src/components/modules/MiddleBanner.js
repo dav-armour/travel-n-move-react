@@ -24,7 +24,7 @@ function MiddleBanner(props) {
     <div className={classes.root}>
       <Toolbar className={classes.popular}>
         <Grid container className={classes.root} justify="center">
-          <Typography variant="h6" color="inherit" className={classes.popular}>
+          <Typography variant="h4" color="inherit" className={classes.popular}>
             Popular Tour Packages
           </Typography>
         </Grid>

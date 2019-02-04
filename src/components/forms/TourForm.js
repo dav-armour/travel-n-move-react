@@ -16,14 +16,13 @@ import { createOrUpdateTour, getTour, setTour } from "./../../actions";
 
 class TourForm extends Component {
   onFormSubmit = formValues => {
-    const { createOrUpdateTour, match } = this.props;
-    const { _id } = match.params;
+    const { createOrUpdateTour, tour_id } = this.props;
     formValues.image = formValues.image[0];
     let formData = new FormData();
     for (let key in formValues) {
       formData.append(key, formValues[key]);
     }
-    createOrUpdateTour(_id, formData);
+    createOrUpdateTour(tour_id, formData);
   };
 
   componentDidMount() {
@@ -150,7 +149,7 @@ const WrappedTourForm = reduxForm({
 })(TourForm);
 
 const mapStateToProps = state => {
-  const { _id, ...initialValues } = state.tour;
+  const { _id, image, ...initialValues } = state.tour;
   return {
     initialValues,
     tour_id: _id

@@ -1,5 +1,11 @@
 import LocalApi from "./../apis/local";
 import { handleServerError } from "./../helpers/error_helper";
+import {
+  QUOTE,
+  QUOTES,
+  SET_SNACKBAR_SETTINGS,
+  QUOTE_DETAILS_DIALOG_OPEN
+} from "./types";
 
 export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
   let formName = "";
@@ -22,11 +28,11 @@ export const sendQuoteRequest = (quoteType, { client_comments, ...user }) => {
       const data = { type: quoteType, ...values, user, client_comments };
       let response = await LocalApi.post("/quotes", data);
       dispatch({
-        type: "QUOTE",
+        type: QUOTE,
         payload: response.data
       });
       dispatch({
-        type: "SET_SNACKBAR_SETTINGS",
+        type: SET_SNACKBAR_SETTINGS,
         payload: {
           open: true,
           variant: "success",
@@ -48,7 +54,7 @@ export const updateQuoteRequest = ({ _id, ...quoteDetails }) => {
     try {
       let response = await LocalApi.put(`/quotes/${_id}`, quoteDetails);
       dispatch({
-        type: "QUOTE",
+        type: QUOTE,
         payload: response.data.quote
       });
       const { page, rowsPerPage } = getState().table_settings;
@@ -56,11 +62,11 @@ export const updateQuoteRequest = ({ _id, ...quoteDetails }) => {
         params: { page, rowsPerPage }
       });
       dispatch({
-        type: "QUOTES",
+        type: QUOTES,
         payload: response.data
       });
       dispatch({
-        type: "SET_SNACKBAR_SETTINGS",
+        type: SET_SNACKBAR_SETTINGS,
         payload: {
           open: true,
           variant: "success",
@@ -82,7 +88,7 @@ export const getQuotes = () => {
       });
 
       dispatch({
-        type: "QUOTES",
+        type: QUOTES,
         payload: response.data
       });
     } catch (err) {
@@ -93,14 +99,14 @@ export const getQuotes = () => {
 
 export const setQuote = quoteDetails => {
   return {
-    type: "QUOTE",
+    type: QUOTE,
     payload: quoteDetails
   };
 };
 
 export const setQuoteDetailsDialogOpen = open => {
   return {
-    type: "QUOTE_DETAILS_DIALOG_OPEN",
+    type: QUOTE_DETAILS_DIALOG_OPEN,
     payload: { open }
   };
 };

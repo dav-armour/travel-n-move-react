@@ -1,5 +1,6 @@
 import LocalApi from "./../apis/local";
 import { handleServerError } from "./../helpers/error_helper";
+import { TOUR, TOURS, SET_SNACKBAR_SETTINGS } from "./types";
 
 export const getTours = (params = {}) => {
   return async (dispatch, getState) => {
@@ -7,7 +8,7 @@ export const getTours = (params = {}) => {
       let response = await LocalApi.get("/tours", { params });
 
       dispatch({
-        type: "TOURS",
+        type: TOURS,
         payload: response.data
       });
     } catch (err) {
@@ -22,7 +23,7 @@ export const getTour = _id => {
       let response = await LocalApi.get(`/tours/${_id}`);
 
       dispatch({
-        type: "TOUR",
+        type: TOUR,
         payload: response.data.tour
       });
     } catch (err) {
@@ -45,7 +46,7 @@ export const createOrUpdateTour = (_id, formData) => {
         response = await LocalApi.put(`/tours/${_id}`, formData);
       }
       dispatch({
-        type: "TOUR",
+        type: TOUR,
         payload: response.data
       });
       const { page, rowsPerPage } = getState().table_settings;
@@ -53,12 +54,12 @@ export const createOrUpdateTour = (_id, formData) => {
         params: { page, rowsPerPage }
       });
       dispatch({
-        type: "TOURS",
+        type: TOURS,
         payload: response.data
       });
       const message = _id ? "updated" : "created";
       dispatch({
-        type: "SET_SNACKBAR_SETTINGS",
+        type: SET_SNACKBAR_SETTINGS,
         payload: {
           open: true,
           variant: "success",
@@ -73,7 +74,7 @@ export const createOrUpdateTour = (_id, formData) => {
 
 export const setTour = tourDetails => {
   return {
-    type: "TOUR",
+    type: TOUR,
     payload: tourDetails
   };
 };

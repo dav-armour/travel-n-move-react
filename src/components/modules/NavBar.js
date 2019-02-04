@@ -89,25 +89,46 @@ class NavBar extends Component {
         <Hidden smDown>
           <Toolbar className={classes.secondaryBar}>
             <div>
-              <Button className={classes.button} component={Link} to="/">
+              <Button
+                id="home-nav-link"
+                className={classes.button}
+                component={Link}
+                to="/"
+              >
                 Home
               </Button>
 
-              <Button className={classes.button} component={Link} to="/tours">
+              <Button
+                id="tours-nav-link"
+                className={classes.button}
+                component={Link}
+                to="/tours"
+              >
                 Tour Packages
               </Button>
 
-              <Button className={classes.button} component={Link} to="/about">
+              <Button
+                id="about-nav-link"
+                className={classes.button}
+                component={Link}
+                to="/about"
+              >
                 About Us
               </Button>
 
-              <Button className={classes.button} component={Link} to="/contact">
+              <Button
+                id="contact-nav-link"
+                className={classes.button}
+                component={Link}
+                to="/contact"
+              >
                 Contact Us
               </Button>
 
               {token ? (
                 <>
                   <Button
+                    id="dashboard-nav-link"
                     className={classes.button}
                     component={Link}
                     to="/admin/dashboard"
@@ -115,12 +136,21 @@ class NavBar extends Component {
                     Dashboard
                   </Button>
 
-                  <Button className={classes.button} onClick={this.logout}>
+                  <Button
+                    id="logout-nav-link"
+                    className={classes.button}
+                    onClick={this.logout}
+                  >
                     Logout
                   </Button>
                 </>
               ) : (
-                <Button className={classes.button} component={Link} to="/login">
+                <Button
+                  id="login-nav-link"
+                  className={classes.button}
+                  component={Link}
+                  to="/login"
+                >
                   Login
                 </Button>
               )}
