@@ -17,7 +17,7 @@ const styles = theme => ({
   logo: {
     flexGrow: 1,
     textDecoration: "none",
-    [theme.breakpoints.down(360)]: {
+    [theme.breakpoints.down(375)]: {
       fontSize: "1rem"
     }
   },
@@ -40,7 +40,7 @@ const styles = theme => ({
   contactButton: {
     fontSize: "1.25rem",
     padding: 0,
-    [theme.breakpoints.down(360)]: {
+    [theme.breakpoints.down(375)]: {
       fontSize: "1rem"
     }
   }

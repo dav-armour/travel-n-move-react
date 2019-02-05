@@ -16,7 +16,7 @@ import { createOrUpdateTour, getTour, setTour } from "./../../actions";
 
 class TourForm extends Component {
   onFormSubmit = formValues => {
-    const { createOrUpdateTour, tour_id } = this.props;
+    const { createOrUpdateTour, tour_id, history } = this.props;
     if (formValues.image) {
       formValues.image = formValues.image[0];
     }
@@ -25,6 +25,7 @@ class TourForm extends Component {
       formData.append(key, formValues[key]);
     }
     createOrUpdateTour(tour_id, formData);
+    history.push(`/tours/${tour_id}`);
   };
 
   componentDidMount() {

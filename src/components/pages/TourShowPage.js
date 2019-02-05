@@ -9,6 +9,18 @@ import { getTour, setQuote, setQuoteDetailsDialogOpen } from "./../../actions";
 import QuoteDetailsDialog from "../forms/QuoteDetailsDialog";
 
 const styles = theme => ({
+  pageContentWrapper: {
+    minHeight: "calc(100vh - 194px)",
+    [theme.breakpoints.up(405)]: {
+      minHeight: "calc(100vh - 170px)"
+    },
+    [theme.breakpoints.up(600)]: {
+      minHeight: "calc(100vh - 178px)"
+    },
+    [theme.breakpoints.up(960)]: {
+      minHeight: "calc(100vh - 214px)"
+    }
+  },
   contentContainer: {
     maxWidth: "1300px",
     margin: "0 auto",
@@ -25,12 +37,7 @@ const styles = theme => ({
       fontSize: "2.5rem"
     }
   },
-  priceText: {
-    [theme.breakpoints.down(400)]: {
-      fontSize: "1.5rem"
-    }
-  },
-  durationText: {
+  infoBoxText: {
     [theme.breakpoints.down(400)]: {
       fontSize: "1.5rem"
     }
@@ -105,7 +112,7 @@ class TourShowPage extends Component {
     const { classes, tour } = this.props;
 
     return (
-      <div>
+      <div className={classes.pageContentWrapper}>
         <QuoteDetailsDialog />
         <HeroImage imageLink={tour.image} height={"40vh"} />
         <div className={classes.contentContainer}>
@@ -130,7 +137,7 @@ class TourShowPage extends Component {
                 <Typography
                   variant="h4"
                   gutterBottom
-                  className={classes.durationText}
+                  className={classes.infoBoxText}
                 >
                   {tour.duration}
                 </Typography>
@@ -147,7 +154,7 @@ class TourShowPage extends Component {
                 <Typography
                   variant="h4"
                   gutterBottom
-                  className={classes.priceText}
+                  className={classes.infoBoxText}
                 >
                   Rs. {tour.price}
                 </Typography>
