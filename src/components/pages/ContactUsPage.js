@@ -6,22 +6,23 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 const styles = theme => ({
+  pageContentWrapper: {
+    paddingTop: theme.spacing.unit * 8,
+    minHeight: "calc(100vh - 174px)",
+    [theme.breakpoints.up(405)]: {
+      minHeight: "calc(100vh - 150px)"
+    },
+    [theme.breakpoints.up(600)]: {
+      minHeight: "calc(100vh - 158px)"
+    },
+    [theme.breakpoints.up(960)]: {
+      minHeight: "calc(100vh - 194px)"
+    }
+  },
   paper: {
     flexGrow: 1,
     minHeight: 390,
     maxWidth: 410
-  },
-  mainWrapper: {
-    minHeight: "calc(100vh - 149px)",
-    paddingTop: theme.spacing.unit * 8,
-
-    [theme.breakpoints.up(600)]: {
-      minHeight: "calc(100vh - 158px)"
-    },
-
-    [theme.breakpoints.up(960)]: {
-      minHeight: "calc(100vh - 194px)"
-    }
   },
   contactWrapper: {
     display: "flex",
@@ -49,7 +50,7 @@ class ContactUsPage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.mainWrapper}>
+      <div className={classes.pageContentWrapper}>
         <Grid container>
           <Grid item xs={12} sm={6} className={classes.formGridItem}>
             <Paper className={classes.paper}>

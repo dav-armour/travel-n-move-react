@@ -5,19 +5,19 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
+  pageContentWrapper: {
+    minHeight: "calc(100vh - 149px)",
+    [theme.breakpoints.up(600)]: {
+      minHeight: "calc(100vh - 158px)"
+    },
+    [theme.breakpoints.up(960)]: {
+      minHeight: "calc(100vh - 194px)"
+    }
+  },
   aboutUsWrapper: {
     display: "flex",
     flexDirection: "column",
-    border: "1px solid black",
     alignItems: "center"
-  },
-  photoWrapper: {
-    height: "50px",
-    width: "40px",
-    border: "1px solid red"
-  },
-  contentWrapper: {
-    border: "1px solid red"
   },
   paperWrapper: {
     display: "flex",
@@ -53,7 +53,7 @@ class AboutUsPage extends Component {
     const { classes } = this.props;
 
     return (
-      <div>
+      <div className={classes.pageContentWrapper}>
         <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
         <div className={classes.aboutUsWrapper}>
           <Typography variant="h2" className={classes.titleText} gutterBottom>
