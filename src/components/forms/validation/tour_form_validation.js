@@ -12,10 +12,11 @@ const validate = (values = {}) => {
       errors[field] = "Required";
     }
   });
-  if (!values.image || values.image.length === 0) {
-    errors.image = "Required";
-  }
+
   return errors;
 };
+
+export const validateImage = value =>
+  !value || value.length === 0 ? "Required" : undefined;
 
 export default validate;

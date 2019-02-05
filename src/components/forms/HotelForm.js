@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
 import { createSelectNumberRange } from "./../../helpers/input_helpers";
 import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
@@ -126,8 +127,8 @@ const mapStateToProps = state => {
   return {
     dialogOpen: state.dialog.personalInfoDialog.open,
     initialValues: {
-      start_date: new Date().toISOString().split("T")[0],
-      end_date: new Date().toISOString().split("T")[0],
+      start_date: moment().format("YYYY-MM-DD"),
+      end_date: moment().format("YYYY-MM-DD"),
       adults: 1,
       children: 0,
       num_rooms: 1,
