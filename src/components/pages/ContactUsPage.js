@@ -14,7 +14,25 @@ const styles = theme => ({
   },
   mainWrapper: {
     marginTop: "40px",
-    minHeight: "74vh"
+    minHeight: "74vh",
+    width: "100%",
+
+    [theme.breakpoints.up("sm")]: {
+      minHeight: "calc(100vh - 184px)",
+      border: "1px solid white"
+    },
+    [theme.breakpoints.up("md")]: {
+      minHeight: "calc(100vh - 220px)"
+      // border: "1px solid black"
+    },
+    [theme.breakpoints.up("lg")]: {
+      minHeight: "calc(100vh - 240px)"
+      // border: "1px solid red"
+    },
+    [theme.breakpoints.up("xl")]: {
+      minHeight: "calc(100vh - 260px)"
+      // border: "1px solid black"
+    }
   },
   contactWrapper: {
     display: "flex",
