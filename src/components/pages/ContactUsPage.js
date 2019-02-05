@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Typography from "@material-ui/core/Typography";
 import EnquiryForm from "./../forms/EnquiryForm";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -23,27 +22,6 @@ const styles = theme => ({
     [theme.breakpoints.up(960)]: {
       minHeight: "calc(100vh - 194px)"
     }
-    // mainWrapper: {
-    //   paddingTop: "40px",
-    //   minHeight: "74vh",
-    //   width: "100%",
-
-    //   [theme.breakpoints.up("sm")]: {
-    //     minHeight: "calc(100vh - 184px)",
-    //     border: "1px solid white"
-    //   },
-    //   [theme.breakpoints.up("md")]: {
-    //     minHeight: "calc(100vh - 220px)",
-    //     border: "1px solid black"
-    //   },
-    //   [theme.breakpoints.up("lg")]: {
-    //     minHeight: "calc(100vh - 240px)",
-    //     border: "1px solid red"
-    //   },
-    //   [theme.breakpoints.up("xl")]: {
-    //     minHeight: "calc(100vh - 800px)",
-    //     border: "1px solid blue"
-    //   }
   },
   contactWrapper: {
     display: "flex",
@@ -57,41 +35,30 @@ const styles = theme => ({
   },
   rowTitle: {
     fontWeight: 500
+  },
+  formGridItem: {
+    padding: 20,
+    [theme.breakpoints.up(600)]: {
+      display: "flex",
+      justifyContent: "flex-end"
+    }
   }
 });
-
-function FormContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: "12px 24px 24px" }}>
-      {props.children}
-    </Typography>
-  );
-}
-
-FormContainer.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 class ContactUsPage extends Component {
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.mainWrapper}>
-        <Grid container spacing={24} justify="center">
-          <Grid
-            item
-            xs={10}
-            sm={6}
-            md={4}
-            style={{ display: "flex", justifyContent: "flex-end" }}
-          >
+        <Grid container>
+          <Grid item xs={12} sm={6} className={classes.formGridItem}>
             <Paper className={classes.paper}>
-              <FormContainer>
+              <Typography component="div" style={{ padding: "12px 24px 24px" }}>
                 <EnquiryForm />
-              </FormContainer>
+              </Typography>
             </Paper>
           </Grid>
-          <Grid item xs={10} sm={6} md={4}>
+          <Grid item xs={12} sm={6} style={{ padding: 20 }}>
             <Paper className={classes.paper}>
               <div className={classes.contactWrapper}>
                 <Typography

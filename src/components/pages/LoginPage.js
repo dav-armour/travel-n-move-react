@@ -12,7 +12,7 @@ const styles = theme => ({
     },
 
     [theme.breakpoints.up(960)]: {
-      minHeight: "calc(100vh - 193px)"
+      minHeight: "calc(100vh - 194px)"
     }
   }
 });
