@@ -8,8 +8,7 @@ const styles = theme => ({
     paddingTop: "40px",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    minHeight: "740px"
+    backgroundPosition: "center"
   }
 });
 

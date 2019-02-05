@@ -83,7 +83,7 @@ class NavBar extends Component {
             to="/contact"
           >
             <LocalPhone className={classes.leftIcon} />
-            0421631447
+            0186-2225332
           </Button>
         </Toolbar>
         <Hidden smDown>
