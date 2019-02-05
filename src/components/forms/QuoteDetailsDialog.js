@@ -320,7 +320,7 @@ const WrappedQuoteDetailsDialog = reduxForm({
 const mapStateToProps = state => {
   const { start_date, end_date, ...initialValues } = state.quote;
   initialValues.start_date = moment(start_date).format("YYYY-MM-DD");
-  initialValues.end_date = moment(start_date).format("YYYY-MM-DD");
+  initialValues.end_date = moment(end_date).format("YYYY-MM-DD");
   return {
     dialogOpen: state.dialog.quoteDetailsDialog.open,
     quote: state.quote,

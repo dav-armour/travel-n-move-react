@@ -5,7 +5,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import classNames from "classnames";
 import HeroImage from "./../modules/HeroImage";
-import { getTour } from "./../../actions";
+import { getTour, setQuote, setQuoteDetailsDialogOpen } from "./../../actions";
+import QuoteDetailsDialog from "../forms/QuoteDetailsDialog";
 
 const styles = theme => ({
   contentContainer: {
@@ -85,11 +86,27 @@ class TourShowPage extends Component {
     getTour(id);
   }
 
+  onQuoteClick = event => {
+    console.log("clicked");
+    const { tour, setQuote, setQuoteDetailsDialogOpen } = this.props;
+    const { title, summary } = tour;
+    setQuote({
+      type: "Holiday",
+      destination: title,
+      client_comments: `REQUESTING TOUR PACKAGE\nTitle: ${title}\nSummary: ${summary}`,
+      adults: 1,
+      children: 0,
+      budget: "affordable"
+    });
+    setQuoteDetailsDialogOpen(true);
+  };
+
   render() {
     const { classes, tour } = this.props;
 
     return (
       <div>
+        <QuoteDetailsDialog />
         <HeroImage imageLink={tour.image} height={"40vh"} />
         <div className={classes.contentContainer}>
           <div className={classes.tourTitle}>
@@ -146,7 +163,12 @@ class TourShowPage extends Component {
             />
           </div>
           <div className={classes.buttonWrapper}>
-            <Button size="large" color="secondary" variant="outlined">
+            <Button
+              size="large"
+              color="secondary"
+              variant="outlined"
+              onClick={this.onQuoteClick}
+            >
               Request Quote
             </Button>
           </div>
@@ -165,6 +187,6 @@ const mapStateToProps = state => {
 export default withStyles(styles)(
   connect(
     mapStateToProps,
-    { getTour }
+    { getTour, setQuote, setQuoteDetailsDialogOpen }
   )(TourShowPage)
 );
