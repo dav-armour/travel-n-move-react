@@ -8,7 +8,6 @@ const styles = theme => ({
   aboutUsWrapper: {
     display: "flex",
     flexDirection: "column",
-    border: "1px solid black",
     alignItems: "center"
   },
   photoWrapper: {
