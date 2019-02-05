@@ -11,13 +11,15 @@ import Paper from "@material-ui/core/Paper";
 import QuillEditor from "./fields/QuillEditor";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 import ReduxTextField from "./fields/ReduxTextField";
-import validate from "./validation/tour_form_validation";
+import validate, { validateImage } from "./validation/tour_form_validation";
 import { createOrUpdateTour, getTour, setTour } from "./../../actions";
 
 class TourForm extends Component {
   onFormSubmit = formValues => {
     const { createOrUpdateTour, tour_id } = this.props;
-    formValues.image = formValues.image[0];
+    if (formValues.image) {
+      formValues.image = formValues.image[0];
+    }
     let formData = new FormData();
     for (let key in formValues) {
       formData.append(key, formValues[key]);
@@ -105,6 +107,7 @@ class TourForm extends Component {
                       shrink: true
                     }}
                     margin="normal"
+                    validate={tour_id ? undefined : validateImage}
                   />
                 </div>
                 <div>
