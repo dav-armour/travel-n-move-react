@@ -19,10 +19,30 @@ http://travel-n-move-react-staging.s3-website-ap-southeast-2.amazonaws.com/
 
 - Functionality / features:
 
-  The website offers following functionality and features:
+  Functionality:
 
   1. A navigation bar at the top to navigate to different pages of the website - home, tour packages, about us, contact us, login
+
   2. Request quotes for holiday packages, hotels and flights
+
   3. Display key popular tour packages as a summary card on the home page
+
   4. Ability to further drill down the summary to get detail on the tour packages
-  5.
+
+  5. A separate tour package page to list down all the tour packages that business has to offer
+
+  6. Each tour packages can be further drilled down to get the more information
+
+  7. About us page that gives more information on the business
+
+  8. Contact us page with a form to enquiry on any products and address details to ring or visit the travel agent
+
+  Features:
+
+  1. The website is responsive to different screen size
+
+  2. Easy to understand menu bars, forms and fields. User can navigate through the website with and get required information with less number of clicks and confusions.
+
+  Each fields on the form have description, validation attached for the user to input necessary data, "Learn more" and "Request Quote" for holidays are located on appropriate spot etc
+
+  3.
