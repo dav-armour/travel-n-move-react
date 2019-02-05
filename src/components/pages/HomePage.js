@@ -3,6 +3,7 @@ import CardsGrid from "../modules/CardsGrid";
 import HeroImage from "./../modules/HeroImage";
 import MiddleBanner from "./../modules/MiddleBanner";
 import QuoteFormTabs from "./../modules/QuoteFormTabs";
+import Footer from "./../modules/Footer";
 
 class HomePage extends Component {
   render() {

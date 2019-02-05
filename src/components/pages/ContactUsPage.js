@@ -13,7 +13,8 @@ const styles = theme => ({
     maxWidth: 410
   },
   mainWrapper: {
-    marginTop: "40px"
+    marginTop: "40px",
+    minHeight: "74vh"
   },
   contactWrapper: {
     display: "flex",
