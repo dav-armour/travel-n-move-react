@@ -16,7 +16,7 @@ import { setAuthToken, setSnackbarSettings } from "./../../actions";
 
 const styles = theme => ({
   paper: {
-    marginTop: theme.spacing.unit * 8,
+    // marginTop: theme.spacing.unit * 8,
     display: "flex",
     flexDirection: "column",
     height: "400px",
@@ -52,6 +52,7 @@ class LoginForm extends Component {
 
     LocalApi.post("/auth/login", { email, password })
       .then(response => {
+        console.log(response);
         this.props.setAuthToken(response.data.token);
         this.props.history.push("/admin/dashboard");
       })

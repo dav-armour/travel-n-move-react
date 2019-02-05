@@ -8,7 +8,6 @@ import TourIndexPage from "./pages/TourIndexPage";
 import TourShowPage from "./pages/TourShowPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import ContactUsPage from "./pages/ContactUsPage";
-import LoginForm from "./forms/LoginForm";
 import TourEditCreatePage from "./pages/admin/TourEditCreatePage";
 import MenuDrawer from "./modules/MenuDrawer";
 import QuotesPage from "./pages/admin/QuotesPage";
@@ -17,6 +16,7 @@ import ToursPage from "./pages/admin/ToursPage";
 import DashboardPage from "./pages/admin/DashboardPage";
 import CustomSnackbar from "./modules/CustomSnackbar";
 import Footer from "./modules/Footer";
+import LoginPage from "./pages/LoginPage";
 import "./../css/Body.css";
 
 class App extends Component {
@@ -33,7 +33,7 @@ class App extends Component {
           <Route exact path="/tours/:id" component={TourShowPage} />
           <Route exact path="/about" component={AboutUsPage} />
           <Route exact path="/contact" component={ContactUsPage} />
-          <Route exact path="/login" component={LoginForm} />
+          <Route exact path="/login" component={LoginPage} />
           <PrivateRoute
             exact
             path="/admin/dashboard"
