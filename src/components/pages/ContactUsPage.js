@@ -48,8 +48,14 @@ class ContactUsPage extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.mainWrapper}>
-        <Grid container spacing={16} justify="center">
-          <Grid item xs={10} sm={6} md={4}>
+        <Grid container spacing={24} justify="center">
+          <Grid
+            item
+            xs={10}
+            sm={6}
+            md={4}
+            style={{ display: "flex", justifyContent: "flex-end" }}
+          >
             <Paper className={classes.paper}>
               <FormContainer>
                 <EnquiryForm />
