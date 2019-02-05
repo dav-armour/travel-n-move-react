@@ -1,16 +1,19 @@
-export default function(values) {
+const validate = (values = {}) => {
   const errors = {};
   const requiredFields = [
-    "ticketType",
-    "origin",
-    "destination",
+    "first_name",
+    "last_name",
     "email",
-    "notes"
+    "subject",
+    "message"
   ];
+
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = "Required";
     }
   });
   return errors;
-}
+};
+
+export default validate;

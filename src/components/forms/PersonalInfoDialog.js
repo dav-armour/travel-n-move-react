@@ -10,10 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import ReduxTextField from "./fields/ReduxTextField";
 import validate from "./validation/personal_info_validation";
-import {
-  setPersonalInfoDialogOpen,
-  sendQuoteRequest
-} from "./../../actions/index";
+import { setPersonalInfoDialogOpen, sendQuoteRequest } from "./../../actions";
 
 class PersonalInfoDialog extends Component {
   onClose = () => {
@@ -52,7 +49,6 @@ class PersonalInfoDialog extends Component {
                 label="First Name"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"
@@ -60,7 +56,6 @@ class PersonalInfoDialog extends Component {
                 label="Last Name"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="email"
@@ -68,7 +63,6 @@ class PersonalInfoDialog extends Component {
                 label="Email"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"
@@ -76,7 +70,6 @@ class PersonalInfoDialog extends Component {
                 label="Phone Number"
                 component={ReduxTextField}
                 margin="dense"
-                // required
               />
               <Field
                 type="text"
@@ -84,6 +77,7 @@ class PersonalInfoDialog extends Component {
                 label="Comments"
                 component={ReduxTextField}
                 margin="dense"
+                multiline
               />
             </DialogContent>
             <DialogActions>

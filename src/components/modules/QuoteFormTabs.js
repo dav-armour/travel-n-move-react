@@ -27,10 +27,21 @@ TabContainer.propTypes = {
 const styles = theme => ({
   tabContainer: {
     flexGrow: 1,
-    maxWidth: 360
+    maxWidth: 300,
+    marginLeft: "auto",
+    marginRight: "auto",
+    [theme.breakpoints.up(380)]: {
+      maxWidth: 360
+    },
+    [theme.breakpoints.up(550)]: {
+      marginLeft: 80
+    }
   },
   tabItems: {
-    minWidth: 120
+    minWidth: 100,
+    [theme.breakpoints.up(380)]: {
+      minWidth: 120
+    }
   }
 });
 

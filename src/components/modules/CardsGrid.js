@@ -1,54 +1,49 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
-import TourCard from "./TourCard";
 import { withStyles } from "@material-ui/core/styles";
+import { getTours } from "./../../actions";
+import TourCard from "./TourCard";
+import QuoteDetailsDialog from "./../forms/QuoteDetailsDialog";
 
 const styles = theme => ({
-  layout: {
+  cardsContainer: {
     width: "auto",
     marginLeft: theme.spacing.unit * 3,
-    marginRight: theme.spacing.unit * 3,
-    [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-      width: 1100,
-      marginLeft: "auto",
-      marginRight: "auto"
-    }
-  },
-  cardGrid: {
-    padding: `${theme.spacing.unit * 8}px 0`
-  },
-  cardMedia: {
-    paddingTop: "56.25%" // 16:9
-  },
-  cardActions: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end"
+    marginRight: theme.spacing.unit * 3
   }
 });
 
-const cards = [1, 2, 3, 4];
+class CardsGrid extends Component {
+  componentDidMount() {
+    const { getTours, query } = this.props;
+    getTours(query);
+  }
 
-function CardsGrid(props) {
-  const { classes } = props;
-
-  return (
-    <div className={classNames(classes.layout, classes.cardGrid)}>
-      <Grid container spacing={40}>
-        {cards.map(card => (
-          <Grid item key={card} sm={6} md={4} lg={3}>
-            <TourCard />
-          </Grid>
-        ))}
-      </Grid>
-    </div>
-  );
+  render() {
+    const { tours, classes } = this.props;
+    return (
+      <div className={classes.cardsContainer}>
+        <QuoteDetailsDialog />
+        <Grid container spacing={40}>
+          {tours.map(tour => (
+            <Grid item key={tour._id} sm={6} md={4} lg={3}>
+              <TourCard {...tour} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
+    );
+  }
 }
 
-CardsGrid.propTypes = {
-  classes: PropTypes.object.isRequired
+const mapStateToProps = state => {
+  return {
+    tours: state.tours.tours
+  };
 };
 
-export default withStyles(styles)(CardsGrid);
+export default connect(
+  mapStateToProps,
+  { getTours }
+)(withStyles(styles)(CardsGrid));

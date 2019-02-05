@@ -3,12 +3,13 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
 import { createSelectNumberRange } from "./../../helpers/input_helpers";
 import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
 import validate from "./validation/hotel_form_validation";
-import { setPersonalInfoDialogOpen } from "./../../actions/index";
+import { setPersonalInfoDialogOpen } from "./../../actions";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 
 class HotelForm extends Component {
@@ -67,7 +68,7 @@ class HotelForm extends Component {
             <Field
               name="num_rooms"
               component={ReduxSelectField}
-              label="Room"
+              label="Rooms"
               selectOptions={createSelectNumberRange(1, 9)}
               margin="dense"
             />
@@ -93,7 +94,7 @@ class HotelForm extends Component {
           </div>
           <div>
             <Field
-              name="hotel_type"
+              name="num_stars"
               component={ReduxSelectField}
               label="Hotel Type"
               selectOptions={createSelectNumberRange(1, 5, " Stars")}
@@ -126,12 +127,12 @@ const mapStateToProps = state => {
   return {
     dialogOpen: state.dialog.personalInfoDialog.open,
     initialValues: {
-      start_date: new Date().toISOString().split("T")[0],
-      end_date: new Date().toISOString().split("T")[0],
+      start_date: moment().format("YYYY-MM-DD"),
+      end_date: moment().format("YYYY-MM-DD"),
       adults: 1,
       children: 0,
       num_rooms: 1,
-      hotel_type: 1,
+      num_stars: 3,
       flexible_dates: false
     }
   };

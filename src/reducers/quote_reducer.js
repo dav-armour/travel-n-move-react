@@ -1,13 +1,13 @@
 const defaultState = {};
 // Action
 // {
-//   type: "TOURS",
+//   type: "QUOTE",
 //   payload: {}
 // }
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case "QUOTE_REQUEST":
+    case "QUOTE":
       return action.payload;
     default:
       return state;

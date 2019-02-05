@@ -1,31 +1,42 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getTours } from "./../../actions";
+import CardsGrid from "./../modules/CardsGrid";
+import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import HeroImage from "./../modules/HeroImage";
 
-class TourIndexPage extends Component {
-  componentDidMount() {
-    const { getTours } = this.props;
-    getTours();
+const styles = theme => ({
+  titleText: {
+    margin: "0 auto",
+    textAlign: "center",
+    paddingTop: "10px"
+  },
+  cardsGrid: {
+    marginTop: "20px"
+  },
+  heroImage: {
+    "&::after": {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      background: "rgba(0,0,0,0.7)"
+    }
   }
-
+});
+class TourIndexPage extends Component {
   render() {
-    const { tours } = this.props;
+    const { classes } = this.props;
     return (
       <div>
-        <h1>Tour Page</h1>
-        <p>Number of tours: {tours.length}</p>
+        <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
+        <Typography variant="h2" className={classes.titleText} gutterBottom>
+          Tour Packages
+        </Typography>
+        <div className={classes.cardsGrid}>
+          <CardsGrid query={{}} />
+        </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    tours: state.tours
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { getTours }
-)(TourIndexPage);
+export default withStyles(styles)(TourIndexPage);

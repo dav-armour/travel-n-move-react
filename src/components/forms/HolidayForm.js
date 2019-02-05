@@ -3,12 +3,13 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
 import { createSelectNumberRange } from "./../../helpers/input_helpers";
 import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
 import ReduxSelectField from "./fields/ReduxSelectField";
 import validate from "./validation/hotel_form_validation";
-import { setPersonalInfoDialogOpen } from "./../../actions/index";
+import { setPersonalInfoDialogOpen } from "./../../actions";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 
 class HolidayForm extends Component {
@@ -84,12 +85,12 @@ class HolidayForm extends Component {
           </div>
           <div>
             <Field
-              name="budget_tier"
+              name="budget"
               component={ReduxSelectField}
               label="Budget"
               selectOptions={[
-                { value: "budget", label: "Budget" },
-                { value: "mid-range", label: "Mid Range" },
+                { value: "affordable", label: "Affordable" },
+                { value: "premium", label: "Premium" },
                 { value: "luxury", label: "Luxury" }
               ]}
               margin="dense"
@@ -121,12 +122,12 @@ const mapStateToProps = state => {
   return {
     dialogOpen: state.dialog.personalInfoDialog.open,
     initialValues: {
-      start_date: new Date().toISOString().split("T")[0],
-      end_date: new Date().toISOString().split("T")[0],
+      start_date: moment().format("YYYY-MM-DD"),
+      end_date: moment().format("YYYY-MM-DD"),
       adults: 1,
       children: 0,
       flexible_dates: false,
-      budget_tier: "budget"
+      budget: "affordable"
     }
   };
 };

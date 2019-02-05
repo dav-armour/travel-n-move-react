@@ -1,5 +1,5 @@
 import axios from "axios";
-import store from "./../store";
+import { store } from "./../Root";
 
 //create an instance of axios
 const LocalApi = axios.create({

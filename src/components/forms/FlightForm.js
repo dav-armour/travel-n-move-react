@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import moment from "moment";
 import { createSelectNumberRange } from "./../../helpers/input_helpers";
 import PersonalInfoDialog from "./PersonalInfoDialog";
 import ReduxTextField from "./fields/ReduxTextField";
@@ -10,20 +11,12 @@ import ReduxSelectField from "./fields/ReduxSelectField";
 import ReduxCheckbox from "./fields/ReduxCheckbox";
 import ReduxRadioGroup from "./fields/ReduxRadioGroup";
 import validate from "./validation/flight_form_validation";
-import { setPersonalInfoDialogOpen } from "./../../actions/index";
+import { setPersonalInfoDialogOpen } from "./../../actions";
 
 class FlightForm extends Component {
   onFormSubmit = formValues => {
-    console.log("Clicked Request Quote. Opening Dialog");
-    console.log(formValues);
     this.props.setPersonalInfoDialogOpen(true);
   };
-
-  // onDialogSubmit = formValues => {
-  //   setPersonalInfoDialogOpen(false);
-  //   console.log("Dialog submitted back to form");
-  //   console.log(formValues);
-  // };
 
   render() {
     const { handleSubmit } = this.props;
@@ -36,7 +29,7 @@ class FlightForm extends Component {
               component={ReduxRadioGroup}
               radioOptions={[
                 { value: "return", label: "Return" },
-                { value: "one_way", label: "One-Way" }
+                { value: "one-way", label: "One-Way" }
               ]}
             />
           </div>
@@ -47,7 +40,6 @@ class FlightForm extends Component {
               label="From"
               component={ReduxTextField}
               margin="dense"
-              // required
               style={{ marginTop: 0 }}
             />
           </div>
@@ -56,7 +48,6 @@ class FlightForm extends Component {
               type="text"
               name="destination"
               label="To"
-              // required
               component={ReduxTextField}
               margin="dense"
             />
@@ -118,9 +109,9 @@ class FlightForm extends Component {
               label="Ticket Class"
               selectOptions={[
                 { value: "economy", label: "Economy" },
-                { value: "premium_economy", label: "Premium Economy" },
+                { value: "premium economy", label: "Premium Economy" },
                 { value: "business", label: "Business" },
-                { value: "first_class", label: "First Class" }
+                { value: "first class", label: "First Class" }
               ]}
               margin="dense"
             />
@@ -152,8 +143,8 @@ const mapStateToProps = state => {
     dialogOpen: state.dialog.personalInfoDialog.open,
     initialValues: {
       ticket_type: "return",
-      start_date: new Date().toISOString().split("T")[0],
-      end_date: new Date().toISOString().split("T")[0],
+      start_date: moment().format("YYYY-MM-DD"),
+      end_date: moment().format("YYYY-MM-DD"),
       adults: 1,
       children: 0,
       seat_type: "economy",

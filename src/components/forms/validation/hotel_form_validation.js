@@ -1,19 +1,22 @@
-//const validate = ({ origin, destination, start_date, end_date }) => {
+import validateQuote from "./quote_validation";
 
-const validate = ({ destination, start_date, end_date }) => {
-  const errors = {};
+const validate = ({ num_stars, num_rooms, ...common_fields }) => {
+  const errors = validateQuote(common_fields);
 
-
-  if (!destination) {
-    errors.destination = "Destination city is required";
+  if (!num_stars) {
+    errors.num_stars = "Required";
   }
 
-  if (start_date < new Date()) {
-    errors.start_date = "Invalid check in date";
+  if (num_stars < 1 || num_stars > 5) {
+    errors.num_stars = "Invalid";
   }
 
-  if (end_date < new Date() || end_date < start_date) {
-    errors.end_date = "Invalid check out date";
+  if (!num_rooms) {
+    errors.num_rooms = "Required";
+  }
+
+  if (num_rooms < 1) {
+    errors.num_rooms = "Invalid";
   }
 
   return errors;

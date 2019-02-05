@@ -1,18 +1,11 @@
+import validateQuote from "./quote_validation";
 
-const validate = ({ destination, start_date, end_date }) => {
-  const errors = {};
+const validate = ({ budget, ...common_fields }) => {
+  const errors = validateQuote(common_fields);
 
-
-  if (!destination) {
-    errors.destination = "Destination city is required";
-  }
-
-  if (start_date < new Date()) {
-    errors.start_date = "Invalid check in date";
-  }
-
-  if (end_date < new Date() || end_date < start_date) {
-    errors.end_date = "Invalid check out date";
+  const allowed_budgets = ["affordable", "premium", "luxury"];
+  if (!allowed_budgets.includes(budget)) {
+    errors.budget = "Invalid";
   }
 
   return errors;

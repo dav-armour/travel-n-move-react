@@ -1,0 +1,10 @@
+body {
+  font-family: "Roboto", "Franklin Gothic Medium", Tahoma, sans-serif;
+}
+
+.tourDescriptionContent h1,
+.QuillEditor h1,
+.tourDescriptionContent h2,
+.QuillEditor h2 {
+  font-weight: 500;
+}
