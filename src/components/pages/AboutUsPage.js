@@ -5,6 +5,12 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
+  mainWrapper: {
+    [theme.breakpoints.up("md")]: {
+      border: "1px solid red",
+      minHeight: "calc(100vh - 158px)"
+    }
+  },
   aboutUsWrapper: {
     display: "flex",
     flexDirection: "column",
@@ -27,6 +33,12 @@ const styles = theme => ({
     [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
       textAlign: "center"
+    },
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "column",
+      textAlign: "center"
+      // border: "1px solid red",
+      // minHeight: "calc(100vh - 158px)"
     }
   },
   photo: {
@@ -59,35 +71,37 @@ class AboutUsPage extends Component {
             About Us
           </Typography>
 
-          <Paper className={classes.paperWrapper}>
-            <div>
-              <img
-                src="./Deepak1.png"
-                alt="Deepak Sharma's"
-                className={classes.photo}
-              />
-            </div>
-            <div className={classes.content}>
-              <Typography variant="body1" gutterBottom>
-                Mr. Deepak Sharma is an Entrepreneur. He is a well-qualified
-                &amp; has management experience in industries like insurance,
-                facility, overseas education. He lived in New Zealand, a
-                beautiful tourist destination for more than 5 years. The
-                experience of living in a tourist attraction has enlightened him
-                to venture in to travel in business in India. His plan is to
-                provide customized tour plan as per client need. Because tour
-                &amp; travel is for all ages for children &amp; student fun,
-                history &amp; culture where for youngster tracking, water sports
-                explore new places for middle age people &amp; newly married it
-                is family tour at hill station for relaxation &amp; make
-                memories as young couple, for aged to recall the memories, visit
-                at religious place or medical travel (few treatment are very
-                pocket friendly in Chennai). So it can be any reason for
-                spending time at separate place.
-              </Typography>
-              <p />
-            </div>
-          </Paper>
+          <div classNames={classes.mainWrapper}>
+            <Paper className={classes.paperWrapper}>
+              <div>
+                <img
+                  src="./Deepak1.png"
+                  alt="Deepak Sharma's"
+                  className={classes.photo}
+                />
+              </div>
+              <div className={classes.content}>
+                <Typography variant="body1" gutterBottom>
+                  Mr. Deepak Sharma is an Entrepreneur. He is a well-qualified
+                  &amp; has management experience in industries like insurance,
+                  facility, overseas education. He lived in New Zealand, a
+                  beautiful tourist destination for more than 5 years. The
+                  experience of living in a tourist attraction has enlightened
+                  him to venture in to travel in business in India. His plan is
+                  to provide customized tour plan as per client need. Because
+                  tour &amp; travel is for all ages for children &amp; student
+                  fun, history &amp; culture where for youngster tracking, water
+                  sports explore new places for middle age people &amp; newly
+                  married it is family tour at hill station for relaxation &amp;
+                  make memories as young couple, for aged to recall the
+                  memories, visit at religious place or medical travel (few
+                  treatment are very pocket friendly in Chennai). So it can be
+                  any reason for spending time at separate place.
+                </Typography>
+                <p />
+              </div>
+            </Paper>
+          </div>
         </div>
       </div>
     );
