@@ -47,25 +47,25 @@ jobs:
       - run:
           name: Deploy to S3
           command: aws s3 sync build/ s3://travel-n-move-react
-  deploy-staging:
-    docker:
-      - image: circleci/node:11.6
-    working_directory: ~/root
-    steps:
-      - checkout:
-          path: ~/root
-      - run:
-          name: Install dependencies
-          command: npm install
-      - run:
-          name: create build
-          command: CI=false npm run build-staging
-      - run:
-          name: Install awscli
-          command: sudo apt-get install awscli
-      - run:
-          name: Deploy to S3
-          command: aws s3 sync build/ s3://travel-n-move-react-staging
+#   deploy-staging:
+#     docker:
+#       - image: circleci/node:11.6
+#     working_directory: ~/root
+#     steps:
+#       - checkout:
+#           path: ~/root
+#       - run:
+#           name: Install dependencies
+#           command: npm install
+#       - run:
+#           name: create build
+#           command: CI=false npm run build-staging
+#       - run:
+#           name: Install awscli
+#           command: sudo apt-get install awscli
+#       - run:
+#           name: Deploy to S3
+#           command: aws s3 sync build/ s3://travel-n-move-react-staging
 workflows:
   version: 2
   build-deploy:
@@ -77,9 +77,9 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy-staging:
-          requires:
-            - build
-          filters:
-            branches:
-              only: development
+    #   - deploy-staging:
+    #       requires:
+    #         - build
+    #       filters:
+    #         branches:
+    #           only: development
