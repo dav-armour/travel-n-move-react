@@ -46,7 +46,7 @@ jobs:
           command: sudo apt-get install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync build/ s3://travel-n-move-react
+          command: aws s3 sync build/ s3://travel-n-move
 #   deploy-staging:
 #     docker:
 #       - image: circleci/node:11.6
