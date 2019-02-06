@@ -1,4 +1,4 @@
-# READ ME
+# Travel N Move Website
 
 ## Link (URL) to the project:
 
@@ -187,3 +187,30 @@ Texted the client to get details of godaddy.com where he bought his domain from 
     console.log("This isn't in the Rubrick but an IIFE is so here you go")
 })()
 ```
+
+
+### Source Control Process
+For this project we set up 2 repositories on GitHub, One for the back end and the other for the front end.
+This allowed us to seperate our concerns more easily. After initial repository creation we set up a development branch on each repository and made this the default branch for pull requests as well as enabling a requirement of at least one code review before merging into the development branch.
+
+Throughout the project each person would branch off from the current development branch and create their own feature branch for the functionality they were currently working on. A naming convention was set up for these branches so that people weren't accidently working on the same branch. All branches were named PersonName/Feature.
+
+After someone was finished working on the feature they would pull down the latest changes from development and solve any merge conflicts locally. This would then allow them to push up to GitHub and create a pull request that had no conflicts with development branch. After creating a pull request they would request a code review from another member of the group before it would be allowed to merge.
+
+After reaching a stable build in development branch and testing on the live staging site we would then merge into master branch which would automatically deploy to production site.
+
+Commands Used:
+```
+git checkout development
+git pull
+git checkout -b PersonName/Feature
+```
+Above commands would be used before starting a new feature so that we could begin from the latest development build.
+```
+git add .
+git commit -m "Commit Message"
+git pull origin development
+# Solve any merge conflicts
+git push
+```
+Above commands would be used when a feature was finished and before creating pull request on GitHub.
