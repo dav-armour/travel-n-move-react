@@ -5,6 +5,18 @@ import Typography from "@material-ui/core/Typography";
 import HeroImage from "./../modules/HeroImage";
 
 const styles = theme => ({
+  pageContentWrapper: {
+    minHeight: "calc(100vh - 154px)",
+    [theme.breakpoints.up(405)]: {
+      minHeight: "calc(100vh - 130px)"
+    },
+    [theme.breakpoints.up(600)]: {
+      minHeight: "calc(100vh - 138px)"
+    },
+    [theme.breakpoints.up(960)]: {
+      minHeight: "calc(100vh - 174px)"
+    }
+  },
   titleText: {
     margin: "0 auto",
     textAlign: "center",
@@ -12,21 +24,14 @@ const styles = theme => ({
   },
   cardsGrid: {
     marginTop: "20px"
-  },
-  heroImage: {
-    "&::after": {
-      position: "absolute",
-      width: "100%",
-      height: "100%",
-      background: "rgba(0,0,0,0.7)"
-    }
   }
 });
+
 class TourIndexPage extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
+      <div className={classes.pageContentWrapper}>
         <HeroImage imageLink="./londonEye.jpg" height={"40vh"} />
         <Typography variant="h2" className={classes.titleText} gutterBottom>
           Tour Packages
