@@ -9,6 +9,10 @@ http://travel-n-move-react-staging.s3-website-ap-southeast-2.amazonaws.com/
 - Front End (React): https://github.com/dav-armour/travel-n-move-react
 - Back End (Express): https://github.com/dav-armour/travel-n-move-express
 
+## Link to Trello Board
+
+- https://trello.com/b/iqkwdQ2J/mern-project
+
 ## Description of the project
 
 ### Problem definition / purpose:
@@ -112,3 +116,60 @@ Admin can log into dasbhoard to update and edit tour package data posted on the 
 9. As a website owner I want clicking on those thumbnails should direct to a new page that has detail on the ad shown on the thumbnail
 
 10. As a website owner I want an admin login to view inquiries/quotes by date, edit and delete past inquiries/quotes, post ad banners
+
+### Project plan and timeline
+
+After interacting with the client we listed down all his requirements, evaluated those requirements with the time we had in hand. We streamlined the requirements and communicated with
+the client on his final approval.
+
+Client provided us with snippit on forms to give us an idea on his requirements. He also provided us with some sample websites for reference. Some of website he sent were as follows:
+
+1. flightcentre - https://www.flightcentre.com.au/tours
+2. webjet/india - https://exclusives.webjet.com.au/deals/special-deals/india/cheap-india-tours/
+3. luxuryescapes - https://luxuryescapes.com/au/tours
+4. incredible india - https://www.theincredibleindia.org/first_timer_india.html
+
+We designed wireframes based on his requirements, snippits and the sample websites he sent, sent wireframe for his approval and once approved, we set up a trello board.
+
+We evaluated strength and weaknesses of each team members, their interests when it came to the work devision. Our focus was to divide the work in way that each team member gets to exposure of all the features and functions of the website.
+
+We set up tasks in the trello board and created repository in GitHub for fornt and back end. We updated trello board on our way to the development of the project.
+
+Project duration was for the 4 weeks.
+Project Start Date: 14/01/19
+Project End Date: 07/02/19
+
+### Client Communication
+
+Date Time Description
+
+11th January 3:05 PM
+
+Spoke to Deepak on project requirements. He explained what he wants to cover on his webpage. And promised to send us some screenshots through
+
+13th January 11:10 PM
+Received photos from the client
+
+14th January 5:07 PM
+Spoke to Deepak on the email sent on the requirements. Discussed why it is not possible to meet all of his requirements. Asked him to check on the list we have plannin to accomplish.
+Deepak is okay if we change colour of the logo He wants website to be more Tour focused/ less flight and car rentals. He is sending us photos to put on the website
+He has agreed to reply on the email by today/tomorrow
+
+17th January 6:47 PM
+Spoke to the client on Images. Client is arranging those images. He wants us to make the site bit colourful and site more foused on the "tour packaging"
+22nd January 3:05 PM
+Update the client on the project progress, sent him link of AWS where the project was deployed
+
+23rd January 12:00 PM
+Received images from the client, spoke to him on those images and let him know that they were not of the top quality
+4th January 5:43 PM
+Updated the client that the project is near to the end and had a chat on getting his profile picture to put on the website
+
+5th January 2:07 PM
+Spoke to the client on setting up account on AWS, MongoDB Atlas and SendGrid, received his credentials
+
+6th January 4:30 PM
+Dialed into client's machine and took him through the website (website demo), explained him how to set up the tour cards and other details
+
+6th January 5:00 PM
+Texted the client to get details of godaddy.com where he bought his domain from so that we can replace his present website with the new one
