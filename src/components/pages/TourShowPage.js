@@ -94,7 +94,6 @@ class TourShowPage extends Component {
   }
 
   onQuoteClick = event => {
-    console.log("clicked");
     const { tour, setQuote, setQuoteDetailsDialogOpen } = this.props;
     const { title, summary } = tour;
     setQuote({

@@ -20,6 +20,9 @@ export const getTours = (params = {}) => {
 export const getTour = _id => {
   return async (dispatch, getState) => {
     try {
+      if (!_id) {
+        return;
+      }
       let response = await LocalApi.get(`/tours/${_id}`);
 
       dispatch({
