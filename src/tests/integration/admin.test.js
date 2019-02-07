@@ -95,20 +95,4 @@ describe("Admin menu", () => {
   test("Admin menu renders", () => {
     expect(admin_menu).toHaveLength(1);
   });
-
-  test.skip("clicking on each button changes page", () => {
-    const quotes_button = admin_menu.find('a[href="/admin/quotes"]');
-    const enquiries_button = admin_menu.find('a[href="/admin/enquiries"]');
-    const tours_button = admin_menu.find('a[href="/admin/tours"]');
-    const new_tour_button = admin_menu.find('a[href="/admin/tours/new"]');
-    const dashboard_button = admin_menu.find('a[href="/admin/dashboard"]');
-    expect(quotes_button).toHaveLength(1);
-    expect(enquiries_button).toHaveLength(1);
-    expect(tours_button).toHaveLength(1);
-    expect(new_tour_button).toHaveLength(1);
-    expect(dashboard_button).toHaveLength(1);
-    quotes_button.simulate("click");
-    wrapper.update();
-    expect(wrapper.find(QuotesPage)).toHaveLength(1);
-  });
 });
