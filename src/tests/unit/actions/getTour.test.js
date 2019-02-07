@@ -1,6 +1,6 @@
-import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 import moxios from "moxios";
+import { store } from "./../../../Root";
 import { TOUR } from "./../../../actions/types";
 import { getTour } from "./../../../actions";
 import LocalApi from "./../../../apis/local";
@@ -45,7 +45,7 @@ describe("getTour action", () => {
 
     const expectedActions = [{ type: TOUR, payload: tourMock.tour }];
 
-    const store = mockStore({ tour: {} });
+    store = mockStore({ tour: {} });
 
     return store.dispatch(getTour()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);

@@ -25,7 +25,7 @@ This project will also allow us to develop our skill using Javascript, React, Re
 
 ### Functionality / Features:
 
-Functionality:
+#### Functionality:
 
 1. A navigation bar at the top of website to navigate to different pages - home, tour packages, about us, contact us, login.
 
@@ -53,7 +53,7 @@ Functionality:
 
    - Create Tour page - this page gives admin the ability to create a new tour that can be listed on the website
 
-Features:
+#### Features:
 
 1. The website is responsive to large range of screen sizes
 
@@ -76,6 +76,10 @@ Each field on the form have description, validation attached for the user to inp
    - Create Tour page allows admin to enter information on the new tour. "Feature on the home page" check box helps to make a tour package either featured (to show on the home page) or not (to list on the tour package page)
 
 ### Screenshots:
+#### Desktop View
+![Desktop View](http://i63.tinypic.com/vhc2g4.gif)
+#### Mobile View
+![Mobile View](http://i65.tinypic.com/ab1ooh.gif)
 
 ### Tech Stack:
 
@@ -105,7 +109,7 @@ Admin can log into dasbhoard to update and edit tour package data posted on the 
 
 ### User stories
 
-1. As a user I want a website where I can find more information on locations and tours my business is offering
+1. As a website owner I want a website where I can find more information on locations and tours my business is offering
 
 2. As a website owner I want the website so that prospects can contact me on the products I am selling
 
@@ -188,7 +192,6 @@ Texted the client to get details of godaddy.com where he bought his domain from 
 })()
 ```
 
-
 ### Source Control Process
 For this project we set up 2 repositories on GitHub, One for the back end and the other for the front end.
 This allowed us to seperate our concerns more easily. After initial repository creation we set up a development branch on each repository and made this the default branch for pull requests as well as enabling a requirement of at least one code review before merging into the development branch.
@@ -214,3 +217,10 @@ git pull origin development
 git push
 ```
 Above commands would be used when a feature was finished and before creating pull request on GitHub.
+
+### Testing Process
+An extensive test suite using Jest was created for the back end and front end. Using the same testing framework for both made things easier. Testing coverage for the back end is over 90%. These tests can be run using the following command
+```
+npm test -- --coverage
+```
+This command works for both front end and back end. These tests get automatically run on deployment so that broken code doesn't make it up to the live site. Apart from these automatic tests we also manually tested each user story on the front end staging site to ensure it was functioning correctly before we merged it to the production site. The client also conducted his own trial of the staging site and would give us feedback on any changes needed before we merged to production.
