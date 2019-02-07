@@ -1,12 +1,8 @@
-import thunk from "redux-thunk";
 import moxios from "moxios";
 import { store } from "./../../../Root";
 import { TOUR } from "./../../../actions/types";
 import { getTour } from "./../../../actions";
 import LocalApi from "./../../../apis/local";
-
-const middlewares = [thunk];
-const mockStore = configureMockStore(middlewares);
 
 const tourMock = {
   tour: {
@@ -25,7 +21,6 @@ const tourMock = {
 };
 
 describe("getTour action", () => {
-  let wrapper;
   beforeEach(function() {
     moxios.install(LocalApi);
   });
@@ -44,8 +39,6 @@ describe("getTour action", () => {
     });
 
     const expectedActions = [{ type: TOUR, payload: tourMock.tour }];
-
-    store = mockStore({ tour: {} });
 
     return store.dispatch(getTour()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
