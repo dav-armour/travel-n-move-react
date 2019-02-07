@@ -1,7 +1,9 @@
 # Travel N Move Website
 
 ## Link (URL) to the project:
-
+- Production Site
+http://www.travelnmove.com
+- Staging Site
 http://travel-n-move-react-staging.s3-website-ap-southeast-2.amazonaws.com/
 
 ## Link to GitHub repository
@@ -9,9 +11,6 @@ http://travel-n-move-react-staging.s3-website-ap-southeast-2.amazonaws.com/
 - Front End (React): https://github.com/dav-armour/travel-n-move-react
 - Back End (Express): https://github.com/dav-armour/travel-n-move-express
 
-## Link to Trello Board
-
-- https://trello.com/b/iqkwdQ2J/mern-project
 
 ## Description of the project
 
@@ -77,7 +76,7 @@ Each field on the form have description, validation attached for the user to inp
 
 ### Screenshots:
 #### Desktop View
-![Desktop View](http://i63.tinypic.com/vhc2g4.gif)
+![Desktop View](http://i63.tinypic.com/w7jsxv.gif)
 #### Mobile View
 ![Mobile View](http://i65.tinypic.com/ab1ooh.gif)
 
@@ -105,9 +104,41 @@ Page on about us gives extra information about the business where as contact us 
 
 Admin can log into dasbhoard to update and edit tour package data posted on the webpage.
 
+#### Commands to get started
+Start a new mongod service. Open new terminal
+- Linux Users:
+```
+sudo service mongod start
+```
+- Mac Users:
+```
+mongod --config /usr/local/etc/mongod.conf
+```
+
+```
+mkdir travel-n-move
+cd travel-n-move
+git clone git@github.com:dav-armour/travel-n-move-react.git
+git clone git@github.com:dav-armour/travel-n-move-express.git
+cd travel-n-move-react
+npm install
+npm start
+```
+Open a new terminal and navigate to the travel-n-move-express directory
+```
+npm install
+code .
+```
+This will open in VS Code. If you have a different text editor please use that.
+Now use the .env.example file to create your .env file and fill in all necessary environment variables. You can just use test for sendgrid if you do not want to set up emails with templates.
+```
+npm start
+```
+
+
 ### Design process
 
-### User stories
+#### User stories
 
 #### Owner stories
 
@@ -141,6 +172,28 @@ Admin can log into dasbhoard to update and edit tour package data posted on the 
 
 7. As a user I want a confirmation email after I submit a request and feedback to make sure the business received by request
 
+### Wireframes
+#### Desktop
+![Desktop Wireframes Part 2](http://i68.tinypic.com/9hjgqp.png)
+![Desktop Wireframes Part 2](http://i63.tinypic.com/20tnuz9.png)
+![Desktop Wireframes Part 3](http://i65.tinypic.com/33e5rm0.png)
+
+#### Mobile
+![Mobile Wireframes](http://i64.tinypic.com/walugk.png)
+
+### Schema Design Diagram
+![Schema Design Diagram](http://i65.tinypic.com/10omskh.jpg)
+
+### Workflow Diagram
+![Workflow Diagram](http://i63.tinypic.com/v45bh0.png)
+
+### Data Flow Diagram
+![Data Flow Diagram](http://i66.tinypic.com/2bpmyg.png)
+
+### OO Design Diagram
+![OO Design Diagram](http://i68.tinypic.com/23v1o4.png)
+
+## Project Management
 ### Project plan and timeline
 
 After interacting with the client we listed down all his requirements, evaluated those requirements with the time we had in hand. We streamlined the requirements and communicated with
@@ -198,11 +251,34 @@ Dialed into client's machine and took him through the website (website demo), ex
 6th January 5:00 PM
 Texted the client to get details of godaddy.com where he bought his domain from so that we can replace his present website with the new one
 
+#### Client Relations
+We kept our client’s requirements in centre from the start of this project. On each milestone the client was updated, was asked to review the website and give us feedback, discuss with him on progress and plans for the next few days to come, and if appropriate let him know hurdles to set realistic expectation on him.
+
+Following were our steps on this regard:
+
+1. Record interactions with your client in a diary format
+2. Plan information gathering activities to determine project requirements, constraints and risks
+3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+4. Prepare project work breakdown and schedule
+5. Allocate roles and responsibilities to team members, based on project solution requirements
+6. Monitor each other’s assigned work
+7. Reassess ongoing project scope changes, risks and issues
+8. Manage system testing and hand over activities. Prepare maintenance or support plans for client
+9. Obtain final project sign-off
+10. As a team, conduct post project review
+
+#### Clent Satifaction Survey
 ```
 (function () {
     console.log("This isn't in the Rubrick but an IIFE is so here you go")
 })()
 ```
+
+### Trello Board
+Link to board: https://trello.com/b/iqkwdQ2J/mern-project
+#### Screenshots
+![Trello Board Part 1](http://i68.tinypic.com/2d10g0k.png)
+![Trello Board Part 2](http://i67.tinypic.com/33diet2.png)
 
 ### Source Control Process
 For this project we set up 2 repositories on GitHub, One for the back end and the other for the front end.
@@ -237,8 +313,8 @@ npm test -- --coverage
 ```
 This command works for both front end and back end. These tests get automatically run on deployment so that broken code doesn't make it up to the live site. Apart from these automatic tests we also manually tested each user story on the front end staging site to ensure it was functioning correctly before we merged it to the production site. The client also conducted his own trial of the staging site and would give us feedback on any changes needed before we merged to production.
 
-
-### 1. What are the most important aspects of quality software?
+### Short Answer Q&A
+#### 1. What are the most important aspects of quality software?
 
 There are many important aspects of quality of software. According to Ian Sommerville who authored, Software Engineering, the 4 main principles are of a software program is how well it does the following:
 
@@ -250,11 +326,11 @@ There are many important aspects of quality of software. According to Ian Sommer
 - Usability - which includes things like functionality design and user satisfaction and user experience including accessibility for people with disabilities
   Additionally, quality software requires quality testing and adequate test coverage
 
-### 2. What libraries are being used in the app and why?
+#### 2. What libraries are being used in the app and why?
 
 We are using Javascript as the scripting language. The following software packages have been used:
 
-#### Back-end development
+##### Back-end development
 
 1. Node JS
 2. Express JS
@@ -264,7 +340,7 @@ We are using Javascript as the scripting language. The following software packag
 6. Passport, Passport local, passport-local-mongoose and passport-jwt strategies - for authentication
 7. JSONwebtoken - for authentication and generation of the JSON web token
 
-#### Error - logging
+##### Error - logging
 
 1. Morgan - to log HTTP errors
 2. Development Dependencies
@@ -274,12 +350,12 @@ We are using Javascript as the scripting language. The following software packag
 6. Nodemon - for automatically restarting the node application when file changes in the directory are detected
 7. Supertest - for testing
 
-#### Database
+##### Database
 
 1. MongoDB
 2. Mongoose
 
-#### Front-end development
+##### Front-end development
 
 1. React -a JS library for building user interfaces
 2. Material UI - a React UI framework
@@ -289,7 +365,7 @@ We are using Javascript as the scripting language. The following software packag
 6. Redux Thunk - middleware that lets you call action creators that return a function instead of an action object.
 7. Redux Forms - manages form state in redux
 
-### 3. A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
+#### 3. A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
 
 As a team, it would be useful for team members to:
 
@@ -305,7 +381,7 @@ As a team, it would be useful for team members to:
 - Iterate and develop the website in consultation with the client (i.e. take an agile approach)
 - Establish a consistent and clear communication channel with the client before, during and immediately after the project
 
-### 4. Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
+#### 4. Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
 
 Within our project we used the following knowledge and skills:
 
@@ -321,7 +397,7 @@ Consistent and constant communication - we communicated frequently in-person as 
 
 Technical programming competence - Each team member had their own level of technical competence and we appointed the most technically competent person as the as Tech Lead.
 
-### 5. Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+#### 5. Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
 
 Knowledge and skills brought by all three team members played a key role in the completion of the project. Soft skills like a good team player, communication skill, resilience was needed for the successful completion of this project.
 
@@ -330,30 +406,3 @@ Technical skills like understanding of HTML, CSS, Javascript, React, Redux, Mong
 For example, a good communication skill to update each team members on the work progress, helping each other to overcome hurdles and learning from each other was effective and efficient. Updating client on timely manner helped to keep him happy and patience.
 Understanding of HTML and CSS help that we learnt on the early stage of the course was helpful on styling. Javascript, React, Redux helped us on building over all website on efficient manner (breaking down the website into components, proper data flow between pages etc).
 Improvement for the future projects would be on code reviews, doing code review offered us so much of learning from each other. It was not on the rubric.
-
-### 6. Demonstrate your ability to satisfy your client with the quality of your work and high level of service.
-
-We kept our client’s requirements in centre from the start of this project. On each milestone the client was updated, was asked to review the website and give us feedback, discuss with him on progress and plans for the next few days to come, and if appropriate let him know hurdles to set realistic expectation on him.
-
-Following were our steps on this regard:
-
-1. Record interactions with your client in a diary format
-2. Plan information gathering activities to determine project requirements, constraints and risks
-3. Develop project charter, including preliminary statement of project scope and obtain sign-off
-4. Prepare project work breakdown and schedule
-5. Allocate roles and responsibilities to team members, based on project solution requirements
-6. Monitor each other’s assigned work
-7. Reassess ongoing project scope changes, risks and issues
-8. Manage system testing and hand over activities. Prepare maintenance or support plans for client
-9. Obtain final project sign-off
-10. As a team, conduct post project review
-
-### 7. Data flow diagram
-
-### 8. OOD Diagram
-
-### 9. Flawless code flow control: documented test coverage/successful results for all user stories, including corner cases
-
-### 10. Provide UX/UI design documentation(user stories) that adequately show Agile methodology implementation.
-
-Please refer to read me file for usr stories and wireframe document for UX/Ui design.
