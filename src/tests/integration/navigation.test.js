@@ -97,31 +97,3 @@ describe("The correct page renders for each route and navbar shows on all routes
     wrapper.unmount();
   });
 });
-
-describe.skip("A user navigates using the navbar", () => {
-  let wrapper;
-  beforeAll(() => {
-    const staticContext = {};
-    wrapper = mount(
-      <Root>
-        <StaticRouter location="/" context={staticContext}>
-          <NavBar />
-        </StaticRouter>
-      </Root>
-    );
-  });
-
-  test("All links exist", () => {
-    expect(wrapper.find("a").length).toEqual(7);
-    expect(wrapper.find("#dashboard-nav-link").length).toEqual(1);
-    expect(wrapper.find("#home-nav-link").length).toEqual(1);
-    expect(wrapper.find("#tours-nav-link").length).toEqual(1);
-    expect(wrapper.find("#contact-nav-link").length).toEqual(1);
-    expect(wrapper.find("#about-nav-link").length).toEqual(1);
-    expect(wrapper.find("#login-nav-link").length).toEqual(1);
-  });
-
-  afterAll(() => {
-    wrapper.unmount();
-  });
-});
