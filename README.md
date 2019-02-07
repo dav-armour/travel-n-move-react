@@ -97,25 +97,37 @@ Admin can log into dasbhoard to update and edit tour package data posted on the 
 
 ### User stories
 
+#### Owner stories
+
+1. As a website owner I want the website so that prospects can contact me on the products I am selling
+
+2. As a website owner I want business logo, name and contact number to appear at the top of the page
+
+3. As a website owner I want the inquired information to be saved in the database and emailed to myself as a notification on new enquiry
+
+4. As a website owner I want thumbnails at the lower part of the webpage displaying special offers and promotions
+
+5. As a website owner I want clicking on those thumbnails should direct to a new page that has detail on the ad shown on the thumbnail
+
+6. As a website owner I want an admin login to view inquiries/quotes by date, edit and delete past inquiries/quotes, post ad banners
+
+7. As a website owner I want a quick summary on Holidays, Flights and Hotels broken down by their status
+
+#### User stories
+
 1. As a user I want a website where I can find more information on locations and tours my business is offering
 
-2. As a website owner I want the website so that prospects can contact me on the products I am selling
+2. As a user I want to inquire on Flights
 
-3. As a website owner I want business logo, name and contact number to appear at the top of the page
+3. As a user I want to inquire on Hotels
 
-4. As a user I want to inquire on Flights
+4. As a user I want to inquire on Holidays
 
-5. As a user I want to inquire on Hotels
+5. As a user I want to see all the tours that are on offer/promotion
 
-6. As a user I want to inquire on Holidays
+6. As a user I want to contact the business on my feedbacks and general enquiries
 
-7. As a website owner I want the inquired information to be saved in the database and emailed to him
-
-8. As a website owner I want thumbnails at the lower part of the webpage displaying special offers and promotions
-
-9. As a website owner I want clicking on those thumbnails should direct to a new page that has detail on the ad shown on the thumbnail
-
-10. As a website owner I want an admin login to view inquiries/quotes by date, edit and delete past inquiries/quotes, post ad banners
+7. As a user I want a confirmation email after I submit a request and feedback to make sure the business received by request
 
 ### Project plan and timeline
 
