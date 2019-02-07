@@ -173,3 +173,125 @@ Dialed into client's machine and took him through the website (website demo), ex
 
 6th January 5:00 PM
 Texted the client to get details of godaddy.com where he bought his domain from so that we can replace his present website with the new one
+
+## Short question answer
+
+### 1. What are the most important aspects of quality software?
+
+There are many important aspects of quality of software. According to Ian Sommerville who authored, Software Engineering, the 4 main principles are of a software program is how well it does the following:
+
+- Maintainability which includes extensibility, flexibility and being able to cope with future changes without damaging the current system
+
+- Dependability which includes aspects like security and accessibility
+  Efficiency which includes performance, resource utilization and platform compatibility and portability
+
+- Usability - which includes things like functionality design and user satisfaction and user experience including accessibility for people with disabilities
+  Additionally, quality software requires quality testing and adequate test coverage
+
+### 2. What libraries are being used in the app and why?
+
+We are using Javascript as the scripting language. The following software packages have been used:
+
+#### Back-end development
+
+1. Node JS
+2. Express JS
+3. Validation
+4. Celebrate package - for email and password validation
+5. Authentication
+6. Passport, Passport local, passport-local-mongoose and passport-jwt strategies - for authentication
+7. JSONwebtoken - for authentication and generation of the JSON web token
+
+#### Error - logging
+
+1. Morgan - to log HTTP errors
+2. Development Dependencies
+3. Faker - for seeding data
+4. Forever - for ensuring the server is kept running
+5. Jest - for testing
+6. Nodemon - for automatically restarting the node application when file changes in the directory are detected
+7. Supertest - for testing
+
+#### Database
+
+1. MongoDB
+2. Mongoose
+
+#### Front-end development
+
+1. React -a JS library for building user interfaces
+2. Material UI - a React UI framework
+3. React-dom - provides DOM specific methods to be used by our application
+4. React-router-dom - a routing library for React
+5. Redux - a state management library for JS apps
+6. Redux Thunk - middleware that lets you call action creators that return a function instead of an action object.
+7. Redux Forms - manages form state in redux
+
+### 3. A team is about to engage in a project, developing a website for a small business. What knowledge and skills would they need in order to develop the project?
+
+As a team, it would be useful for team members to:
+
+- Establish the team values and how team members treat and communicate with each other during the project
+- Identify the key skills and strengths as well as the weaknesses each team members has - to ensure the team members work in compliment to each other
+- Establish key roles and responsibilities in the project including a project manager, tech lead, design lead and client liaison and so on.
+- Understanding of best practice software programming principles and practices
+- Utilisation of up to-date and extensible software
+- Understand the client needs and their business needs, goals and challenges, at present and going into the future (so as to build a fit-for-purpose website)
+- Understand the key problems the website will need to solve for the client
+- Understand the project specifications including the business goals, key deadlines, customer and user target markets, budget and resources available including resources to maintain the website after the initial build
+- Communicate to the client, the project scope and the consequences (e.g. extra costs, time) of scope creep
+- Iterate and develop the website in consultation with the client (i.e. take an agile approach)
+- Establish a consistent and clear communication channel with the client before, during and immediately after the project
+
+### 4. Within your own project what knowledge or skills were required to complete your project, and overcome challenges?
+
+Within our project we used the following knowledge and skills:
+
+Project management skills and assigning tasks to each team members and using tools like Trello, Google docs. We had 3 major roles within the team to to get the project done:
+
+1. Project Manager
+2. Tech Lead
+3. Client Liaison
+
+Time management - We had a stand-up meeting and went through the tasks for each day, every day and make changes to tasks etc as needed. We used these meetings to support each other through challenging tasks or blocks that had come up
+
+Consistent and constant communication - we communicated frequently in-person as well as using communication tools like Slack. Clear and supportive communication was especially needed when we faced challenges or delays - at these points; we had to ensure we had to work together as team as opposed to working as individual team members.
+
+Technical programming competence - Each team member had their own level of technical competence and we appointed the most technically competent person as the as Tech Lead.
+
+### 5. Evaluate how effective your knowledge and skills were this project, using examples, and suggest changes or improvements for future projects of a similar nature?
+
+Knowledge and skills brought by all three team members played a key role in the completion of the project. Soft skills like a good team player, communication skill, resilience was needed for the successful completion of this project.
+
+Technical skills like understanding of HTML, CSS, Javascript, React, Redux, MongoDB and various npm packages were helpful too.
+
+For example, a good communication skill to update each team members on the work progress, helping each other to overcome hurdles and learning from each other was effective and efficient. Updating client on timely manner helped to keep him happy and patience.
+Understanding of HTML and CSS help that we learnt on the early stage of the course was helpful on styling. Javascript, React, Redux helped us on building over all website on efficient manner (breaking down the website into components, proper data flow between pages etc).  
+Improvement for the future projects would be on code reviews, doing code review offered us so much of learning from each other. It was not on the rubric.
+
+### 6. Demonstrate your ability to satisfy your client with the quality of your work and high level of service.
+
+We kept our client’s requirements in centre from the start of this project. On each milestone the client was updated, was asked to review the website and give us feedback, discuss with him on progress and plans for the next few days to come, and if appropriate let him know hurdles to set realistic expectation on him.
+
+Following were our steps on this regard:
+
+1. Record interactions with your client in a diary format
+2. Plan information gathering activities to determine project requirements, constraints and risks
+3. Develop project charter, including preliminary statement of project scope and obtain sign-off
+4. Prepare project work breakdown and schedule
+5. Allocate roles and responsibilities to team members, based on project solution requirements
+6. Monitor each other’s assigned work
+7. Reassess ongoing project scope changes, risks and issues
+8. Manage system testing and hand over activities. Prepare maintenance or support plans for client
+9. Obtain final project sign-off
+10. As a team, conduct post project review
+
+### 7. Data flow diagram
+
+### 8. OOD Diagram
+
+### 9. Flawless code flow control: documented test coverage/successful results for all user stories, including corner cases
+
+### 10. Provide UX/UI design documentation(user stories) that adequately show Agile methodology implementation.
+
+Please refer to read me file for usr stories and wireframe document for UX/Ui design.
