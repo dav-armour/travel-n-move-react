@@ -2,7 +2,7 @@
 
 ## Link (URL) to the project:
 - Production Site
-http://www.travelnmove.com
+~~http://www.travelnmove.com~~ (No longer operating)
 - Staging Site
 http://travel-n-move-react-staging.s3-website-ap-southeast-2.amazonaws.com/
 
